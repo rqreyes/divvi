@@ -24,7 +24,7 @@ const ItemContextProvider = props => {
   };
   const updatePrice = (id, price) => {
     const itemsCopy = [...items];
-    itemsCopy.find(item => item.id === id).price = parseFloat(price);
+    itemsCopy.find(item => item.id === id).price = parseFloat(price) || '';
 
     setItems(itemsCopy);
   };

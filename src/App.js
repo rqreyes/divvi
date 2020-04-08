@@ -4,6 +4,7 @@ import ItemContextProvider from './contexts/ItemContext';
 import ItemList from './components/ItemList';
 import ItemForm from './components/ItemForm';
 import './App.css';
+import ItemTotal from './components/ItemTotal';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <section>
           <ItemList />
           <ItemForm />
+          <ItemTotal />
         </section>
       </ItemContextProvider>
     </div>
