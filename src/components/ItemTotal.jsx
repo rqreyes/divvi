@@ -5,7 +5,7 @@ const ItemTotal = () => {
   const { items } = useContext(ItemContext);
   const [tax, setTax] = useState('');
   const [tip, setTip] = useState('');
-  const subtotal = items.every(item => item.price)
+  const subtotal = items.every((item) => item.price)
     ? items
         .reduce((sum, item) => {
           return (sum += item.price);
@@ -28,7 +28,7 @@ const ItemTotal = () => {
         <input
           type='number'
           value={tax}
-          onChange={e => setTax(e.target.value)}
+          onChange={(e) => setTax(e.target.value)}
         />
       </li>
       <li>
@@ -36,7 +36,7 @@ const ItemTotal = () => {
         <input
           type='number'
           value={tip}
-          onChange={e => setTip(e.target.value)}
+          onChange={(e) => setTip(e.target.value)}
         />
       </li>
       <li>

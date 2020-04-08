@@ -3,13 +3,13 @@ import { ItemContext } from '../contexts/ItemContext';
 
 const ItemForm = () => {
   const { addItem } = useContext(ItemContext);
-  const [name, setName] = useState('');
+  const [food, setFood] = useState('');
   const [price, setPrice] = useState('');
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    addItem(name, price);
-    setName('');
+    addItem(food, price);
+    setFood('');
     setPrice('');
   };
 
@@ -17,14 +17,14 @@ const ItemForm = () => {
     <form onSubmit={handleSubmit}>
       <input
         type='text'
-        value={name}
-        onChange={e => setName(e.target.value)}
+        value={food}
+        onChange={(e) => setFood(e.target.value)}
         required
       />
       <input
         type='number'
         value={price}
-        onChange={e => setPrice(e.target.value)}
+        onChange={(e) => setPrice(e.target.value)}
         required
       />
       <button type='submit'>add</button>

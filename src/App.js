@@ -1,10 +1,12 @@
 import React from 'react';
 // import logo from './logo.svg';
 import ItemContextProvider from './contexts/ItemContext';
+import PersonContextProvider from './contexts/PersonContext';
 import ItemList from './components/ItemList';
 import ItemForm from './components/ItemForm';
-import './App.css';
 import ItemTotal from './components/ItemTotal';
+import PersonList from './components/PersonList';
+import './App.css';
 
 function App() {
   return (
@@ -16,6 +18,12 @@ function App() {
           <ItemList />
           <ItemForm />
           <ItemTotal />
+        </section>
+        <h2>People</h2>
+        <section>
+          <PersonContextProvider>
+            <PersonList />
+          </PersonContextProvider>
         </section>
       </ItemContextProvider>
     </div>

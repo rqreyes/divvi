@@ -4,7 +4,9 @@ import ItemDetails from './ItemDetails';
 
 const ItemList = () => {
   const { items } = useContext(ItemContext);
-  const itemList = items.map(item => <ItemDetails key={item.id} item={item} />);
+  const itemList = items.map((item) => (
+    <ItemDetails key={item.id} item={item} />
+  ));
 
   return items.length ? <ul>{itemList}</ul> : <p>Add items foo</p>;
 };
