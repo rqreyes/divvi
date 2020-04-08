@@ -6,14 +6,7 @@ const ItemList = () => {
   const { items } = useContext(ItemContext);
   const itemList = items.map(item => <ItemDetails key={item.id} item={item} />);
 
-  return (
-    <React.Fragment>
-      <h2>Receipt</h2>
-      <section>
-        <ul>{itemList}</ul>
-      </section>
-    </React.Fragment>
-  );
+  return items.length ? <ul>{itemList}</ul> : <p>Add items foo</p>;
 };
 
 export default ItemList;
