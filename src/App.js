@@ -8,7 +8,7 @@ import './App.css';
 function App() {
   return (
     <div className='App'>
-      <h1>divvi</h1>
+      <h1>Divvi</h1>
       <ItemContextProvider>
         <h2>Receipt</h2>
         <section>

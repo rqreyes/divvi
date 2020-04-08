@@ -13,13 +13,26 @@ const ItemContextProvider = props => {
   const addItem = (name, price) => {
     setItems([...items, { id: uuidv1(), name, price: parseFloat(price) }]);
   };
-
   const removeItem = id => {
     setItems(items.filter(item => item.id !== id));
   };
+  const updateName = (id, name) => {
+    const itemsCopy = [...items];
+    itemsCopy.find(item => item.id === id).name = name;
+
+    setItems(itemsCopy);
+  };
+  const updatePrice = (id, price) => {
+    const itemsCopy = [...items];
+    itemsCopy.find(item => item.id === id).price = parseFloat(price);
+
+    setItems(itemsCopy);
+  };
 
   return (
-    <ItemContext.Provider value={{ items, addItem, removeItem }}>
+    <ItemContext.Provider
+      value={{ items, addItem, removeItem, updateName, updatePrice }}
+    >
       {props.children}
     </ItemContext.Provider>
   );
