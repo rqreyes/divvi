@@ -4,6 +4,7 @@ import PersonDetails from './PersonDetails';
 
 const PersonList = () => {
   const { persons } = useContext(PersonContext);
+
   const personList = persons.map((person, index) =>
     index === 0 ? (
       <PersonDetails key={person.id} person={person} firstPerson={true} />

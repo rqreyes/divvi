@@ -9,16 +9,28 @@ const ItemContextProvider = (props) => {
       id: '1',
       food: 'ramen',
       price: 1.99,
+      personIds: ['1', '2'],
+      get splitPrice() {
+        return this.price / this.personIds.length;
+      },
     },
     {
       id: '2',
       food: 'sushi',
       price: 2.99,
+      personIds: ['1'],
+      get splitPrice() {
+        return this.price / this.personIds.length;
+      },
     },
     {
       id: '3',
       food: 'tacos',
       price: 3.99,
+      personIds: ['2'],
+      get splitPrice() {
+        return this.price / this.personIds.length;
+      },
     },
     new Item('soup', 10),
   ]);

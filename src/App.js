@@ -2,11 +2,11 @@ import React from 'react';
 // import logo from './logo.svg';
 import ItemContextProvider from './contexts/ItemContext';
 import PersonContextProvider from './contexts/PersonContext';
-import CalculateProvider from './contexts/CalculateContext';
 import ItemList from './components/ItemList';
 import ItemForm from './components/ItemForm';
 import ItemTotal from './components/ItemTotal';
 import PersonList from './components/PersonList';
+import PersonForm from './components/PersonForm';
 import './App.css';
 
 function App() {
@@ -23,9 +23,8 @@ function App() {
         <h2>People</h2>
         <section>
           <PersonContextProvider>
-            <CalculateProvider>
-              <PersonList />
-            </CalculateProvider>
+            <PersonList />
+            <PersonForm />
           </PersonContextProvider>
         </section>
       </ItemContextProvider>

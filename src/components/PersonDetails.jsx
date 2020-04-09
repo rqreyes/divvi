@@ -1,26 +1,25 @@
 import React, { useContext } from 'react';
-import { CalculateContext } from '../contexts/CalculateContext';
+import { PersonContext } from '../contexts/PersonContext';
 import PersonItemDetails from './PersonItemDetails';
 
 const PersonDetails = ({ person, firstPerson }) => {
-  const { personItems } = useContext(CalculateContext);
-  const personItemList = personItems.find(
-    (personItem) => personItem.personId === person.id
-  ).foodIds;
+  const { removePerson, updatePerson } = useContext(PersonContext);
 
-  const personItemDetails = personItemList.map((foodId) => (
-    <PersonItemDetails
-      key={`food-id-${foodId}`}
-      foodId={foodId}
-      firstPerson={firstPerson}
-    />
+  const personItemList = person.itemIds.map((itemId) => (
+    <PersonItemDetails key={itemId} itemId={itemId} firstPerson={firstPerson} />
   ));
 
   return (
     <li>
-      <input type='text' value={person.name} />
-      <button type='button'>remove</button>
-      <ul>{personItemDetails}</ul>
+      <input
+        type='text'
+        value={person.name}
+        onChange={(e) => updatePerson(person.id, e.target.value)}
+      />
+      <button type='button' onClick={() => removePerson(person.id)}>
+        remove
+      </button>
+      <ul>{personItemList}</ul>
       <button type='button'>select food items</button>
     </li>
   );

@@ -5,6 +5,7 @@ const ItemTotal = () => {
   const { items } = useContext(ItemContext);
   const [tax, setTax] = useState('');
   const [tip, setTip] = useState('');
+
   const subtotal = items.every((item) => item.price)
     ? items
         .reduce((sum, item) => {
