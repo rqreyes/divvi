@@ -2,6 +2,7 @@ import React from 'react';
 // import logo from './logo.svg';
 import ItemContextProvider from './contexts/ItemContext';
 import PersonContextProvider from './contexts/PersonContext';
+import CalculateProvider from './contexts/CalculateContext';
 import ItemList from './components/ItemList';
 import ItemForm from './components/ItemForm';
 import ItemTotal from './components/ItemTotal';
@@ -22,7 +23,9 @@ function App() {
         <h2>People</h2>
         <section>
           <PersonContextProvider>
-            <PersonList />
+            <CalculateProvider>
+              <PersonList />
+            </CalculateProvider>
           </PersonContextProvider>
         </section>
       </ItemContextProvider>

@@ -9,28 +9,16 @@ const ItemContextProvider = (props) => {
       id: '1',
       food: 'ramen',
       price: 1.99,
-      personIds: ['1', '2'],
-      get splitPrice() {
-        return this.price / this.personIds.length;
-      },
     },
     {
       id: '2',
       food: 'sushi',
       price: 2.99,
-      personIds: ['1'],
-      get splitPrice() {
-        return this.price / this.personIds.length;
-      },
     },
     {
       id: '3',
       food: 'tacos',
       price: 3.99,
-      personIds: ['2'],
-      get splitPrice() {
-        return this.price / this.personIds.length;
-      },
     },
     new Item('soup', 10),
   ]);
@@ -39,18 +27,12 @@ const ItemContextProvider = (props) => {
   function Item(food, price) {
     this.id = uuidv1();
     this.food = food;
-    this.price = price;
-    this.personIds = [];
+    this.price = parseFloat(price);
   }
-  Item.prototype = {
-    getSplitPrice() {
-      return this.price / this.personIds.length;
-    },
-  };
 
   // item handlers
   const addItem = (food, price) => {
-    setItems([...items, { id: uuidv1(), food, price: parseFloat(price) }]);
+    setItems([...items, new Item(food, price)]);
   };
   const removeItem = (id) => {
     setItems(items.filter((item) => item.id !== id));

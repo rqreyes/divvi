@@ -1,20 +1,27 @@
 import React, { useContext } from 'react';
-import { ItemContext } from '../contexts/ItemContext';
+import { CalculateContext } from '../contexts/CalculateContext';
 import PersonItemDetails from './PersonItemDetails';
 
-const PersonDetails = ({ person }) => {
-  const { items } = useContext(ItemContext);
-  const personItemList = person.foodIds.map((foodId) =>
-    items.find((item) => item.id === foodId)
-  );
-  const personItemDetails = personItemList.map((item) => (
-    <PersonItemDetails key={item.id} item={item} />
+const PersonDetails = ({ person, firstPerson }) => {
+  const { personItems } = useContext(CalculateContext);
+  const personItemList = personItems.find(
+    (personItem) => personItem.personId === person.id
+  ).foodIds;
+
+  const personItemDetails = personItemList.map((foodId) => (
+    <PersonItemDetails
+      key={`food-id-${foodId}`}
+      foodId={foodId}
+      firstPerson={firstPerson}
+    />
   ));
 
   return (
     <li>
       <input type='text' value={person.name} />
+      <button type='button'>remove</button>
       <ul>{personItemDetails}</ul>
+      <button type='button'>select food items</button>
     </li>
   );
 };
