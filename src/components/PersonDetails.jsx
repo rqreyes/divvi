@@ -5,7 +5,9 @@ import PersonItemDetails from './PersonItemDetails';
 
 const PersonDetails = ({ person, firstPerson }) => {
   const { items, subtotal, tax, tip } = useContext(ItemContext);
-  const { removePerson, updatePerson } = useContext(PersonContext);
+  const { removePerson, updatePerson, updateCurrPersonId } = useContext(
+    PersonContext
+  );
 
   const personItemPrices = person.itemIds.map((itemId) => {
     const itemDetails = items.find((item) => item.id === itemId);
@@ -51,7 +53,12 @@ const PersonDetails = ({ person, firstPerson }) => {
       <p>Tip: {personTip.toFixed(2)}</p>
       <p>Subtotal: {personSubtotal.toFixed(2)}</p>
       <p>Total: {personTotal.toFixed(2)}</p>
-      <button type='button'>select food items</button>
+      <button type='button' onClick={() => updateCurrPersonId(person.id)}>
+        select food items
+      </button>
+      <button type='button' onClick={() => updateCurrPersonId(null)}>
+        done
+      </button>
     </li>
   );
 };

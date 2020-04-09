@@ -19,7 +19,7 @@ const ItemContextProvider = (props) => {
       id: '2',
       food: 'sushi',
       price: 2.99,
-      personIds: ['1'],
+      personIds: ['2'],
       get splitPrice() {
         return this.price / this.personIds.length;
       },
@@ -28,12 +28,11 @@ const ItemContextProvider = (props) => {
       id: '3',
       food: 'tacos',
       price: 3.99,
-      personIds: ['2'],
+      personIds: ['1'],
       get splitPrice() {
         return this.price / this.personIds.length;
       },
     },
-    new Item('soup', 10),
   ]);
   const [tax, setTax] = useState('');
   const [tip, setTip] = useState('');
@@ -45,11 +44,13 @@ const ItemContextProvider = (props) => {
     this.id = uuidv1();
     this.food = food;
     this.price = parseFloat(price);
+    this.personIds = [];
+    Object.defineProperties(this, {
+      splitPrice: {
+        get: () => this.price / this.personIds.length,
+      },
+    });
   }
-
-  Item.prototype.splitPrice = function () {
-    return this.price / this.personIds.length;
-  };
 
   // item handlers
   const addItem = (food, price) => {
@@ -81,6 +82,21 @@ const ItemContextProvider = (props) => {
   };
   const updateTotal = (num) => {
     setTotal(num);
+  };
+  const addCurrItemPersonId = (itemId, currPersonId) => {
+    const itemsCopy = [...items];
+    itemsCopy.find((item) => item.id === itemId).personIds.push(currPersonId);
+
+    setItems(itemsCopy);
+  };
+  const removeCurrItemPersonId = (itemId, currPersonId) => {
+    const itemsCopy = [...items];
+    const currItemDetails = itemsCopy.find((item) => item.id === itemId);
+    currItemDetails.personIds = currItemDetails.personIds.filter(
+      (personId) => personId !== currPersonId
+    );
+
+    setItems(itemsCopy);
   };
 
   useEffect(() => {
@@ -127,6 +143,8 @@ const ItemContextProvider = (props) => {
         updateSubtotal,
         total,
         updateTotal,
+        addCurrItemPersonId,
+        removeCurrItemPersonId,
       }}
     >
       {props.children}

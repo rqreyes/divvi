@@ -14,19 +14,19 @@ function App() {
     <div className='App'>
       <h1>Divvi</h1>
       <ItemContextProvider>
-        <h2>Receipt</h2>
-        <section>
-          <ItemList />
-          <ItemForm />
-          <ItemTotal />
-        </section>
-        <h2>People</h2>
-        <section>
-          <PersonContextProvider>
+        <PersonContextProvider>
+          <h2>Receipt</h2>
+          <section>
+            <ItemList />
+            <ItemForm />
+            <ItemTotal />
+          </section>
+          <h2>People</h2>
+          <section>
             <PersonList />
             <PersonForm />
-          </PersonContextProvider>
-        </section>
+          </section>
+        </PersonContextProvider>
       </ItemContextProvider>
     </div>
   );
