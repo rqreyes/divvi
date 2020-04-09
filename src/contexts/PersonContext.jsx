@@ -9,13 +9,11 @@ const PersonContextProvider = (props) => {
       id: '1',
       name: 'marshawty',
       itemIds: ['1', '3'],
-      balance: 0,
     },
     {
       id: '2',
       name: 'ranzaddy',
       itemIds: ['1', '2'],
-      balance: 0,
     },
   ]);
 
@@ -24,7 +22,6 @@ const PersonContextProvider = (props) => {
     this.id = uuidv1();
     this.name = name;
     this.itemIds = [];
-    this.balance = 0;
   }
 
   // person handlers

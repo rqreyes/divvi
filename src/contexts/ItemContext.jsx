@@ -42,6 +42,10 @@ const ItemContextProvider = (props) => {
     this.price = parseFloat(price);
   }
 
+  Item.prototype.splitPrice = function () {
+    return this.price / this.personIds.length;
+  };
+
   // item handlers
   const addItem = (food, price) => {
     setItems([...items, new Item(food, price)]);

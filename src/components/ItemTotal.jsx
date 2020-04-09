@@ -6,7 +6,8 @@ const ItemTotal = () => {
   const [tax, setTax] = useState('');
   const [tip, setTip] = useState('');
 
-  const subtotal = items.every((item) => item.price)
+  const subtotalComplete = items.every((item) => item.price);
+  const subtotalPrice = subtotalComplete
     ? items
         .reduce((sum, item) => {
           return (sum += item.price);
@@ -14,15 +15,19 @@ const ItemTotal = () => {
         .toFixed(2)
     : 'Enter all the prices foo';
   const total =
-    tax && tip
-      ? (parseFloat(subtotal) + parseFloat(tax) + parseFloat(tip)).toFixed(2)
-      : 'Add tax and tip foo';
+    subtotalComplete && tax && tip
+      ? (parseFloat(subtotalPrice) + parseFloat(tax) + parseFloat(tip)).toFixed(
+          2
+        )
+      : subtotalComplete
+      ? 'Enter all the tax and tips foo'
+      : 'Add all prices foo';
 
   return (
     <ul>
       <li>
         <span>Subtotal</span>
-        <span>{subtotal}</span>
+        <span>{subtotalPrice}</span>
       </li>
       <li>
         <span>Tax</span>
