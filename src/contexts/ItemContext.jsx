@@ -34,6 +34,8 @@ const ItemContextProvider = (props) => {
     },
     new Item('soup', 10),
   ]);
+  const [tax, setTax] = useState('');
+  const [tip, setTip] = useState('');
 
   // item constructor
   function Item(food, price) {
@@ -65,10 +67,26 @@ const ItemContextProvider = (props) => {
 
     setItems(itemsCopy);
   };
+  const updateTax = (num) => {
+    setTax(num);
+  };
+  const updateTip = (num) => {
+    setTip(num);
+  };
 
   return (
     <ItemContext.Provider
-      value={{ items, addItem, removeItem, updateFood, updatePrice }}
+      value={{
+        items,
+        addItem,
+        removeItem,
+        updateFood,
+        updatePrice,
+        tax,
+        updateTax,
+        tip,
+        updateTip,
+      }}
     >
       {props.children}
     </ItemContext.Provider>

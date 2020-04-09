@@ -1,10 +1,8 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { ItemContext } from '../contexts/ItemContext';
 
 const ItemTotal = () => {
-  const { items } = useContext(ItemContext);
-  const [tax, setTax] = useState('');
-  const [tip, setTip] = useState('');
+  const { items, tax, updateTax, tip, updateTip } = useContext(ItemContext);
 
   const subtotalComplete = items.every((item) => item.price);
   const subtotalPrice = subtotalComplete
@@ -34,7 +32,7 @@ const ItemTotal = () => {
         <input
           type='number'
           value={tax}
-          onChange={(e) => setTax(e.target.value)}
+          onChange={(e) => updateTax(e.target.value)}
         />
       </li>
       <li>
@@ -42,7 +40,7 @@ const ItemTotal = () => {
         <input
           type='number'
           value={tip}
-          onChange={(e) => setTip(e.target.value)}
+          onChange={(e) => updateTip(e.target.value)}
         />
       </li>
       <li>
