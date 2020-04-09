@@ -2,30 +2,15 @@ import React, { useContext } from 'react';
 import { ItemContext } from '../contexts/ItemContext';
 
 const ItemTotal = () => {
-  const { items, tax, updateTax, tip, updateTip } = useContext(ItemContext);
-
-  const subtotalComplete = items.every((item) => item.price);
-  const subtotalPrice = subtotalComplete
-    ? items
-        .reduce((sum, item) => {
-          return (sum += item.price);
-        }, 0)
-        .toFixed(2)
-    : 'Enter all the prices foo';
-  const total =
-    subtotalComplete && tax && tip
-      ? (parseFloat(subtotalPrice) + parseFloat(tax) + parseFloat(tip)).toFixed(
-          2
-        )
-      : subtotalComplete
-      ? 'Enter all the tax and tips foo'
-      : 'Add all prices foo';
+  const { tax, updateTax, tip, updateTip, subtotal, total } = useContext(
+    ItemContext
+  );
 
   return (
     <ul>
       <li>
         <span>Subtotal</span>
-        <span>{subtotalPrice}</span>
+        <span>{subtotal}</span>
       </li>
       <li>
         <span>Tax</span>

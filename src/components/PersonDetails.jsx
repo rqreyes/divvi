@@ -12,7 +12,7 @@ const PersonDetails = ({ person, firstPerson }) => {
     const priceInt = Math.floor(itemDetails.splitPrice * 100);
 
     // check if the price is odd, if the person is first, and if there's more than one person
-    // if so, add 0.01 to the first person's balance
+    // if so, add 0.01 to the first person's subtotal
     return priceInt % 2 === 1 && firstPerson && itemDetails.personIds.length > 1
       ? priceInt / 100 + 0.01
       : priceInt / 100;
@@ -28,7 +28,7 @@ const PersonDetails = ({ person, firstPerson }) => {
       />
     );
   });
-  const personBalance = personItemPrices
+  const personTotal = personItemPrices
     .reduce((sum, price) => (sum += price), 0)
     .toFixed(2);
 
@@ -43,7 +43,8 @@ const PersonDetails = ({ person, firstPerson }) => {
         remove
       </button>
       <ul>{personItemList}</ul>
-      <p>Total: {personBalance}</p>
+      <p>Tax:</p>
+      <p>Total: {personTotal}</p>
       <button type='button'>select food items</button>
     </li>
   );
