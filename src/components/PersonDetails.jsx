@@ -4,7 +4,7 @@ import { PersonContext } from '../contexts/PersonContext';
 import PersonItemDetails from './PersonItemDetails';
 
 const PersonDetails = ({ person, firstPerson }) => {
-  const { items } = useContext(ItemContext);
+  const { items, subtotal, tax, tip } = useContext(ItemContext);
   const { removePerson, updatePerson } = useContext(PersonContext);
 
   const personItemPrices = person.itemIds.map((itemId) => {
@@ -28,9 +28,13 @@ const PersonDetails = ({ person, firstPerson }) => {
       />
     );
   });
-  const personTotal = personItemPrices
-    .reduce((sum, price) => (sum += price), 0)
-    .toFixed(2);
+  const personSubtotal = personItemPrices.reduce(
+    (sum, price) => (sum += price),
+    0
+  );
+  const personTax = (personSubtotal / subtotal) * tax;
+  const personTip = (personSubtotal / subtotal) * tip;
+  const personTotal = personSubtotal + personTax + personTip;
 
   return (
     <li>
@@ -43,8 +47,10 @@ const PersonDetails = ({ person, firstPerson }) => {
         remove
       </button>
       <ul>{personItemList}</ul>
-      <p>Tax:</p>
-      <p>Total: {personTotal}</p>
+      <p>Tax: {personTax.toFixed(2)}</p>
+      <p>Tip: {personTip.toFixed(2)}</p>
+      <p>Subtotal: {personSubtotal.toFixed(2)}</p>
+      <p>Total: {personTotal.toFixed(2)}</p>
       <button type='button'>select food items</button>
     </li>
   );
