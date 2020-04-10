@@ -25,14 +25,18 @@ const ItemDetails = ({ item, currItemChecked }) => {
     removeCurrItemPersonId(item.id, currPersonId);
     removeCurrPersonItemId(item.id);
   };
-  const handleOnClick = () => {
+  const removeItemIds = () => {
     removeItem(item.id);
     removeAllPersonItemId(item.id);
   };
 
+  let className = '';
+  if (!currPersonId) className += 'hide';
+
   return (
     <li>
       <input
+        className={className}
         type='checkbox'
         checked={currItemChecked}
         onChange={(e) => {
@@ -50,7 +54,7 @@ const ItemDetails = ({ item, currItemChecked }) => {
         value={item.price}
         onChange={(e) => updatePrice(item.id, e.target.value)}
       />
-      <button type='button' onClick={() => handleOnClick()}>
+      <button type='button' onClick={() => removeItemIds()}>
         remove
       </button>
     </li>

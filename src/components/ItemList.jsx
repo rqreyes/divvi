@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { Fragment, useContext } from 'react';
 import { ItemContext } from '../contexts/ItemContext';
 import { PersonContext } from '../contexts/PersonContext';
 import ItemDetails from './ItemDetails';
@@ -26,7 +26,17 @@ const ItemList = () => {
     }
   });
 
-  return items.length ? <ul>{itemList}</ul> : <p>Add items foo</p>;
+  let className = '';
+  if (!currPersonId) className += 'hide';
+
+  return items.length ? (
+    <Fragment>
+      <p className={className}>sup</p>
+      <ul>{itemList}</ul>
+    </Fragment>
+  ) : (
+    <p>Add items foo</p>
+  );
 };
 
 export default ItemList;

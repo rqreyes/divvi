@@ -14,7 +14,6 @@ const PersonDetails = ({ person }) => {
     const itemDetails = findItemDetails(itemId);
     const checkFloat = (itemDetails.splitPrice * 100) % 1;
     const priceInt = Math.floor(itemDetails.splitPrice * 100);
-    console.log(checkFloat);
 
     // check if the price a whole number, if the person is first, and if there's more than one person
     // if so, add 0.01 to the first person's subtotal
