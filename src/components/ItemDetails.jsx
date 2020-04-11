@@ -14,9 +14,11 @@ const ItemDetails = ({ item, currItemChecked }) => {
     currPersonId,
     addCurrPersonItemId,
     removeCurrPersonItemId,
-    removeAllPersonItemId,
+    removePersonsItemId,
   } = useContext(PersonContext);
 
+  // add / remove the item id to person's itemIds array
+  // add / remove the person id to item's personIds array
   const addCurrIds = () => {
     addCurrItemPersonId(item.id, currPersonId);
     addCurrPersonItemId(item.id);
@@ -25,9 +27,12 @@ const ItemDetails = ({ item, currItemChecked }) => {
     removeCurrItemPersonId(item.id, currPersonId);
     removeCurrPersonItemId(item.id);
   };
+
+  // remove the item from the items array
+  // remove the item id from all person itemIds array
   const removeItemIds = () => {
     removeItem(item.id);
-    removeAllPersonItemId(item.id);
+    removePersonsItemId(item.id);
   };
 
   let className = '';

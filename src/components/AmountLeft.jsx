@@ -6,20 +6,20 @@ const Amount = () => {
   const { total } = useContext(ItemContext);
   const { persons } = useContext(PersonContext);
 
-  const totalDisplay = total || 0;
-  const allPersonTotal = persons.reduce((total, person) => {
+  // calculate the contributions
+  const personsTotal = persons.reduce((total, person) => {
     return (total += person.total);
   }, 0);
+
+  // calculate the amount left
   const amountLeft =
-    (total - allPersonTotal).toFixed(2) === '-0.00'
-      ? '0.00'
-      : (total - allPersonTotal).toFixed(2);
+    (total - personsTotal).toFixed(2) === '-0.00' ? 0 : total - personsTotal;
 
   return (
     <Fragment>
-      <p>Total: {totalDisplay.toFixed(2)}</p>
-      <p>Contributions: {allPersonTotal.toFixed(2)}</p>
-      <p>Amount Left: {amountLeft}</p>
+      <p>Total: {total.toFixed(2)}</p>
+      <p>Contributions: {personsTotal.toFixed(2)}</p>
+      <p>Difference: {amountLeft.toFixed(2)}</p>
     </Fragment>
   );
 };

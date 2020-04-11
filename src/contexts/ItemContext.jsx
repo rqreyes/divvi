@@ -36,8 +36,8 @@ const ItemContextProvider = (props) => {
   ]);
   const [tax, setTax] = useState('');
   const [tip, setTip] = useState('');
-  const [subtotal, setSubtotal] = useState('');
-  const [total, setTotal] = useState('');
+  const [subtotal, setSubtotal] = useState(0);
+  const [total, setTotal] = useState(0);
 
   // item constructor
   function Item(food, price) {
@@ -71,6 +71,8 @@ const ItemContextProvider = (props) => {
 
     setItems(itemsCopy);
   };
+
+  // total handlers
   const updateTax = (num) => {
     setTax(num);
   };
@@ -83,6 +85,8 @@ const ItemContextProvider = (props) => {
   const updateTotal = (num) => {
     setTotal(num);
   };
+
+  // personIds array handlers
   const addCurrItemPersonId = (itemId, currPersonId) => {
     const itemsCopy = [...items];
     itemsCopy.find((item) => item.id === itemId).personIds.push(currPersonId);

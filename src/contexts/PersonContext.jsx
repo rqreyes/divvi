@@ -40,6 +40,8 @@ const PersonContextProvider = (props) => {
 
     setPersons(personsCopy);
   };
+
+  // itemIds array handlers
   const updateCurrPersonId = (id) => {
     setCurrPersonId(id);
   };
@@ -60,7 +62,7 @@ const PersonContextProvider = (props) => {
 
     setPersons(personsCopy);
   };
-  const removeAllPersonItemId = (id) => {
+  const removePersonsItemId = (id) => {
     const personsCopy = [...persons];
     personsCopy.forEach((person) => {
       person.itemIds = person.itemIds.filter((itemId) => itemId !== id);
@@ -68,6 +70,8 @@ const PersonContextProvider = (props) => {
 
     setPersons(personsCopy);
   };
+
+  // person total handler
   const updatePersonTotal = (id, total) => {
     const personsCopy = [...persons];
     personsCopy.find((person) => person.id === id).total = total;
@@ -84,7 +88,7 @@ const PersonContextProvider = (props) => {
         updateCurrPersonId,
         addCurrPersonItemId,
         removeCurrPersonItemId,
-        removeAllPersonItemId,
+        removePersonsItemId,
         updatePersonTotal,
       }}
     >

@@ -8,6 +8,7 @@ const ItemList = () => {
   const { persons, currPersonId } = useContext(PersonContext);
 
   const itemList = items.map((item) => {
+    // if a person is selected, then display which items are checked
     if (currPersonId) {
       const currPersonDetails = persons.find(
         (person) => person.id === currPersonId
@@ -26,6 +27,7 @@ const ItemList = () => {
     }
   });
 
+  // if a person is selected, then display their name
   let className = '';
   if (!currPersonId) className += 'hide';
 
