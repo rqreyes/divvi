@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 import { v4 as uuidv1 } from 'uuid';
 
 export const PersonContext = createContext();
@@ -75,6 +75,8 @@ const PersonContextProvider = (props) => {
   const updatePersonTotal = (id, total) => {
     const personsCopy = [...persons];
     personsCopy.find((person) => person.id === id).total = total;
+
+    // setPersons(personsCopy);
   };
 
   return (

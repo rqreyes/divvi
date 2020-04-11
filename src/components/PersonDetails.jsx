@@ -1,7 +1,29 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useRef, useEffect } from 'react';
 import { ItemContext } from '../contexts/ItemContext';
 import { PersonContext } from '../contexts/PersonContext';
 import PersonItemDetails from './PersonItemDetails';
+import styled, { css } from 'styled-components';
+
+// styles
+const Div = styled.div`
+  ${({ accordionContent }) =>
+    accordionContent &&
+    css`
+      overflow: hidden;
+      transition: max-height 0.8s;
+    `};
+  ${({ accordionIcon }) =>
+    accordionIcon &&
+    css`
+      display: block;
+      transition: transform 0.8s;
+    `}
+  ${({ active }) =>
+    active &&
+    css`
+      transform: rotate(90deg);
+    `}
+`;
 
 const PersonDetails = ({ person }) => {
   const { items, subtotal, tax, tip } = useContext(ItemContext);
@@ -11,6 +33,8 @@ const PersonDetails = ({ person }) => {
     updateCurrPersonId,
     updatePersonTotal,
   } = useContext(PersonContext);
+  const [active, setActive] = useState(false);
+  const personReceipt = useRef();
 
   // find the item object based on the item's id
   const findItemDetails = (itemId) => items.find((item) => item.id === itemId);
@@ -52,11 +76,30 @@ const PersonDetails = ({ person }) => {
   const personTip = tip ? (personSubtotal / subtotal) * tip : 0;
   const personTotal = personSubtotal + personTax + personTip;
 
-  // update person total
-  updatePersonTotal(person.id, personTotal);
+  // toggle the person's receipt
+  const toggleActive = () => {
+    setActive(!active);
+  };
+
+  // update the person's total
+  useEffect(() => {
+    updatePersonTotal(person.id, personTotal);
+  });
+
+  // update the height of accordion content
+  useEffect(() => {
+    personReceipt.current.style.maxHeight = active
+      ? `${personReceipt.current.scrollHeight}px`
+      : '0px';
+  }, [active, personReceipt]);
 
   return (
     <li>
+      <button type='button' onClick={toggleActive}>
+        <Div accordionIcon active={active}>
+          >
+        </Div>
+      </button>
       <input
         type='text'
         value={person.name}
@@ -65,10 +108,12 @@ const PersonDetails = ({ person }) => {
       <button type='button' onClick={() => removePerson(person.id)}>
         remove
       </button>
-      <ul>{personItemList}</ul>
-      <p>Subtotal: {personSubtotal.toFixed(2)}</p>
-      <p>Tax: {personTax.toFixed(2)}</p>
-      <p>Tip: {personTip.toFixed(2)}</p>
+      <Div accordionContent ref={personReceipt}>
+        <ul>{personItemList}</ul>
+        <p>Subtotal: {personSubtotal.toFixed(2)}</p>
+        <p>Tax: {personTax.toFixed(2)}</p>
+        <p>Tip: {personTip.toFixed(2)}</p>
+      </Div>
       <p>Total: {personTotal.toFixed(2)}</p>
       <button type='button' onClick={() => updateCurrPersonId(person.id)}>
         select food items
