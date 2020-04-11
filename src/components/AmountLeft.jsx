@@ -17,7 +17,7 @@ const Amount = () => {
 
   return (
     <Fragment>
-      <p>Total Price: {totalDisplay.toFixed(2)}</p>
+      <p>Total: {totalDisplay.toFixed(2)}</p>
       <p>Contributions: {allPersonTotal.toFixed(2)}</p>
       <p>Amount Left: {amountLeft}</p>
     </Fragment>

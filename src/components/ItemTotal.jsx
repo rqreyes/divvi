@@ -29,6 +29,26 @@ const ItemTotal = () => {
           value={tip}
           onChange={(e) => updateTip(e.target.value)}
         />
+        <div>
+          <button
+            type='button'
+            onClick={() => updateTip((subtotal * 0.15).toFixed(2))}
+          >
+            15%
+          </button>
+          <button
+            type='button'
+            onClick={() => updateTip((subtotal * 0.18).toFixed(2))}
+          >
+            18%
+          </button>
+          <button
+            type='button'
+            onClick={() => updateTip((subtotal * 0.2).toFixed(2))}
+          >
+            20%
+          </button>
+        </div>
       </li>
       <li>
         <span>Total</span>
