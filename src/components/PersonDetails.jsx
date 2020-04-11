@@ -81,10 +81,13 @@ const PersonDetails = ({ person }) => {
     setActive(!active);
   };
 
-  // update the person's total
+  // if the calculated person's total is different than the current person's total
+  // then update the person's total
   useEffect(() => {
-    updatePersonTotal(person.id, personTotal);
-  });
+    if (personTotal !== person.total) {
+      updatePersonTotal(person.id, personTotal);
+    }
+  }, [personTotal, person.total, updatePersonTotal, person.id]);
 
   // update the height of accordion content
   useEffect(() => {
