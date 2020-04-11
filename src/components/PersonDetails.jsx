@@ -5,9 +5,12 @@ import PersonItemDetails from './PersonItemDetails';
 
 const PersonDetails = ({ person }) => {
   const { items, subtotal, tax, tip } = useContext(ItemContext);
-  const { removePerson, updatePerson, updateCurrPersonId } = useContext(
-    PersonContext
-  );
+  const {
+    removePerson,
+    updatePerson,
+    updateCurrPersonId,
+    updatePersonTotal,
+  } = useContext(PersonContext);
 
   const findItemDetails = (itemId) => items.find((item) => item.id === itemId);
   const personItemPrices = person.itemIds.map((itemId) => {
@@ -38,9 +41,11 @@ const PersonDetails = ({ person }) => {
     (sum, price) => (sum += price),
     0
   );
-  const personTax = (personSubtotal / subtotal) * tax;
-  const personTip = (personSubtotal / subtotal) * tip;
+  const personTax = tax ? (personSubtotal / subtotal) * tax : 0;
+  const personTip = tip ? (personSubtotal / subtotal) * tip : 0;
   const personTotal = personSubtotal + personTax + personTip;
+
+  updatePersonTotal(person.id, personTotal);
 
   return (
     <li>
@@ -53,9 +58,9 @@ const PersonDetails = ({ person }) => {
         remove
       </button>
       <ul>{personItemList}</ul>
+      <p>Subtotal: {personSubtotal.toFixed(2)}</p>
       <p>Tax: {personTax.toFixed(2)}</p>
       <p>Tip: {personTip.toFixed(2)}</p>
-      <p>Subtotal: {personSubtotal.toFixed(2)}</p>
       <p>Total: {personTotal.toFixed(2)}</p>
       <button type='button' onClick={() => updateCurrPersonId(person.id)}>
         select food items

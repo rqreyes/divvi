@@ -100,30 +100,15 @@ const ItemContextProvider = (props) => {
   };
 
   useEffect(() => {
-    // check if every price is filled in
-    const subtotalComplete = items.every((item) => item.price);
-
     // update subtotal
-    const subtotalPrice = subtotalComplete
-      ? items
-          .reduce((sum, item) => {
-            return (sum += item.price);
-          }, 0)
-          .toFixed(2)
-      : 'Enter all the prices foo';
+    const subtotalPrice = items.reduce((sum, item) => {
+      return (sum += item.price || 0);
+    }, 0);
     updateSubtotal(subtotalPrice);
 
     // update total
     const total =
-      subtotalComplete && tax && tip
-        ? (
-            parseFloat(subtotalPrice) +
-            parseFloat(tax) +
-            parseFloat(tip)
-          ).toFixed(2)
-        : subtotalComplete
-        ? 'Enter all the tax and tips foo'
-        : 'Add all prices foo';
+      subtotalPrice + (tax ? parseFloat(tax) : 0) + (tip ? parseFloat(tip) : 0);
     updateTotal(total);
   }, [items, tax, tip]);
 

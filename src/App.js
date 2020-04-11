@@ -7,6 +7,7 @@ import ItemForm from './components/ItemForm';
 import ItemTotal from './components/ItemTotal';
 import PersonList from './components/PersonList';
 import PersonForm from './components/PersonForm';
+import AmountLeft from './components/AmountLeft';
 import './App.css';
 
 function App() {
@@ -15,16 +16,20 @@ function App() {
       <h1>Divvi</h1>
       <ItemContextProvider>
         <PersonContextProvider>
-          <h2>Receipt</h2>
           <section>
+            <h2>Receipt</h2>
             <ItemList />
             <ItemForm />
             <ItemTotal />
           </section>
-          <h2>People</h2>
           <section>
+            <h2>People</h2>
             <PersonList />
             <PersonForm />
+          </section>
+          <section>
+            <h2>Amount Left</h2>
+            <AmountLeft />
           </section>
         </PersonContextProvider>
       </ItemContextProvider>
