@@ -32,6 +32,7 @@ const PersonDetails = ({ person }) => {
   const {
     removePerson,
     updatePerson,
+    currPersonId,
     updateCurrPersonId,
     updatePersonTotal,
   } = useContext(PersonContext);
@@ -77,6 +78,19 @@ const PersonDetails = ({ person }) => {
   const personTax = tax ? (personSubtotal / subtotal) * tax : 0;
   const personTip = tip ? (personSubtotal / subtotal) * tip : 0;
   const personTotal = personSubtotal + personTax + personTip;
+
+  // if the current person matches with the current person's id
+  // then hide the select food items button
+  const selectItems =
+    currPersonId === person.id ? null : (
+      <Button
+        className='primary'
+        type='button'
+        onClick={() => updateCurrPersonId(person.id)}
+      >
+        Select Items
+      </Button>
+    );
 
   // toggle the person's receipt
   const toggleActive = () => {
@@ -143,20 +157,16 @@ const PersonDetails = ({ person }) => {
           </span>
           <span>${personTotal.toFixed(2)}</span>
         </p>
-        <Button
-          className='primary'
-          type='button'
-          onClick={() => updateCurrPersonId(person.id)}
-        >
-          select food items
-        </Button>
-        <Button
-          className='primary'
-          type='button'
-          onClick={() => updateCurrPersonId(null)}
-        >
-          done
-        </Button>
+        <div className='button-group'>
+          {selectItems}
+          <Button
+            className='primary'
+            type='button'
+            onClick={() => updateCurrPersonId(null)}
+          >
+            Done
+          </Button>
+        </div>
       </div>
     </li>
   );

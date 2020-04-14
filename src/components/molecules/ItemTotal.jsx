@@ -34,7 +34,7 @@ const ItemTotal = () => {
           onChange={(e) => updateTip(e.target.value)}
         />
       </li>
-      <div className='tip-group'>
+      <div className='button-group'>
         <Button
           className='primary'
           type='button'
