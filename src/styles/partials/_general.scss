@@ -11,25 +11,7 @@ h2 {
 section {
   width: 100%;
   max-width: 360px;
-  padding: 10px;
   margin: 0 auto;
-
-  &.receipt {
-    background-color: $white;
-    background-image: linear-gradient(
-        135deg,
-        $primary-color-3 50%,
-        transparent 50%
-      ),
-      linear-gradient(225deg, $primary-color-3 50%, transparent 50%),
-      linear-gradient(45deg, $primary-color-3 50%, transparent 50%),
-      linear-gradient(-45deg, $primary-color-3 50%, transparent 50%);
-    background-position: top left, top left, bottom left, bottom left;
-    background-size: 12px 12px;
-    background-repeat: repeat-x;
-    padding-top: 30px;
-    padding-bottom: 30px;
-  }
 }
 
 ul {
@@ -77,6 +59,13 @@ button {
     text-indent: -9999px;
     background: green;
   }
+
+  &.primary {
+    color: $white;
+    background: $primary-color-3;
+    padding: 10px 20px;
+    margin: 0 4px;
+  }
 }
 
 .hide {
@@ -85,4 +74,20 @@ button {
 
 .App {
   background-color: $primary-color-3;
+}
+
+.receipt-bg {
+  background-color: $white;
+  background-image: linear-gradient(
+      135deg,
+      $primary-color-3 50%,
+      transparent 50%
+    ),
+    linear-gradient(225deg, $primary-color-3 50%, transparent 50%),
+    linear-gradient(45deg, $primary-color-3 50%, transparent 50%),
+    linear-gradient(-45deg, $primary-color-3 50%, transparent 50%);
+  background-position: top left, top left, bottom left, bottom left;
+  background-size: 12px 12px;
+  background-repeat: repeat-x;
+  padding: 30px 10px;
 }

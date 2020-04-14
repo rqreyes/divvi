@@ -8,13 +8,7 @@
     align-items: center;
     justify-content: space-between;
 
-    &.total {
-      padding: 0 10px;
-      margin-right: 10px;
-    }
-
     &.tax-tip {
-      padding: 0 10px;
       position: relative;
 
       &::after {
@@ -23,7 +17,7 @@
         height: 1px;
         background: $primary-color-3;
         position: absolute;
-        right: 20px;
+        right: 0;
         bottom: 4px;
       }
 
@@ -39,23 +33,6 @@
       width: 20px;
       margin: 0 10px;
     }
-
-    &[type='text'] {
-      padding-left: 10px;
-    }
-
-    &[type='number'] {
-      padding-right: 10px;
-    }
-  }
-
-  .item-list,
-  form {
-    input {
-      &[type='number'] {
-        margin-right: 10px;
-      }
-    }
   }
 
   .item-total {
@@ -65,14 +42,7 @@
   .tip-group {
     display: flex;
     justify-content: center;
-    margin: 10px 10px 10px 0;
-
-    button {
-      color: $white;
-      background: $primary-color-3;
-      padding: 10px 20px;
-      margin: 0 4px;
-    }
+    margin: 10px 0;
   }
 
   form {
@@ -90,11 +60,11 @@
     }
 
     &::before {
-      left: 50px;
+      left: 40px;
     }
 
     &::after {
-      right: 60px;
+      right: 40px;
     }
   }
 }

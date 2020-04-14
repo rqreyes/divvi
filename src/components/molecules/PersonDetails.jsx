@@ -99,9 +99,9 @@ const PersonDetails = ({ person }) => {
   }, [active, personReceipt]);
 
   return (
-    <li>
-      <div>
-        <Button type='button' onClick={toggleActive}>
+    <li className='person-details'>
+      <div className='person-name'>
+        <Button className='dropdown' type='button' onClick={toggleActive}>
           <Div accordionIcon active={active}>
             >
           </Div>
@@ -111,22 +111,50 @@ const PersonDetails = ({ person }) => {
           value={person.name}
           onChange={(e) => updatePerson(person.id, e.target.value)}
         />
-        <Button type='button' onClick={() => removePerson(person.id)}>
+        <Button
+          className='remove'
+          type='button'
+          onClick={() => removePerson(person.id)}
+        >
           remove
         </Button>
       </div>
-      <div>
+      <div className='receipt-bg person-total'>
         <Div accordionContent ref={personReceipt}>
           <ul>{personItemList}</ul>
-          <p>Subtotal: {personSubtotal.toFixed(2)}</p>
-          <p>Tax: {personTax.toFixed(2)}</p>
-          <p>Tip: {personTip.toFixed(2)}</p>
+          <p>
+            <span>
+              <strong>Subtotal</strong>
+            </span>
+            <span>${personSubtotal.toFixed(2)}</span>
+          </p>
+          <p>
+            <span>Tax</span>
+            <span>${personTax.toFixed(2)}</span>
+          </p>
+          <p>
+            <span>Tip</span>
+            <span>${personTip.toFixed(2)}</span>
+          </p>
         </Div>
-        <p>Total: {personTotal.toFixed(2)}</p>
-        <Button type='button' onClick={() => updateCurrPersonId(person.id)}>
+        <p>
+          <span>
+            <strong>Total</strong>
+          </span>
+          <span>${personTotal.toFixed(2)}</span>
+        </p>
+        <Button
+          className='primary'
+          type='button'
+          onClick={() => updateCurrPersonId(person.id)}
+        >
           select food items
         </Button>
-        <Button type='button' onClick={() => updateCurrPersonId(null)}>
+        <Button
+          className='primary'
+          type='button'
+          onClick={() => updateCurrPersonId(null)}
+        >
           done
         </Button>
       </div>

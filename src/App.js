@@ -15,7 +15,7 @@ function App() {
       <ItemContextProvider>
         <PersonContextProvider>
           <h1>Divvi</h1>
-          <section className='receipt'>
+          <section className='receipt-bg receipt'>
             <h2>Receipt</h2>
             <ItemList />
             <ItemForm />

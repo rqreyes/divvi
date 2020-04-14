@@ -14,7 +14,7 @@ const ItemTotal = () => {
         <span>
           <strong>Subtotal</strong>
         </span>
-        <span>{subtotal.toFixed(2)}</span>
+        <span>${subtotal.toFixed(2)}</span>
       </li>
       <li className='tax-tip'>
         <span>Tax</span>
@@ -36,18 +36,21 @@ const ItemTotal = () => {
       </li>
       <div className='tip-group'>
         <Button
+          className='primary'
           type='button'
           onClick={() => updateTip((subtotal * 0.15).toFixed(2))}
         >
           15%
         </Button>
         <Button
+          className='primary'
           type='button'
           onClick={() => updateTip((subtotal * 0.18).toFixed(2))}
         >
           18%
         </Button>
         <Button
+          className='primary'
           type='button'
           onClick={() => updateTip((subtotal * 0.2).toFixed(2))}
         >
@@ -58,7 +61,7 @@ const ItemTotal = () => {
         <span>
           <strong>Total</strong>
         </span>
-        <span>{total.toFixed(2)}</span>
+        <span>${total.toFixed(2)}</span>
       </li>
     </ul>
   );

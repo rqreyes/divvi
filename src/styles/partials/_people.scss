@@ -1,5 +1,52 @@
 .people {
-  li {
+  h2 {
+    color: $white;
+  }
+
+  p {
+    display: flex;
+    justify-content: space-between;
+    margin: 11px 0;
+  }
+
+  .person-details {
     flex-direction: column;
+  }
+
+  .person-name {
+    display: flex;
+    height: 40px;
+
+    input {
+      font-size: 20px;
+      font-weight: 700;
+      color: $white;
+      padding-left: 10px;
+    }
+
+    .remove {
+      margin-right: 10px;
+    }
+  }
+
+  .dropdown {
+    flex: 0 0 auto;
+    width: 40px;
+    margin: 0 10px;
+  }
+
+  .person-total {
+    padding-right: 50px;
+    padding-left: 50px;
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  .person-item-details {
+    height: 40px;
   }
 }
