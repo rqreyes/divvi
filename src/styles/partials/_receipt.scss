@@ -1,24 +1,14 @@
 .receipt {
-  li,
-  form {
-    height: 40px;
-  }
-
   li {
     align-items: center;
     justify-content: space-between;
+    height: 40px;
 
     &.tax-tip {
       position: relative;
-
+      @include underline-right;
       &::after {
-        content: '';
-        width: 100px;
-        height: 1px;
-        background: $primary-color-3;
-        position: absolute;
         right: 0;
-        bottom: 4px;
       }
 
       span {
@@ -38,24 +28,8 @@
   .item-list li,
   form {
     position: relative;
-
-    &::before,
-    &::after {
-      content: '';
-      width: 100px;
-      height: 1px;
-      background: $primary-color-3;
-      position: absolute;
-      bottom: 4px;
-    }
-
-    &::before {
-      left: 40px;
-    }
-
-    &::after {
-      right: 40px;
-    }
+    @include underline-left;
+    @include underline-right;
   }
 
   .button-group {
@@ -68,9 +42,5 @@
 
   .item-total {
     padding: 0 40px;
-  }
-
-  form {
-    padding-left: 40px;
   }
 }

@@ -2,7 +2,6 @@ import React, { Fragment, useContext } from 'react';
 import { ItemContext } from '../../contexts/ItemContext';
 import { PersonContext } from '../../contexts/PersonContext';
 import ItemDetails from '../molecules/ItemDetails';
-import ItemForm from '../molecules/ItemForm';
 
 const ItemList = () => {
   const { items } = useContext(ItemContext);
@@ -16,7 +15,7 @@ const ItemList = () => {
     selectItems = '';
     currPersonDetails = persons.find((person) => person.id === currPersonId);
   } else {
-    selectItems = 'hide';
+    selectItems = 'none';
   }
 
   const itemList = items.map((item) => {
@@ -36,14 +35,11 @@ const ItemList = () => {
     }
   });
 
-  return items.length ? (
+  return (
     <Fragment>
       <p className={selectItems}>Selecting for {currPersonDetails.name}</p>
       <ul className='item-list'>{itemList}</ul>
-      <ItemForm />
     </Fragment>
-  ) : (
-    <p>Add Items</p>
   );
 };
 

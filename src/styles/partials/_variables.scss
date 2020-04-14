@@ -4,3 +4,26 @@ $primary-color-2: #005a5b;
 $primary-color-3: #007369;
 $primary-color-4: #008c72;
 $primary-color-5: #02a676;
+
+@mixin underline {
+  content: '';
+  width: 100px;
+  height: 1px;
+  background: $primary-color-3;
+  position: absolute;
+  bottom: 4px;
+}
+
+@mixin underline-left {
+  &::before {
+    @include underline;
+    left: 40px;
+  }
+}
+
+@mixin underline-right {
+  &::after {
+    @include underline;
+    right: 40px;
+  }
+}

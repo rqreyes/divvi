@@ -17,11 +17,14 @@ const PersonForm = () => {
     <form onSubmit={handleSubmit}>
       <Input
         type='text'
+        placeholder='Enter Name'
         value={name}
         onChange={(e) => setName(e.target.value)}
         required
       />
-      <Button type='submit'>add</Button>
+      <Button className={'add'} type='submit'>
+        add
+      </Button>
     </form>
   );
 };

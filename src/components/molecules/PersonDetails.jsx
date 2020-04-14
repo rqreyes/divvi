@@ -124,7 +124,7 @@ const PersonDetails = ({ person }) => {
           remove
         </Button>
       </div>
-      <div className='receipt-bg person-total'>
+      <div className='person-total'>
         <Div accordionContent ref={personReceipt}>
           <ul>{personItemList}</ul>
           <p>

@@ -9,7 +9,7 @@ const PersonList = () => {
     <PersonDetails key={person.id} person={person} />
   ));
 
-  return persons.length ? <ul>{personList}</ul> : <p>Add people foo</p>;
+  return <ul>{personList}</ul>;
 };
 
 export default PersonList;
