@@ -1,0 +1,88 @@
+* {
+  box-sizing: border-box;
+}
+
+h1,
+h2 {
+  text-align: center;
+  margin: 0 0 10px 0;
+}
+
+section {
+  width: 100%;
+  max-width: 360px;
+  padding: 10px;
+  margin: 0 auto;
+
+  &.receipt {
+    background-color: $white;
+    background-image: linear-gradient(
+        135deg,
+        $primary-color-3 50%,
+        transparent 50%
+      ),
+      linear-gradient(225deg, $primary-color-3 50%, transparent 50%),
+      linear-gradient(45deg, $primary-color-3 50%, transparent 50%),
+      linear-gradient(-45deg, $primary-color-3 50%, transparent 50%);
+    background-position: top left, top left, bottom left, bottom left;
+    background-size: 12px 12px;
+    background-repeat: repeat-x;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+form,
+li {
+  display: flex;
+}
+
+input {
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+  background: transparent;
+  border: 0;
+  padding: 0;
+
+  &[type='number'] {
+    text-align: right;
+  }
+}
+
+button {
+  height: 100%;
+  font-size: 16px;
+  border: 0;
+  border-radius: 4px;
+
+  &.remove,
+  &.add {
+    flex: 0 0 auto;
+    width: 40px;
+  }
+
+  &.remove {
+    text-indent: -9999px;
+    background: red;
+  }
+
+  &.add {
+    text-indent: -9999px;
+    background: green;
+  }
+}
+
+.hide {
+  visibility: hidden;
+}
+
+.App {
+  background-color: $primary-color-3;
+}

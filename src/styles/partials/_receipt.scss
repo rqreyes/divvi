@@ -1,0 +1,100 @@
+.receipt {
+  li,
+  form {
+    height: 40px;
+  }
+
+  li {
+    align-items: center;
+    justify-content: space-between;
+
+    &.total {
+      padding: 0 10px;
+      margin-right: 10px;
+    }
+
+    &.tax-tip {
+      padding: 0 10px;
+      position: relative;
+
+      &::after {
+        content: '';
+        width: 100px;
+        height: 1px;
+        background: $primary-color-3;
+        position: absolute;
+        right: 20px;
+        bottom: 4px;
+      }
+
+      span {
+        margin-right: 20px;
+      }
+    }
+  }
+
+  input {
+    &[type='checkbox'] {
+      flex: 0 0 auto;
+      width: 20px;
+      margin: 0 10px;
+    }
+
+    &[type='text'] {
+      padding-left: 10px;
+    }
+
+    &[type='number'] {
+      padding-right: 10px;
+    }
+  }
+
+  .item-list,
+  form {
+    input {
+      &[type='number'] {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  .item-total {
+    padding: 0 40px;
+  }
+
+  .tip-group {
+    display: flex;
+    justify-content: center;
+    margin: 10px 10px 10px 0;
+
+    button {
+      color: $white;
+      background: $primary-color-3;
+      padding: 10px 20px;
+      margin: 0 4px;
+    }
+  }
+
+  form {
+    padding-left: 40px;
+    position: relative;
+
+    &::before,
+    &::after {
+      content: '';
+      width: 100px;
+      height: 1px;
+      background: $primary-color-3;
+      position: absolute;
+      bottom: 4px;
+    }
+
+    &::before {
+      left: 50px;
+    }
+
+    &::after {
+      right: 60px;
+    }
+  }
+}
