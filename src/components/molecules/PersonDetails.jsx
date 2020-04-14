@@ -128,10 +128,8 @@ const PersonDetails = ({ person }) => {
         <Div accordionContent ref={personReceipt}>
           <ul>{personItemList}</ul>
           <p>
-            <span>
-              <strong>Subtotal</strong>
-            </span>
-            <span>${personSubtotal.toFixed(2)}</span>
+            <strong>Subtotal</strong>
+            <strong>${personSubtotal.toFixed(2)}</strong>
           </p>
           <p>
             <span>Tax</span>
@@ -142,11 +140,9 @@ const PersonDetails = ({ person }) => {
             <span>${personTip.toFixed(2)}</span>
           </p>
         </Div>
-        <p>
-          <span>
-            <strong>Total</strong>
-          </span>
-          <span>${personTotal.toFixed(2)}</span>
+        <p className='total'>
+          <strong>Total</strong>
+          <strong>${personTotal.toFixed(2)}</strong>
         </p>
         <div className='button-group'>
           <Button

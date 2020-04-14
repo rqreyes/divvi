@@ -6,7 +6,6 @@
   p {
     display: flex;
     justify-content: space-between;
-    margin: 11px 0;
   }
 
   .person-details {
@@ -48,5 +47,9 @@
 
   .person-item-details {
     height: 40px;
+  }
+
+  .total {
+    margin-top: 0;
   }
 }

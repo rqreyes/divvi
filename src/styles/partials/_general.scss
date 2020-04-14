@@ -8,10 +8,18 @@ h2 {
   margin: 0 0 10px 0;
 }
 
+strong {
+  font-size: 20px;
+}
+
 section {
   width: 100%;
   max-width: 360px;
   margin: 0 auto;
+}
+
+p {
+  margin: 11px 0;
 }
 
 ul {
@@ -41,7 +49,6 @@ input {
 .button-group {
   display: flex;
   justify-content: space-between;
-  margin: 10px 0;
 }
 
 button {
@@ -69,7 +76,7 @@ button {
   &.primary {
     color: $white;
     background: $primary-color-3;
-    padding: 10px 20px;
+    padding: 11px 20px;
   }
 }
 

@@ -35,12 +35,8 @@
     }
   }
 
-  .item-total {
-    padding: 0 40px;
-  }
-
+  .item-list li,
   form {
-    padding-left: 40px;
     position: relative;
 
     &::before,
@@ -60,5 +56,21 @@
     &::after {
       right: 40px;
     }
+  }
+
+  .button-group {
+    margin-top: 10px;
+  }
+
+  .primary {
+    width: 74px;
+  }
+
+  .item-total {
+    padding: 0 40px;
+  }
+
+  form {
+    padding-left: 40px;
   }
 }

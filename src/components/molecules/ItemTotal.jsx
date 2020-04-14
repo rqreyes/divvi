@@ -10,11 +10,9 @@ const ItemTotal = () => {
 
   return (
     <ul className='item-total'>
-      <li className='total'>
-        <span>
-          <strong>Subtotal</strong>
-        </span>
-        <span>${subtotal.toFixed(2)}</span>
+      <li>
+        <strong>Subtotal</strong>
+        <strong>${subtotal.toFixed(2)}</strong>
       </li>
       <li className='tax-tip'>
         <span>Tax</span>
@@ -57,11 +55,9 @@ const ItemTotal = () => {
           20%
         </Button>
       </div>
-      <li className='total'>
-        <span>
-          <strong>Total</strong>
-        </span>
-        <span>${total.toFixed(2)}</span>
+      <li>
+        <strong>Total</strong>
+        <strong>${total.toFixed(2)}</strong>
       </li>
     </ul>
   );
