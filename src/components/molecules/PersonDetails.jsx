@@ -100,32 +100,36 @@ const PersonDetails = ({ person }) => {
 
   return (
     <li>
-      <Button type='button' onClick={toggleActive}>
-        <Div accordionIcon active={active}>
-          >
+      <div>
+        <Button type='button' onClick={toggleActive}>
+          <Div accordionIcon active={active}>
+            >
+          </Div>
+        </Button>
+        <Input
+          type='text'
+          value={person.name}
+          onChange={(e) => updatePerson(person.id, e.target.value)}
+        />
+        <Button type='button' onClick={() => removePerson(person.id)}>
+          remove
+        </Button>
+      </div>
+      <div>
+        <Div accordionContent ref={personReceipt}>
+          <ul>{personItemList}</ul>
+          <p>Subtotal: {personSubtotal.toFixed(2)}</p>
+          <p>Tax: {personTax.toFixed(2)}</p>
+          <p>Tip: {personTip.toFixed(2)}</p>
         </Div>
-      </Button>
-      <Input
-        type='text'
-        value={person.name}
-        onChange={(e) => updatePerson(person.id, e.target.value)}
-      />
-      <Button type='button' onClick={() => removePerson(person.id)}>
-        remove
-      </Button>
-      <Div accordionContent ref={personReceipt}>
-        <ul>{personItemList}</ul>
-        <p>Subtotal: {personSubtotal.toFixed(2)}</p>
-        <p>Tax: {personTax.toFixed(2)}</p>
-        <p>Tip: {personTip.toFixed(2)}</p>
-      </Div>
-      <p>Total: {personTotal.toFixed(2)}</p>
-      <Button type='button' onClick={() => updateCurrPersonId(person.id)}>
-        select food items
-      </Button>
-      <Button type='button' onClick={() => updateCurrPersonId(null)}>
-        done
-      </Button>
+        <p>Total: {personTotal.toFixed(2)}</p>
+        <Button type='button' onClick={() => updateCurrPersonId(person.id)}>
+          select food items
+        </Button>
+        <Button type='button' onClick={() => updateCurrPersonId(null)}>
+          done
+        </Button>
+      </div>
     </li>
   );
 };

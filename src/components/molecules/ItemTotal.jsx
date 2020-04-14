@@ -9,49 +9,55 @@ const ItemTotal = () => {
   );
 
   return (
-    <ul>
-      <li>
-        <span>Subtotal</span>
+    <ul className='item-total'>
+      <li className='total'>
+        <span>
+          <strong>Subtotal</strong>
+        </span>
         <span>{subtotal.toFixed(2)}</span>
       </li>
-      <li>
+      <li className='tax-tip'>
         <span>Tax</span>
         <Input
           type='number'
+          placeholder='Enter Tax'
           value={tax}
           onChange={(e) => updateTax(e.target.value)}
         />
       </li>
-      <li>
+      <li className='tax-tip'>
         <span>Tip</span>
         <Input
           type='number'
+          placeholder='Enter Tip'
           value={tip}
           onChange={(e) => updateTip(e.target.value)}
         />
-        <div>
-          <Button
-            type='button'
-            onClick={() => updateTip((subtotal * 0.15).toFixed(2))}
-          >
-            15%
-          </Button>
-          <Button
-            type='button'
-            onClick={() => updateTip((subtotal * 0.18).toFixed(2))}
-          >
-            18%
-          </Button>
-          <Button
-            type='button'
-            onClick={() => updateTip((subtotal * 0.2).toFixed(2))}
-          >
-            20%
-          </Button>
-        </div>
       </li>
-      <li>
-        <span>Total</span>
+      <div className='tip-group'>
+        <Button
+          type='button'
+          onClick={() => updateTip((subtotal * 0.15).toFixed(2))}
+        >
+          15%
+        </Button>
+        <Button
+          type='button'
+          onClick={() => updateTip((subtotal * 0.18).toFixed(2))}
+        >
+          18%
+        </Button>
+        <Button
+          type='button'
+          onClick={() => updateTip((subtotal * 0.2).toFixed(2))}
+        >
+          20%
+        </Button>
+      </div>
+      <li className='total'>
+        <span>
+          <strong>Total</strong>
+        </span>
         <span>{total.toFixed(2)}</span>
       </li>
     </ul>

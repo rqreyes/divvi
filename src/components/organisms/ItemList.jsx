@@ -35,7 +35,7 @@ const ItemList = () => {
   return items.length ? (
     <Fragment>
       <p className={className}>sup</p>
-      <ul>{itemList}</ul>
+      <ul className='item-list'>{itemList}</ul>
       <ItemTotal />
     </Fragment>
   ) : (

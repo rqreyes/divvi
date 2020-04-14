@@ -37,13 +37,13 @@ const ItemDetails = ({ item, currItemChecked }) => {
     removePersonsItemId(item.id);
   };
 
-  let className = '';
-  if (!currPersonId) className += 'hide';
+  let disabled = '';
+  if (!currPersonId) disabled += 'disabled';
 
   return (
     <li>
       <Input
-        className={className}
+        disabled={disabled}
         type={'checkbox'}
         checked={currItemChecked}
         onChange={(e) => {
@@ -61,7 +61,11 @@ const ItemDetails = ({ item, currItemChecked }) => {
         value={item.price}
         onChange={(e) => updatePrice(item.id, e.target.value)}
       />
-      <Button type={'button'} onClick={() => removeItemIds()}>
+      <Button
+        className={'remove'}
+        type={'button'}
+        onClick={() => removeItemIds()}
+      >
         remove
       </Button>
     </li>

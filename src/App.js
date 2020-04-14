@@ -2,33 +2,31 @@ import React from 'react';
 // import logo from './logo.svg';
 import ItemContextProvider from './contexts/ItemContext';
 import PersonContextProvider from './contexts/PersonContext';
-import H1 from './components/atoms/H1';
-import H2 from './components/atoms/H2';
 import ItemList from './components/organisms/ItemList';
-import ItemForm from './components/molecules/ItemForm';
 import PersonList from './components/organisms/PersonList';
-import PersonForm from './components/molecules/PersonForm';
 import AmountLeft from './components/organisms/AmountLeft';
-import './App.css';
+import ItemForm from './components/molecules/ItemForm';
+import PersonForm from './components/molecules/PersonForm';
+import './styles/styles.scss';
 
 function App() {
   return (
     <div className='App'>
       <ItemContextProvider>
         <PersonContextProvider>
-          <H1>Divvi</H1>
-          <section>
-            <H2>Receipt</H2>
+          <h1>Divvi</h1>
+          <section className='receipt'>
+            <h2>Receipt</h2>
             <ItemList />
             <ItemForm />
           </section>
-          <section>
-            <H2>People</H2>
+          <section className='people'>
+            <h2>People</h2>
             <PersonList />
             <PersonForm />
           </section>
           <section>
-            <H2>Amount Left</H2>
+            <h2>Amount Left</h2>
             <AmountLeft />
           </section>
         </PersonContextProvider>

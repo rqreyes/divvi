@@ -19,17 +19,21 @@ const ItemForm = () => {
     <form onSubmit={handleSubmit}>
       <Input
         type={'text'}
+        placeholder='Enter Item'
         value={food}
         onChange={(e) => setFood(e.target.value)}
         required
       />
       <Input
         type={'number'}
+        placeholder='Enter Price'
         value={price}
         onChange={(e) => setPrice(e.target.value)}
         required
       />
-      <Button type={'submit'}>add</Button>
+      <Button className='add' type={'submit'}>
+        add
+      </Button>
     </form>
   );
 };
