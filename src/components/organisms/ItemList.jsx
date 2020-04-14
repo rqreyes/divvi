@@ -1,7 +1,8 @@
 import React, { Fragment, useContext } from 'react';
-import { ItemContext } from '../contexts/ItemContext';
-import { PersonContext } from '../contexts/PersonContext';
-import ItemDetails from './ItemDetails';
+import { ItemContext } from '../../contexts/ItemContext';
+import { PersonContext } from '../../contexts/PersonContext';
+import ItemDetails from '../molecules/ItemDetails';
+import ItemTotal from '../molecules/ItemTotal';
 
 const ItemList = () => {
   const { items } = useContext(ItemContext);
@@ -35,6 +36,7 @@ const ItemList = () => {
     <Fragment>
       <p className={className}>sup</p>
       <ul>{itemList}</ul>
+      <ItemTotal />
     </Fragment>
   ) : (
     <p>Add items foo</p>

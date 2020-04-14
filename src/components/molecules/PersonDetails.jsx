@@ -1,7 +1,9 @@
 import React, { useContext, useState, useRef, useEffect } from 'react';
-import { ItemContext } from '../contexts/ItemContext';
-import { PersonContext } from '../contexts/PersonContext';
+import { ItemContext } from '../../contexts/ItemContext';
+import { PersonContext } from '../../contexts/PersonContext';
 import PersonItemDetails from './PersonItemDetails';
+import Button from '../atoms/Button';
+import Input from '../atoms/Input';
 import styled, { css } from 'styled-components';
 
 // styles
@@ -98,19 +100,19 @@ const PersonDetails = ({ person }) => {
 
   return (
     <li>
-      <button type='button' onClick={toggleActive}>
+      <Button type='button' onClick={toggleActive}>
         <Div accordionIcon active={active}>
           >
         </Div>
-      </button>
-      <input
+      </Button>
+      <Input
         type='text'
         value={person.name}
         onChange={(e) => updatePerson(person.id, e.target.value)}
       />
-      <button type='button' onClick={() => removePerson(person.id)}>
+      <Button type='button' onClick={() => removePerson(person.id)}>
         remove
-      </button>
+      </Button>
       <Div accordionContent ref={personReceipt}>
         <ul>{personItemList}</ul>
         <p>Subtotal: {personSubtotal.toFixed(2)}</p>
@@ -118,12 +120,12 @@ const PersonDetails = ({ person }) => {
         <p>Tip: {personTip.toFixed(2)}</p>
       </Div>
       <p>Total: {personTotal.toFixed(2)}</p>
-      <button type='button' onClick={() => updateCurrPersonId(person.id)}>
+      <Button type='button' onClick={() => updateCurrPersonId(person.id)}>
         select food items
-      </button>
-      <button type='button' onClick={() => updateCurrPersonId(null)}>
+      </Button>
+      <Button type='button' onClick={() => updateCurrPersonId(null)}>
         done
-      </button>
+      </Button>
     </li>
   );
 };

@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
-import { ItemContext } from '../contexts/ItemContext';
-import { PersonContext } from '../contexts/PersonContext';
+import { ItemContext } from '../../contexts/ItemContext';
+import { PersonContext } from '../../contexts/PersonContext';
+import Input from '../atoms/Input';
+import Button from '../atoms/Button';
 
 const ItemDetails = ({ item, currItemChecked }) => {
   const {
@@ -40,28 +42,28 @@ const ItemDetails = ({ item, currItemChecked }) => {
 
   return (
     <li>
-      <input
+      <Input
         className={className}
-        type='checkbox'
+        type={'checkbox'}
         checked={currItemChecked}
         onChange={(e) => {
           if (e.target.checked) addCurrIds();
           else removeCurrIds();
         }}
       />
-      <input
-        type='text'
+      <Input
+        type={'text'}
         value={item.food}
         onChange={(e) => updateFood(item.id, e.target.value)}
       />
-      <input
-        type='number'
+      <Input
+        type={'number'}
         value={item.price}
         onChange={(e) => updatePrice(item.id, e.target.value)}
       />
-      <button type='button' onClick={() => removeItemIds()}>
+      <Button type={'button'} onClick={() => removeItemIds()}>
         remove
-      </button>
+      </Button>
     </li>
   );
 };

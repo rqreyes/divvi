@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
-import { ItemContext } from '../contexts/ItemContext';
+import { ItemContext } from '../../contexts/ItemContext';
+import Input from '../atoms/Input';
+import Button from '../atoms/Button';
 
 const ItemTotal = () => {
   const { tax, updateTax, tip, updateTip, subtotal, total } = useContext(
@@ -14,7 +16,7 @@ const ItemTotal = () => {
       </li>
       <li>
         <span>Tax</span>
-        <input
+        <Input
           type='number'
           value={tax}
           onChange={(e) => updateTax(e.target.value)}
@@ -22,30 +24,30 @@ const ItemTotal = () => {
       </li>
       <li>
         <span>Tip</span>
-        <input
+        <Input
           type='number'
           value={tip}
           onChange={(e) => updateTip(e.target.value)}
         />
         <div>
-          <button
+          <Button
             type='button'
             onClick={() => updateTip((subtotal * 0.15).toFixed(2))}
           >
             15%
-          </button>
-          <button
+          </Button>
+          <Button
             type='button'
             onClick={() => updateTip((subtotal * 0.18).toFixed(2))}
           >
             18%
-          </button>
-          <button
+          </Button>
+          <Button
             type='button'
             onClick={() => updateTip((subtotal * 0.2).toFixed(2))}
           >
             20%
-          </button>
+          </Button>
         </div>
       </li>
       <li>

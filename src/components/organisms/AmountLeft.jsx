@@ -1,6 +1,6 @@
 import React, { Fragment, useContext } from 'react';
-import { ItemContext } from '../contexts/ItemContext';
-import { PersonContext } from '../contexts/PersonContext';
+import { ItemContext } from '../../contexts/ItemContext';
+import { PersonContext } from '../../contexts/PersonContext';
 
 const Amount = () => {
   const { total } = useContext(ItemContext);

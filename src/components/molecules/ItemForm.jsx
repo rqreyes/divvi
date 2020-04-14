@@ -1,5 +1,7 @@
 import React, { useContext, useState } from 'react';
-import { ItemContext } from '../contexts/ItemContext';
+import { ItemContext } from '../../contexts/ItemContext';
+import Input from '../atoms/Input';
+import Button from '../atoms/Button';
 
 const ItemForm = () => {
   const { addItem } = useContext(ItemContext);
@@ -15,19 +17,19 @@ const ItemForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        type='text'
+      <Input
+        type={'text'}
         value={food}
         onChange={(e) => setFood(e.target.value)}
         required
       />
-      <input
-        type='number'
+      <Input
+        type={'number'}
         value={price}
         onChange={(e) => setPrice(e.target.value)}
         required
       />
-      <button type='submit'>add</button>
+      <Button type={'submit'}>add</Button>
     </form>
   );
 };
