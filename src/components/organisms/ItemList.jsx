@@ -2,10 +2,13 @@ import React, { Fragment, useContext } from 'react';
 import { ItemContext } from '../../contexts/ItemContext';
 import { PersonContext } from '../../contexts/PersonContext';
 import ItemDetails from '../molecules/ItemDetails';
+import Button from '../atoms/Button';
 
 const ItemList = () => {
   const { items } = useContext(ItemContext);
-  const { persons, currPersonId } = useContext(PersonContext);
+  const { persons, currPersonId, updateCurrPersonId } = useContext(
+    PersonContext
+  );
 
   // if a person is selected, then display their name and retrieve their details
   let selectItems = '';
@@ -37,7 +40,16 @@ const ItemList = () => {
 
   return (
     <Fragment>
-      <p className={selectItems}>Selecting for {currPersonDetails.name}</p>
+      <div className={`select-items ${selectItems}`}>
+        <p>Selecting for {currPersonDetails.name}</p>
+        <Button
+          className='primary'
+          type='button'
+          onClick={() => updateCurrPersonId(null)}
+        >
+          Done
+        </Button>
+      </div>
       <ul className='item-list'>{itemList}</ul>
     </Fragment>
   );

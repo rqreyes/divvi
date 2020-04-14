@@ -30,6 +30,8 @@
   }
 
   .person-total {
+    display: flex;
+    flex-direction: column;
     padding: 0 40px;
 
     li {
@@ -45,6 +47,10 @@
 
   .total {
     margin-top: 0;
+  }
+
+  .primary {
+    margin: auto;
   }
 
   form {

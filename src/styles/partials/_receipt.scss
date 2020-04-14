@@ -1,4 +1,8 @@
 .receipt {
+  .select-items {
+    text-align: center;
+  }
+
   li {
     align-items: center;
     justify-content: space-between;
@@ -34,10 +38,10 @@
 
   .button-group {
     margin-top: 10px;
-  }
 
-  .primary {
-    width: 30%;
+    .primary {
+      width: 30%;
+    }
   }
 
   .item-total {
