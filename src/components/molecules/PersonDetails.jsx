@@ -81,16 +81,7 @@ const PersonDetails = ({ person }) => {
 
   // if the current person matches with the current person's id
   // then hide the select food items button
-  const selectItems =
-    currPersonId === person.id ? null : (
-      <Button
-        className='primary'
-        type='button'
-        onClick={() => updateCurrPersonId(person.id)}
-      >
-        Select Items
-      </Button>
-    );
+  const selectItems = currPersonId === person.id ? ' hide' : '';
 
   // toggle the person's receipt
   const toggleActive = () => {
@@ -158,7 +149,13 @@ const PersonDetails = ({ person }) => {
           <span>${personTotal.toFixed(2)}</span>
         </p>
         <div className='button-group'>
-          {selectItems}
+          <Button
+            className={`primary ${selectItems}`}
+            type='button'
+            onClick={() => updateCurrPersonId(person.id)}
+          >
+            Select Items
+          </Button>
           <Button
             className='primary'
             type='button'
