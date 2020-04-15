@@ -17,9 +17,18 @@ const Amount = () => {
 
   return (
     <Fragment>
-      <p>Total: {total.toFixed(2)}</p>
-      <p>Contributions: {personsTotal.toFixed(2)}</p>
-      <p>Difference: {amountLeft.toFixed(2)}</p>
+      <p>
+        <span>Total</span>
+        <span>${total.toFixed(2)}</span>
+      </p>
+      <p>
+        <span>Contributions</span>
+        <span>${personsTotal.toFixed(2)}</span>
+      </p>
+      <p>
+        <strong>Difference</strong>
+        <strong>${amountLeft.toFixed(2)}</strong>
+      </p>
     </Fragment>
   );
 };

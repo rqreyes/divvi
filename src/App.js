@@ -27,7 +27,7 @@ function App() {
             <PersonList />
             <PersonForm />
           </section>
-          <section className='section-bg'>
+          <section className='section-bg amount-left'>
             <h2>Amount Left</h2>
             <AmountLeft />
           </section>
