@@ -21,7 +21,7 @@ function App() {
     <div className='App'>
       <ItemContextProvider>
         <PersonContextProvider>
-          <h1>Divvi</h1>
+          <h1 className='section-bg'>Divvi</h1>
           <section className='section-bg receipt'>
             <div className='heading-icon'>
               <FontAwesomeIcon icon={faUtensils} />

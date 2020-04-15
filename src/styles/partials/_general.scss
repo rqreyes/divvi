@@ -8,14 +8,15 @@ h2 {
   margin: 0 0 10px 0;
 }
 
+h1 {
+}
+
 strong {
   font-size: 20px;
 }
 
 section {
   width: 100%;
-  max-width: 360px;
-  margin: 0 auto;
 }
 
 p {
@@ -116,14 +117,16 @@ svg {
 
 .App {
   background: linear-gradient(45deg, $primary-color-1, $primary-color-5);
-  padding: 20px 0;
+  background-attachment: fixed;
+  padding: 0 0 10px;
 }
 
 .section-bg {
+  max-width: 360px;
   background-color: $white;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
   padding: 20px 10px;
-  margin-bottom: 60px;
+  margin: 0 auto 60px;
   position: relative;
   @include jagged-top;
   @include jagged-bottom;
