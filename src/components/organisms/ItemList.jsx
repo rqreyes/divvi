@@ -19,7 +19,9 @@ const ItemList = () => {
     currPersonDetails = persons.find((person) => person.id === currPersonId);
     selectItemsDisplay = (
       <div className={`select-items`}>
-        <p>Selecting for {currPersonDetails.name}</p>
+        <p>
+          Selecting for <strong>{currPersonDetails.name}</strong>
+        </p>
         <Button
           className='primary'
           type='button'

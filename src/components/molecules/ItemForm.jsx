@@ -33,7 +33,7 @@ const ItemForm = () => {
         onChange={(e) => setPrice(e.target.value)}
         required
       />
-      <Button className='add' type={'submit'}>
+      <Button className='action' type={'submit'}>
         <FontAwesomeIcon className='add-icon' icon={faPlusCircle} />
       </Button>
     </form>
