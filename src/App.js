@@ -5,6 +5,7 @@ import PersonContextProvider from './contexts/PersonContext';
 import ItemList from './components/organisms/ItemList';
 import PersonList from './components/organisms/PersonList';
 import AmountLeft from './components/organisms/AmountLeft';
+import About from './components/organisms/About';
 import ItemForm from './components/molecules/ItemForm';
 import ItemTotal from './components/molecules/ItemTotal';
 import PersonForm from './components/molecules/PersonForm';
@@ -13,6 +14,7 @@ import {
   faUtensils,
   faUserFriends,
   faCommentsDollar,
+  faUserAstronaut,
 } from '@fortawesome/free-solid-svg-icons';
 import './styles/styles.scss';
 
@@ -45,6 +47,12 @@ function App() {
             </div>
             <h2>Amount Left</h2>
             <AmountLeft />
+          </section>
+          <section className='section-bg about'>
+            <div className='heading-icon'>
+              <FontAwesomeIcon icon={faUserAstronaut} />
+            </div>
+            <About />
           </section>
         </PersonContextProvider>
       </ItemContextProvider>

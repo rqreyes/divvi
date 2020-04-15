@@ -1,0 +1,12 @@
+.about {
+  text-align: center;
+  margin-bottom: 0;
+
+  &::after {
+    display: none;
+  }
+
+  a {
+    color: inherit;
+  }
+}
