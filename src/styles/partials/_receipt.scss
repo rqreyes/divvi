@@ -21,12 +21,9 @@
     }
   }
 
-  input {
-    &[type='checkbox'] {
-      flex: 0 0 auto;
-      width: 20px;
-      margin: 0 10px;
-    }
+  .checkbox {
+    flex: 0 0 auto;
+    width: 40px;
   }
 
   .item-list li,

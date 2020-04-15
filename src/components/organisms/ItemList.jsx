@@ -11,14 +11,13 @@ const ItemList = () => {
   );
 
   // if a person is selected, then display their name and retrieve their details
-  let selectItems = '';
+  let display = '';
   let currPersonDetails = '';
 
   if (currPersonId) {
-    selectItems = '';
     currPersonDetails = persons.find((person) => person.id === currPersonId);
   } else {
-    selectItems = 'none';
+    display = 'none';
   }
 
   const itemList = items.map((item) => {
@@ -40,7 +39,7 @@ const ItemList = () => {
 
   return (
     <Fragment>
-      <div className={`select-items ${selectItems}`}>
+      <div className={`select-items ${display}`}>
         <p>Selecting for {currPersonDetails.name}</p>
         <Button
           className='primary'

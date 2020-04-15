@@ -129,10 +129,7 @@ const PersonDetails = ({ person }) => {
       <div className='person-name'>
         <Div accordionIcon active={active}>
           <Button className='dropdown' type='button' onClick={toggleActive}>
-            <FontAwesomeIcon
-              className='remove-icon'
-              icon={faChevronCircleRight}
-            />
+            <FontAwesomeIcon icon={faChevronCircleRight} />
           </Button>
         </Div>
         <Input

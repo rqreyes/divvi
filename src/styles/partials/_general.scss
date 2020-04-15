@@ -64,16 +64,16 @@ button {
   border-radius: 4px;
 
   &.remove,
-  &.add {
+  &.add,
+  &.dropdown {
     flex: 0 0 auto;
     width: 40px;
     padding: 0;
   }
 
-  .remove-icon,
-  .add-icon {
+  svg {
     width: 20px !important;
-    height: 20px;
+    height: 20px !important;
   }
 
   &.primary {
@@ -106,12 +106,12 @@ svg {
   }
 }
 
-.none {
-  display: none;
-}
-
 .hide {
   visibility: hidden;
+}
+
+.none {
+  display: none;
 }
 
 .App {

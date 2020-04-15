@@ -4,7 +4,11 @@ import { PersonContext } from '../../contexts/PersonContext';
 import Input from '../atoms/Input';
 import Button from '../atoms/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMinusCircle } from '@fortawesome/free-solid-svg-icons';
+import { faCircle } from '@fortawesome/free-regular-svg-icons';
+import {
+  faCheckCircle,
+  faMinusCircle,
+} from '@fortawesome/free-solid-svg-icons';
 
 const ItemDetails = ({ item, currItemChecked }) => {
   const {
@@ -39,20 +43,25 @@ const ItemDetails = ({ item, currItemChecked }) => {
     removePersonsItemId(item.id);
   };
 
-  let disabled = '';
-  if (!currPersonId) disabled += 'disabled';
+  // if there is a current person selected
+  // then display the checkboxes
+  const display = currPersonId ? '' : 'hide';
+
+  // if the current item is checked
+  // then display the checked icon
+  const checkboxButton = currItemChecked ? (
+    <Button className={`checkbox ${display}`} onClick={() => removeCurrIds()}>
+      <FontAwesomeIcon icon={faCheckCircle} />
+    </Button>
+  ) : (
+    <Button className={`checkbox ${display}`} onClick={() => addCurrIds()}>
+      <FontAwesomeIcon icon={faCircle} />
+    </Button>
+  );
 
   return (
     <li>
-      <Input
-        disabled={disabled}
-        type={'checkbox'}
-        checked={currItemChecked}
-        onChange={(e) => {
-          if (e.target.checked) addCurrIds();
-          else removeCurrIds();
-        }}
-      />
+      {checkboxButton}
       <Input
         type={'text'}
         value={item.food}
