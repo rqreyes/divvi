@@ -60,7 +60,7 @@ button {
   height: 100%;
   font-size: 16px;
   border: 0;
-  border-radius: 20px 0;
+  border-radius: 4px;
 
   &.remove,
   &.add {
@@ -96,18 +96,14 @@ button {
 .App {
   background: linear-gradient(45deg, $primary-color-1, $primary-color-5);
   padding: 20px 0;
-
-  section {
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
 }
 
 .section-bg {
   background-color: $white;
-  border-radius: 60px 0;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
   padding: 20px 10px;
   margin-bottom: 40px;
+  position: relative;
+  @include jagged-top;
+  @include jagged-bottom;
 }
