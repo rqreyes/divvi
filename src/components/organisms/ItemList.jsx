@@ -3,6 +3,7 @@ import { ItemContext } from '../../contexts/ItemContext';
 import { PersonContext } from '../../contexts/PersonContext';
 import ItemDetails from '../molecules/ItemDetails';
 import Button from '../atoms/Button';
+import { scroller } from 'react-scroll';
 
 const ItemList = () => {
   const { items } = useContext(ItemContext);
@@ -11,13 +12,31 @@ const ItemList = () => {
   );
 
   // if a person is selected, then display their name and retrieve their details
-  let display = '';
-  let currPersonDetails = '';
+  let currPersonDetails = null;
+  let selectItemsDisplay = null;
 
   if (currPersonId) {
     currPersonDetails = persons.find((person) => person.id === currPersonId);
+    selectItemsDisplay = (
+      <div className={`select-items`}>
+        <p>Selecting for {currPersonDetails.name}</p>
+        <Button
+          className='primary'
+          type='button'
+          onClick={() => {
+            scroller.scrollTo('peopleAnchor', {
+              smooth: true,
+              offset: -60,
+            });
+            updateCurrPersonId(null);
+          }}
+        >
+          Done
+        </Button>
+      </div>
+    );
   } else {
-    display = 'none';
+    selectItemsDisplay = <h2>Receipt</h2>;
   }
 
   const itemList = items.map((item) => {
@@ -39,16 +58,7 @@ const ItemList = () => {
 
   return (
     <Fragment>
-      <div className={`select-items ${display}`}>
-        <p>Selecting for {currPersonDetails.name}</p>
-        <Button
-          className='primary'
-          type='button'
-          onClick={() => updateCurrPersonId(null)}
-        >
-          Done
-        </Button>
-      </div>
+      {selectItemsDisplay}
       <ul className='item-list'>{itemList}</ul>
     </Fragment>
   );

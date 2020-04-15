@@ -4,6 +4,7 @@ import { PersonContext } from '../../contexts/PersonContext';
 import PersonItemDetails from './PersonItemDetails';
 import Button from '../atoms/Button';
 import Input from '../atoms/Input';
+import { scroller } from 'react-scroll';
 import styled, { css } from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -85,6 +86,7 @@ const PersonDetails = ({ person }) => {
 
   // if the current person matches with the current person's id
   // then display the done button
+  // else display the select items button
   const selectItems =
     currPersonId === person.id ? (
       <Button
@@ -98,7 +100,13 @@ const PersonDetails = ({ person }) => {
       <Button
         className={`primary`}
         type='button'
-        onClick={() => updateCurrPersonId(person.id)}
+        onClick={() => {
+          scroller.scrollTo('receiptAnchor', {
+            smooth: true,
+            offset: -60,
+          });
+          updateCurrPersonId(person.id);
+        }}
       >
         Select Items
       </Button>

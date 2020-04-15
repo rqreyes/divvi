@@ -9,6 +9,7 @@ import About from './components/organisms/About';
 import ItemForm from './components/molecules/ItemForm';
 import ItemTotal from './components/molecules/ItemTotal';
 import PersonForm from './components/molecules/PersonForm';
+import { Element } from 'react-scroll';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faUtensils,
@@ -25,15 +26,16 @@ function App() {
         <PersonContextProvider>
           <h1 className='section-bg'>Divvi</h1>
           <section className='section-bg receipt'>
+            <Element name='receiptAnchor' />
             <div className='heading-icon'>
               <FontAwesomeIcon icon={faUtensils} />
             </div>
-            <h2>Receipt</h2>
             <ItemList />
             <ItemForm />
             <ItemTotal />
           </section>
           <section className='section-bg people'>
+            <Element name='peopleAnchor' />
             <div className='heading-icon'>
               <FontAwesomeIcon icon={faUserFriends} />
             </div>
