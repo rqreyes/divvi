@@ -1,9 +1,11 @@
 $white: ghostwhite;
-$primary-color-1: rgba(#003840, 0.8);
+$primary-color-1: #003840;
+$primary-color-1a: rgba(#003840, 0.8);
 $primary-color-2: #005a5b;
 $primary-color-3: #007369;
 $primary-color-4: #008c72;
-$primary-color-5: rgba(#02a676, 0.6);
+$primary-color-5: #02a676;
+$primary-color-5a: rgba(#02a676, 0.6);
 
 @mixin jagged {
   content: '';
