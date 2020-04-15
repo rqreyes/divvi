@@ -37,6 +37,15 @@
     @include underline-right;
   }
 
+  .item-list li {
+    &.item-unselected {
+      &::before,
+      &::after {
+        background: $red;
+      }
+    }
+  }
+
   .button-group {
     margin: 10px 0;
 

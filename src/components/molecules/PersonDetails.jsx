@@ -136,7 +136,7 @@ const PersonDetails = ({ person }) => {
     <li className='person-details'>
       <div className='person-name'>
         <Div accordionIcon active={active}>
-          <Button className='dropdown' type='button' onClick={toggleActive}>
+          <Button className='action' type='button' onClick={toggleActive}>
             <FontAwesomeIcon icon={faChevronCircleRight} />
           </Button>
         </Div>
@@ -146,7 +146,7 @@ const PersonDetails = ({ person }) => {
           onChange={(e) => updatePerson(person.id, e.target.value)}
         />
         <Button
-          className='remove'
+          className='action'
           type='button'
           onClick={() => removePerson(person.id)}
         >
