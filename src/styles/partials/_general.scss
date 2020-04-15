@@ -59,6 +59,7 @@ input {
 button {
   height: 100%;
   font-size: 16px;
+  background: transparent;
   border: 0;
   border-radius: 4px;
 
@@ -66,22 +67,42 @@ button {
   &.add {
     flex: 0 0 auto;
     width: 40px;
+    padding: 0;
   }
 
-  &.remove {
-    text-indent: -9999px;
-    background: red;
-  }
-
-  &.add {
-    text-indent: -9999px;
-    background: green;
+  .remove-icon,
+  .add-icon {
+    width: 20px !important;
+    height: 20px;
   }
 
   &.primary {
     color: $white;
     background: $primary-color-3;
     padding: 11px 20px;
+  }
+}
+
+svg {
+  color: $primary-color-3;
+}
+
+.heading-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  background: $primary-color-3;
+  border-radius: 50%;
+  position: absolute;
+  top: -30px;
+  left: 20px;
+
+  svg {
+    width: 30px !important;
+    height: 30px;
+    color: $white;
   }
 }
 
@@ -102,7 +123,7 @@ button {
   background-color: $white;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
   padding: 20px 10px;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
   position: relative;
   @include jagged-top;
   @include jagged-bottom;

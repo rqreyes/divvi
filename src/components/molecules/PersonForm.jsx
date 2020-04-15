@@ -2,6 +2,8 @@ import React, { useContext, useState } from 'react';
 import { PersonContext } from '../../contexts/PersonContext';
 import Input from '../atoms/Input';
 import Button from '../atoms/Button';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 
 const PersonForm = () => {
   const { addPerson } = useContext(PersonContext);
@@ -23,7 +25,7 @@ const PersonForm = () => {
         required
       />
       <Button className={'add'} type='submit'>
-        add
+        <FontAwesomeIcon className='add-icon' icon={faPlusCircle} />
       </Button>
     </form>
   );

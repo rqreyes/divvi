@@ -5,6 +5,11 @@ import PersonItemDetails from './PersonItemDetails';
 import Button from '../atoms/Button';
 import Input from '../atoms/Input';
 import styled, { css } from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faChevronCircleRight,
+  faMinusCircle,
+} from '@fortawesome/free-solid-svg-icons';
 
 // styles
 const Div = styled.div`
@@ -17,7 +22,6 @@ const Div = styled.div`
   ${({ accordionIcon }) =>
     accordionIcon &&
     css`
-      display: block;
       transition: transform 0.8s;
     `}
   ${({ active }) =>
@@ -123,11 +127,14 @@ const PersonDetails = ({ person }) => {
   return (
     <li className='person-details'>
       <div className='person-name'>
-        <Button className='dropdown' type='button' onClick={toggleActive}>
-          <Div accordionIcon active={active}>
-            >
-          </Div>
-        </Button>
+        <Div accordionIcon active={active}>
+          <Button className='dropdown' type='button' onClick={toggleActive}>
+            <FontAwesomeIcon
+              className='remove-icon'
+              icon={faChevronCircleRight}
+            />
+          </Button>
+        </Div>
         <Input
           type='text'
           value={person.name}
@@ -138,7 +145,7 @@ const PersonDetails = ({ person }) => {
           type='button'
           onClick={() => removePerson(person.id)}
         >
-          remove
+          <FontAwesomeIcon className='remove-icon' icon={faMinusCircle} />
         </Button>
       </div>
       <div className='person-total'>

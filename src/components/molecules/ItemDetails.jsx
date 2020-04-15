@@ -3,6 +3,8 @@ import { ItemContext } from '../../contexts/ItemContext';
 import { PersonContext } from '../../contexts/PersonContext';
 import Input from '../atoms/Input';
 import Button from '../atoms/Button';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMinusCircle } from '@fortawesome/free-solid-svg-icons';
 
 const ItemDetails = ({ item, currItemChecked }) => {
   const {
@@ -66,7 +68,7 @@ const ItemDetails = ({ item, currItemChecked }) => {
         type={'button'}
         onClick={() => removeItemIds()}
       >
-        remove
+        <FontAwesomeIcon className='remove-icon' icon={faMinusCircle} />
       </Button>
     </li>
   );
