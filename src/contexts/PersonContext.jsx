@@ -25,6 +25,7 @@ const PersonContextProvider = (props) => {
     this.id = uuidv1();
     this.name = name;
     this.itemIds = [];
+    this.total = 0;
   }
 
   // person handlers

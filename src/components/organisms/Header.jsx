@@ -38,7 +38,7 @@ const Header = ({ updateTheme }) => {
         <Button className={'action'} onClick={closeModal}>
           <FontAwesomeIcon icon={faTimesCircle} />
         </Button>
-        <h2>How to use Divvi</h2>
+        <h2>How to Use</h2>
         <h3>Receipt</h3>
         <p>
           Enter items, prices, tax, and tip - subtotal and total will
