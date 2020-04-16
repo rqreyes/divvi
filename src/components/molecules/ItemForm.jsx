@@ -24,7 +24,6 @@ const ItemForm = () => {
         placeholder='Enter Item'
         value={food}
         onChange={(e) => setFood(e.target.value)}
-        required
       />
       <Input
         type={'number'}

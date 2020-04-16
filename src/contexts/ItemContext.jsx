@@ -34,6 +34,7 @@ const ItemContextProvider = (props) => {
       },
     },
   ]);
+  const [count, setCount] = useState(1);
   const [tax, setTax] = useState('');
   const [tip, setTip] = useState('');
   const [subtotal, setSubtotal] = useState(0);
@@ -53,7 +54,12 @@ const ItemContextProvider = (props) => {
   }
 
   // item handlers
-  const addItem = (food, price) => setItems([...items, new Item(food, price)]);
+  const addItem = (food, price) => {
+    food = food ? food : `Item ${count}`;
+
+    setItems([...items, new Item(food, price)]);
+    setCount(count + 1);
+  };
   const removeItem = (id) => setItems(items.filter((item) => item.id !== id));
   const updateFood = (id, food) => {
     const itemsCopy = [...items];
