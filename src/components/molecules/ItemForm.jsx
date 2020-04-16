@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { EasterEggContext } from '../../contexts/EasterEggContext';
 import { ItemContext } from '../../contexts/ItemContext';
 import Input from '../atoms/Input';
 import Button from '../atoms/Button';
@@ -6,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 
 const ItemForm = () => {
+  const { updateEasterEgg } = useContext(EasterEggContext);
   const { addItem } = useContext(ItemContext);
   const [food, setFood] = useState('');
   const [price, setPrice] = useState('');
@@ -13,6 +15,7 @@ const ItemForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     addItem(food, price);
+    if (food === 'sandstorm') updateEasterEgg();
     setFood('');
     setPrice('');
   };
