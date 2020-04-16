@@ -1,4 +1,5 @@
-$white: ghostwhite;
+$width: 360px;
+$white: #fff;
 $red: firebrick;
 $primary-color-1: #003840;
 $primary-color-1a: rgba(#003840, 0.8);
@@ -34,6 +35,73 @@ $primary-color-5a: rgba(#02a676, 0.6);
     background-image: linear-gradient(-135deg, $white 10px, transparent 0),
       linear-gradient(135deg, $white 10px, transparent 0);
     bottom: -15px;
+  }
+}
+
+@mixin edge {
+  content: '';
+  width: 100%;
+  height: 44px;
+  background: url(../../images/paper-edge.png) no-repeat;
+  position: absolute;
+  left: 0;
+}
+
+@mixin edge-top {
+  &::before {
+    @include edge;
+    top: -44px;
+    transform: scaleY(-1);
+  }
+}
+
+@mixin edge-bottom {
+  &::after {
+    @include edge;
+    bottom: -44px;
+  }
+}
+
+@mixin edge-sections {
+  &:nth-child(1) {
+    &::after {
+      background-position: right 0 bottom;
+    }
+  }
+
+  &:nth-child(2) {
+    &::before {
+      background-position: left 0 bottom;
+    }
+
+    &::after {
+      background-position: right (-$width * 0.5) bottom;
+    }
+  }
+
+  &:nth-child(3) {
+    &::before {
+      background-position: left (-$width * 0.5) bottom;
+    }
+
+    &::after {
+      background-position: right (-$width) bottom;
+    }
+  }
+
+  &:nth-child(4) {
+    &::before {
+      background-position: left (-$width) bottom;
+    }
+    &::after {
+      background-position: right (-$width * 1.5) bottom;
+    }
+  }
+
+  &:nth-child(5) {
+    &::before {
+      background-position: left (-$width * 1.5) bottom;
+    }
   }
 }
 

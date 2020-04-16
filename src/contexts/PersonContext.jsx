@@ -7,13 +7,13 @@ const PersonContextProvider = (props) => {
   const [persons, setPersons] = useState([
     {
       id: '1',
-      name: 'marshawty',
+      name: 'you',
       itemIds: ['1', '3'],
       total: 0,
     },
     {
       id: '2',
-      name: 'ranzaddy',
+      name: 'me',
       itemIds: ['1', '2'],
       total: 0,
     },

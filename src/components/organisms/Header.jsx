@@ -30,7 +30,10 @@ const Header = () => {
         </Button>
         <h2>How to use Divvi</h2>
         <h3>Receipt</h3>
-        <p>Enter items, prices, tax, and tip</p>
+        <p>
+          Enter items, prices, tax, and tip - subtotal and total will
+          automatically get calculated
+        </p>
         <h3>People</h3>
         <p>Add people and select the items that belong to each person</p>
         <h3>Amount Left</h3>

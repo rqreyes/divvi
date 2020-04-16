@@ -106,8 +106,8 @@ svg {
   background-attachment: fixed;
 }
 
-.section-bg {
-  max-width: 360px;
+section {
+  max-width: $width;
   background-color: $white;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
   padding: 20px 10px;
@@ -115,4 +115,7 @@ svg {
   position: relative;
   @include jagged-top;
   @include jagged-bottom;
+  // @include edge-top;
+  // @include edge-bottom;
+  // @include edge-sections;
 }

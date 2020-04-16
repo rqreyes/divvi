@@ -25,10 +25,10 @@ function App() {
     <div className='App'>
       <ItemContextProvider>
         <PersonContextProvider>
-          <section className='section-bg header'>
+          <section className='header'>
             <Header />
           </section>
-          <section className='section-bg receipt'>
+          <section className='receipt'>
             <Element name='receiptAnchor' />
             <div className='heading-icon'>
               <FontAwesomeIcon icon={faUtensils} />
@@ -37,7 +37,7 @@ function App() {
             <ItemForm />
             <ItemTotal />
           </section>
-          <section className='section-bg people'>
+          <section className='people'>
             <Element name='peopleAnchor' />
             <div className='heading-icon'>
               <FontAwesomeIcon icon={faUserFriends} />
@@ -46,14 +46,14 @@ function App() {
             <PersonList />
             <PersonForm />
           </section>
-          <section className='section-bg amount-left'>
+          <section className='amount-left'>
             <div className='heading-icon'>
               <FontAwesomeIcon icon={faCommentsDollar} />
             </div>
             <h2>Amount Left</h2>
             <AmountLeft />
           </section>
-          <section className='section-bg about'>
+          <section className='about'>
             <div className='heading-icon'>
               <FontAwesomeIcon icon={faUserAstronaut} />
             </div>
