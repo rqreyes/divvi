@@ -2,13 +2,13 @@
   box-sizing: border-box;
 }
 
-h1,
-h2 {
-  margin: 0 0 10px 0;
+h1 {
+  margin: 0;
 }
 
-h1.section-bg {
-  padding: 0;
+h2,
+h3 {
+  margin: 0 0 10px 0;
 }
 
 section {
@@ -44,13 +44,7 @@ input {
   padding: 0;
 }
 
-.button-group {
-  display: flex;
-  justify-content: space-between;
-}
-
 button {
-  height: 100%;
   background: transparent;
   border: 0;
   border-radius: 4px;
@@ -59,6 +53,7 @@ button {
   &.action {
     flex: 0 0 auto;
     width: 40px;
+    height: 40px;
     padding: 0;
   }
 

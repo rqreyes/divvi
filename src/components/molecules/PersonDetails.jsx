@@ -135,7 +135,7 @@ const PersonDetails = ({ person }) => {
   return (
     <li className='person-details'>
       <div className='person-name'>
-        <Div accordionIcon active={active}>
+        <Div className='accordion-icon' accordionIcon active={active}>
           <Button className='action' type='button' onClick={toggleActive}>
             <FontAwesomeIcon icon={faChevronCircleRight} />
           </Button>

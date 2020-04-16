@@ -2,6 +2,7 @@ import React from 'react';
 // import logo from './logo.svg';
 import ItemContextProvider from './contexts/ItemContext';
 import PersonContextProvider from './contexts/PersonContext';
+import Header from './components/organisms/Header';
 import ItemList from './components/organisms/ItemList';
 import PersonList from './components/organisms/PersonList';
 import AmountLeft from './components/organisms/AmountLeft';
@@ -24,7 +25,9 @@ function App() {
     <div className='App'>
       <ItemContextProvider>
         <PersonContextProvider>
-          <h1 className='section-bg'>Divvi</h1>
+          <section className='section-bg header'>
+            <Header />
+          </section>
           <section className='section-bg receipt'>
             <Element name='receiptAnchor' />
             <div className='heading-icon'>

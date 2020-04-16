@@ -1,0 +1,43 @@
+.header {
+  padding: 0 10px;
+
+  button.action {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    bottom: 0;
+    margin: auto;
+  }
+}
+
+.ReactModalPortal {
+  .overlay {
+    background: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+  }
+
+  .modal {
+    max-width: 300px;
+    overflow: auto;
+    background: $white;
+    border-radius: 4px;
+    box-shadow: 0 0 2px 2px #fff;
+    padding: 20px;
+    margin: auto;
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    right: 40px;
+    bottom: 40px;
+  }
+
+  button.action {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}

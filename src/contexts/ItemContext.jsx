@@ -53,12 +53,8 @@ const ItemContextProvider = (props) => {
   }
 
   // item handlers
-  const addItem = (food, price) => {
-    setItems([...items, new Item(food, price)]);
-  };
-  const removeItem = (id) => {
-    setItems(items.filter((item) => item.id !== id));
-  };
+  const addItem = (food, price) => setItems([...items, new Item(food, price)]);
+  const removeItem = (id) => setItems(items.filter((item) => item.id !== id));
   const updateFood = (id, food) => {
     const itemsCopy = [...items];
     itemsCopy.find((item) => item.id === id).food = food;
@@ -73,18 +69,10 @@ const ItemContextProvider = (props) => {
   };
 
   // total handlers
-  const updateTax = (num) => {
-    setTax(num);
-  };
-  const updateTip = (num) => {
-    setTip(num);
-  };
-  const updateSubtotal = (num) => {
-    setSubtotal(num);
-  };
-  const updateTotal = (num) => {
-    setTotal(num);
-  };
+  const updateTax = (num) => setTax(num);
+  const updateTip = (num) => setTip(num);
+  const updateSubtotal = (num) => setSubtotal(num);
+  const updateTotal = (num) => setTotal(num);
 
   // personIds array handlers
   const addCurrItemPersonId = (itemId, currPersonId) => {

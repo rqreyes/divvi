@@ -54,11 +54,11 @@ const ItemDetails = ({ item, currItemChecked }) => {
   // if the current item is checked
   // then display the checked icon
   const checkboxButton = currItemChecked ? (
-    <Button className={`action ${display}`} onClick={() => removeCurrIds()}>
+    <Button className={`action ${display}`} onClick={removeCurrIds}>
       <FontAwesomeIcon icon={faCheckCircle} />
     </Button>
   ) : (
-    <Button className={`action ${display}`} onClick={() => addCurrIds()}>
+    <Button className={`action ${display}`} onClick={addCurrIds}>
       <FontAwesomeIcon icon={faCircle} />
     </Button>
   );
@@ -76,11 +76,7 @@ const ItemDetails = ({ item, currItemChecked }) => {
         value={item.price}
         onChange={(e) => updatePrice(item.id, e.target.value)}
       />
-      <Button
-        className={'action'}
-        type={'button'}
-        onClick={() => removeItemIds()}
-      >
+      <Button className={'action'} type={'button'} onClick={removeItemIds}>
         <FontAwesomeIcon className='remove-icon' icon={faMinusCircle} />
       </Button>
     </li>

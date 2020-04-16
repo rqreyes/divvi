@@ -16,6 +16,10 @@
     @include underline-left;
   }
 
+  .accordion-icon {
+    display: flex;
+  }
+
   .person-total {
     display: flex;
     flex-direction: column;
