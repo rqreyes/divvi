@@ -2,12 +2,16 @@ import React, { Fragment, useState } from 'react';
 import Modal from 'react-modal';
 import Button from '../atoms/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInfoCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import {
+  faPalette,
+  faInfoCircle,
+  faTimesCircle,
+} from '@fortawesome/free-solid-svg-icons';
 
 // bind modal to element for accessibility
 Modal.setAppElement('#root');
 
-const Header = () => {
+const Header = ({ updateTheme }) => {
   const [isOpen, setIsOpen] = useState(false);
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
@@ -15,14 +19,20 @@ const Header = () => {
   return (
     <Fragment>
       <h1>Divvi</h1>
-      <Button className={'action'} onClick={openModal}>
-        <FontAwesomeIcon icon={faInfoCircle} />
-      </Button>
+      <div className={'button-group'}>
+        <Button className={'action'} onClick={updateTheme}>
+          <FontAwesomeIcon icon={faPalette} />
+        </Button>
+        <Button className={'action'} onClick={openModal}>
+          <FontAwesomeIcon icon={faInfoCircle} />
+        </Button>
+      </div>
       <Modal
         isOpen={isOpen}
         className={'modal'}
         overlayClassName={'overlay'}
         onRequestClose={closeModal}
+        closeTimeoutMS={600}
         contentLabel='how to use divvi'
       >
         <Button className={'action'} onClick={closeModal}>

@@ -11,7 +11,6 @@ $primary-color-5a: rgba(#02a676, 0.6);
 
 @mixin jagged {
   content: '';
-  display: block;
   width: 100%;
   height: 15px;
   background-repeat: repeat-x;
@@ -38,7 +37,7 @@ $primary-color-5a: rgba(#02a676, 0.6);
   }
 }
 
-@mixin edge {
+@mixin torn {
   content: '';
   width: 100%;
   height: 44px;
@@ -47,22 +46,22 @@ $primary-color-5a: rgba(#02a676, 0.6);
   left: 0;
 }
 
-@mixin edge-top {
+@mixin torn-top {
   &::before {
-    @include edge;
+    @include torn;
     top: -44px;
     transform: scaleY(-1);
   }
 }
 
-@mixin edge-bottom {
+@mixin torn-bottom {
   &::after {
-    @include edge;
+    @include torn;
     bottom: -44px;
   }
 }
 
-@mixin edge-sections {
+@mixin torn-sections {
   &:nth-child(1) {
     &::after {
       background-position: right 0 bottom;
