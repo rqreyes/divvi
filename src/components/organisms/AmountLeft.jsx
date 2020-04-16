@@ -15,6 +15,8 @@ const Amount = () => {
   const amountLeft =
     (total - personsTotal).toFixed(2) === '-0.00' ? 0 : total - personsTotal;
 
+  const differenceDisplay = amountLeft ? 'difference-display' : '';
+
   return (
     <Fragment>
       <p>
@@ -25,7 +27,7 @@ const Amount = () => {
         <span>Contributions</span>
         <span>${personsTotal.toFixed(2)}</span>
       </p>
-      <p>
+      <p className={differenceDisplay}>
         <strong>Difference</strong>
         <strong>${amountLeft.toFixed(2)}</strong>
       </p>
