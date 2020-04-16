@@ -5,13 +5,15 @@
   p {
     display: flex;
     justify-content: space-between;
+
+    &.difference-display {
+      strong {
+        color: $red;
+      }
+    }
   }
 
   strong {
     color: $primary-color-1;
-
-    .difference-display {
-      color: $red;
-    }
   }
 }

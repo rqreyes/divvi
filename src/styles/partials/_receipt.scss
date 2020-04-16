@@ -1,14 +1,19 @@
 .receipt {
   .select-items {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center;
+    align-items: flex-end;
     height: 53px;
     padding: 0 10px;
     margin-bottom: 10px;
 
+    p {
+      margin: 0;
+    }
+
     button {
       height: auto;
+      margin-left: 10px;
     }
   }
 
