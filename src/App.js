@@ -6,17 +6,6 @@ import ItemList from './components/organisms/ItemList';
 import PersonList from './components/organisms/PersonList';
 import AmountLeft from './components/organisms/AmountLeft';
 import About from './components/organisms/About';
-import ItemForm from './components/molecules/ItemForm';
-import ItemTotal from './components/molecules/ItemTotal';
-import PersonForm from './components/molecules/PersonForm';
-import { Element } from 'react-scroll';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faUtensils,
-  faUserFriends,
-  faCommentsDollar,
-  faUserAstronaut,
-} from '@fortawesome/free-solid-svg-icons';
 import './styles/styles.scss';
 
 function App() {
@@ -28,40 +17,11 @@ function App() {
     <div className={`App theme-${themeDisplay}`}>
       <ItemContextProvider>
         <PersonContextProvider>
-          <section className='header'>
-            <Header updateTheme={updateTheme} />
-          </section>
-          <section className='receipt'>
-            <Element name='receiptAnchor' />
-            <div className='heading-icon'>
-              <FontAwesomeIcon icon={faUtensils} />
-            </div>
-            <ItemList />
-            <ItemForm />
-            <ItemTotal />
-          </section>
-          <section className='people'>
-            <Element name='peopleAnchor' />
-            <div className='heading-icon'>
-              <FontAwesomeIcon icon={faUserFriends} />
-            </div>
-            <h2>People</h2>
-            <PersonList />
-            <PersonForm />
-          </section>
-          <section className='amount-left'>
-            <div className='heading-icon'>
-              <FontAwesomeIcon icon={faCommentsDollar} />
-            </div>
-            <h2>Amount Left</h2>
-            <AmountLeft />
-          </section>
-          <section className='about'>
-            <div className='heading-icon'>
-              <FontAwesomeIcon icon={faUserAstronaut} />
-            </div>
-            <About />
-          </section>
+          <Header updateTheme={updateTheme} />
+          <ItemList />
+          <PersonList />
+          <AmountLeft />
+          <About />
         </PersonContextProvider>
       </ItemContextProvider>
     </div>

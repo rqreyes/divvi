@@ -1,9 +1,13 @@
-import React, { Fragment, useContext } from 'react';
+import React, { useContext } from 'react';
 import { ItemContext } from '../../contexts/ItemContext';
 import { PersonContext } from '../../contexts/PersonContext';
 import ItemDetails from '../molecules/ItemDetails';
+import ItemTotal from '../molecules/ItemTotal';
+import ItemForm from '../molecules/ItemForm';
 import Button from '../atoms/Button';
-import { scroller } from 'react-scroll';
+import { Element, scroller } from 'react-scroll';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUtensils } from '@fortawesome/free-solid-svg-icons';
 
 const ItemList = () => {
   const { items } = useContext(ItemContext);
@@ -28,7 +32,7 @@ const ItemList = () => {
           onClick={() => {
             scroller.scrollTo('peopleAnchor', {
               smooth: true,
-              offset: -60,
+              offset: -50,
             });
             updateCurrPersonId(null);
           }}
@@ -59,10 +63,16 @@ const ItemList = () => {
   });
 
   return (
-    <Fragment>
+    <section className='receipt'>
+      <Element name='receiptAnchor' />
+      <div className='heading-icon'>
+        <FontAwesomeIcon icon={faUtensils} />
+      </div>
       {selectItemsDisplay}
       <ul className='item-list'>{itemList}</ul>
-    </Fragment>
+      <ItemForm />
+      <ItemTotal />
+    </section>
   );
 };
 

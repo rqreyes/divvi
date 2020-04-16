@@ -1,6 +1,8 @@
-import React, { Fragment, useContext } from 'react';
+import React, { useContext } from 'react';
 import { ItemContext } from '../../contexts/ItemContext';
 import { PersonContext } from '../../contexts/PersonContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCommentsDollar } from '@fortawesome/free-solid-svg-icons';
 
 const Amount = () => {
   const { total } = useContext(ItemContext);
@@ -18,7 +20,11 @@ const Amount = () => {
   const differenceDisplay = amountLeft ? 'difference-display' : '';
 
   return (
-    <Fragment>
+    <section className='amount-left'>
+      <div className='heading-icon'>
+        <FontAwesomeIcon icon={faCommentsDollar} />
+      </div>
+      <h2>Amount Left</h2>
       <p>
         <span>Total</span>
         <span>${total.toFixed(2)}</span>
@@ -31,7 +37,7 @@ const Amount = () => {
         <strong>Difference</strong>
         <strong>${amountLeft.toFixed(2)}</strong>
       </p>
-    </Fragment>
+    </section>
   );
 };
 

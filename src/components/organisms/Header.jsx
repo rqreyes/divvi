@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import Modal from 'react-modal';
 import Button from '../atoms/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -17,7 +17,7 @@ const Header = ({ updateTheme }) => {
   const closeModal = () => setIsOpen(false);
 
   return (
-    <Fragment>
+    <section className='header'>
       <h1>Divvi</h1>
       <div className={'button-group'}>
         <Button className={'action'} onClick={updateTheme}>
@@ -54,7 +54,7 @@ const Header = ({ updateTheme }) => {
         <h3>That's It!</h3>
         <p>Thanks for using this app :)</p>
       </Modal>
-    </Fragment>
+    </section>
   );
 };
 

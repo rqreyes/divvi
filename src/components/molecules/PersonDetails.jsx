@@ -12,7 +12,7 @@ import {
   faMinusCircle,
 } from '@fortawesome/free-solid-svg-icons';
 
-// styles
+// accordion styles
 const Div = styled.div`
   ${({ accordionContent }) =>
     accordionContent &&
@@ -103,7 +103,7 @@ const PersonDetails = ({ person }) => {
         onClick={() => {
           scroller.scrollTo('receiptAnchor', {
             smooth: true,
-            offset: -60,
+            offset: -50,
           });
           updateCurrPersonId(person.id);
         }}
