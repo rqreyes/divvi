@@ -7,20 +7,9 @@
       $primary-color-1a,
       $primary-color-5a
     );
-
-    section {
-      @include jagged-top;
-      @include jagged-bottom;
-    }
   }
 
   &.theme-2 {
     background-image: url(../../images/wood.jpg);
-
-    section {
-      @include torn-top;
-      @include torn-bottom;
-      @include torn-sections;
-    }
   }
 }

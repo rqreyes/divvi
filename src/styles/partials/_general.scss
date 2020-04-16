@@ -107,4 +107,6 @@ section {
   padding: 8px 10px;
   margin: 0 auto 60px;
   position: relative;
+  @include jagged-top;
+  @include jagged-bottom;
 }
