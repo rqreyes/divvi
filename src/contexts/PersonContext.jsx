@@ -24,6 +24,7 @@ const PersonContextProvider = (props) => {
       total: 0,
     },
   ]);
+  const [count, setCount] = useState(1);
   const [currPersonId, setCurrPersonId] = useState(null);
 
   // person constructor
@@ -36,11 +37,13 @@ const PersonContextProvider = (props) => {
 
   // person handlers
   const addPerson = (name) => {
+    name = name ? name : `Person ${count}`;
+
     setPersons([...persons, new Person(name)]);
+    setCount(count + 1);
   };
-  const removePerson = (id) => {
+  const removePerson = (id) =>
     setPersons(persons.filter((person) => person.id !== id));
-  };
   const updatePerson = (id, name) => {
     const personsCopy = [...persons];
     personsCopy.find((person) => person.id === id).name = name;
@@ -49,9 +52,7 @@ const PersonContextProvider = (props) => {
   };
 
   // itemIds array handlers
-  const updateCurrPersonId = (id) => {
-    setCurrPersonId(id);
-  };
+  const updateCurrPersonId = (id) => setCurrPersonId(id);
   const addCurrPersonItemId = (id) => {
     const personsCopy = [...persons];
     personsCopy.find((person) => person.id === currPersonId).itemIds.push(id);

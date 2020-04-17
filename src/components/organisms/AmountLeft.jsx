@@ -14,9 +14,11 @@ const Amount = () => {
   }, 0);
 
   // calculate the amount left
+  const amountLeftFixed = (total - personsTotal).toFixed(2);
   const amountLeft =
-    (total - personsTotal).toFixed(2) === '-0.00' ? 0 : total - personsTotal;
-
+    amountLeftFixed === '-0.00' || amountLeftFixed === '0.00'
+      ? 0
+      : amountLeftFixed;
   const differenceDisplay = amountLeft ? 'difference-display' : '';
 
   return (
@@ -35,7 +37,7 @@ const Amount = () => {
       </p>
       <p className={differenceDisplay}>
         <strong>Difference</strong>
-        <strong>${amountLeft.toFixed(2)}</strong>
+        <strong>${amountLeftFixed}</strong>
       </p>
     </section>
   );
