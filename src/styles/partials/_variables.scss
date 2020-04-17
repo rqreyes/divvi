@@ -39,11 +39,11 @@ $primary-color-5a: rgba(#02a676, 0.6);
 
 @mixin underline {
   content: '';
-  width: 110px;
+  width: 120px;
   height: 1px;
   background: $primary-color-3;
   position: absolute;
-  bottom: 4px;
+  bottom: 0;
 }
 
 @mixin underline-left {

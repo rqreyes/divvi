@@ -16,14 +16,14 @@ const PersonForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className='new-form' onSubmit={handleSubmit}>
       <Input
         type='text'
         placeholder='Enter Name'
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
-      <Button className={'action'} type='submit'>
+      <Button className='action' type='submit'>
         <FontAwesomeIcon className='add-icon' icon={faPlusCircle} />
       </Button>
     </form>

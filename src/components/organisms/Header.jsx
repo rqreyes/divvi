@@ -19,23 +19,23 @@ const Header = ({ updateTheme }) => {
   return (
     <section className='header'>
       <h1>Divvi</h1>
-      <div className={'button-group'}>
-        <Button className={'action'} onClick={updateTheme}>
+      <div className='button-group'>
+        <Button className='action' onClick={updateTheme}>
           <FontAwesomeIcon icon={faPalette} />
         </Button>
-        <Button className={'action'} onClick={openModal}>
+        <Button className='action' onClick={openModal}>
           <FontAwesomeIcon icon={faInfoCircle} />
         </Button>
       </div>
       <Modal
         isOpen={isOpen}
-        className={'modal'}
-        overlayClassName={'overlay'}
+        className='modal'
+        overlayClassName='overlay'
         onRequestClose={closeModal}
         closeTimeoutMS={600}
         contentLabel='how to use divvi'
       >
-        <Button className={'action'} onClick={closeModal}>
+        <Button className='action' onClick={closeModal}>
           <FontAwesomeIcon icon={faTimesCircle} />
         </Button>
         <h2>How to Use</h2>

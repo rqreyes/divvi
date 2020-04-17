@@ -23,20 +23,50 @@
     height: 40px;
 
     &.tax-tip {
+      height: 80px;
+      padding-left: 10px;
       position: relative;
+      @include underline-left;
       @include underline-right;
+
+      &::before {
+        right: 0;
+        bottom: 40px;
+        left: auto;
+      }
+
       &::after {
         right: 0;
       }
 
+      > * {
+        display: flex;
+        flex-direction: column;
+      }
+
+      form {
+        height: 80px;
+      }
+
+      span,
+      input {
+        height: 40px;
+      }
+
       span {
+        display: flex;
+        align-items: center;
         margin-right: 20px;
       }
+    }
+
+    &.total {
+      padding: 0 10px;
     }
   }
 
   .item-list li,
-  form {
+  form.new-form {
     position: relative;
     @include underline-left;
     @include underline-right;
@@ -63,6 +93,6 @@
   }
 
   .item-total {
-    padding: 0 40px;
+    padding: 10px 40px 0;
   }
 }

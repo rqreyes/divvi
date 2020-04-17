@@ -21,21 +21,23 @@ const ItemForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className='new-form' onSubmit={handleSubmit}>
       <Input
-        type={'text'}
+        type='text'
         placeholder='Enter Item'
         value={food}
         onChange={(e) => setFood(e.target.value)}
       />
       <Input
-        type={'number'}
+        type='number'
+        step='0.01'
+        min='0'
         placeholder='Enter Price'
         value={price}
         onChange={(e) => setPrice(e.target.value)}
         required
       />
-      <Button className='action' type={'submit'}>
+      <Button className='action' type='submit'>
         <FontAwesomeIcon className='add-icon' icon={faPlusCircle} />
       </Button>
     </form>

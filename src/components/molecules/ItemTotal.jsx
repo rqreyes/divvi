@@ -10,27 +10,33 @@ const ItemTotal = () => {
 
   return (
     <ul className='item-total'>
-      <li>
+      <li className='total'>
         <strong>Subtotal</strong>
         <strong>${subtotal.toFixed(2)}</strong>
       </li>
       <li className='tax-tip'>
-        <span>Tax</span>
-        <Input
-          type='number'
-          placeholder='Enter Tax'
-          value={tax}
-          onChange={(e) => updateTax(e.target.value)}
-        />
-      </li>
-      <li className='tax-tip'>
-        <span>Tip</span>
-        <Input
-          type='number'
-          placeholder='Enter Tip'
-          value={tip}
-          onChange={(e) => updateTip(e.target.value)}
-        />
+        <div>
+          <span>Tax</span>
+          <span>Tip</span>
+        </div>
+        <form>
+          <Input
+            type='number'
+            step='0.01'
+            min='0'
+            placeholder='Enter Tax'
+            value={tax}
+            onChange={(e) => updateTax(e.target.value)}
+          />
+          <Input
+            type='number'
+            step='0.01'
+            min='0'
+            placeholder='Enter Tip'
+            value={tip}
+            onChange={(e) => updateTip(e.target.value)}
+          />
+        </form>
       </li>
       <div className='button-group'>
         <Button
@@ -55,7 +61,7 @@ const ItemTotal = () => {
           20%
         </Button>
       </div>
-      <li>
+      <li className='total'>
         <strong>Total</strong>
         <strong>${total.toFixed(2)}</strong>
       </li>
