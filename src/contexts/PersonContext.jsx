@@ -8,13 +8,19 @@ const PersonContextProvider = (props) => {
     {
       id: '1',
       name: 'you',
-      itemIds: ['1', '3'],
+      itemIds: ['1', '2', '3'],
       total: 0,
     },
     {
       id: '2',
       name: 'me',
       itemIds: ['1', '2'],
+      total: 0,
+    },
+    {
+      id: '3',
+      name: 'we',
+      itemIds: ['2'],
       total: 0,
     },
   ]);

@@ -19,7 +19,7 @@ const ItemContextProvider = (props) => {
       id: '2',
       food: 'sushi',
       price: 2.99,
-      personIds: ['2'],
+      personIds: ['1', '2', '3'],
       get splitPrice() {
         return this.price / this.personIds.length;
       },

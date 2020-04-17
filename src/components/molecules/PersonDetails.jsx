@@ -62,10 +62,10 @@ const PersonDetails = ({ person }) => {
     const checkFloat = (itemDetails.splitPrice * 100) % 1;
     const priceInt = Math.floor(itemDetails.splitPrice * 100);
 
-    // if the price a whole number, if the person is first, and if there's more than one person
+    // if the price a whole number, if the person is not first, and if there's more than one person
     // then add 0.01 to the first person's subtotal
     return checkFloat &&
-      person.id === itemDetails.personIds[0] &&
+      person.id !== itemDetails.personIds[0] &&
       itemDetails.personIds.length > 1
       ? priceInt / 100 + 0.01
       : priceInt / 100;
