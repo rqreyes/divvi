@@ -16,6 +16,27 @@ $time: 4s;
   z-index: 1;
   transform-style: preserve-3d;
   perspective: 800px;
+  animation: boom 441ms infinite;
+
+  @keyframes boom {
+    0% {
+      background-image: radial-gradient(
+        circle at center,
+        white 0%,
+        #222 10%,
+        black 60%
+      );
+    }
+
+    10% {
+      background-image: radial-gradient(
+        circle at center,
+        white 0%,
+        #222 16%,
+        black 66%
+      );
+    }
+  }
 
   .tri {
     height: 0;
