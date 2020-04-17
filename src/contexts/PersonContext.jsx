@@ -4,26 +4,7 @@ import { v4 as uuidv1 } from 'uuid';
 export const PersonContext = createContext();
 
 const PersonContextProvider = (props) => {
-  const [persons, setPersons] = useState([
-    {
-      id: '1',
-      name: 'you',
-      itemIds: ['1', '2', '3'],
-      total: 0,
-    },
-    {
-      id: '2',
-      name: 'me',
-      itemIds: ['1', '2'],
-      total: 0,
-    },
-    {
-      id: '3',
-      name: 'we',
-      itemIds: ['2'],
-      total: 0,
-    },
-  ]);
+  const [persons, setPersons] = useState([]);
   const [count, setCount] = useState(1);
   const [currPersonId, setCurrPersonId] = useState(null);
 

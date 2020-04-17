@@ -5,35 +5,7 @@ import { useEffect } from 'react';
 export const ItemContext = createContext();
 
 const ItemContextProvider = (props) => {
-  const [items, setItems] = useState([
-    {
-      id: '1',
-      food: 'ramen',
-      price: 1.99,
-      personIds: ['1', '2'],
-      get splitPrice() {
-        return this.price / this.personIds.length;
-      },
-    },
-    {
-      id: '2',
-      food: 'sushi',
-      price: 2.99,
-      personIds: ['1', '2', '3'],
-      get splitPrice() {
-        return this.price / this.personIds.length;
-      },
-    },
-    {
-      id: '3',
-      food: 'tacos',
-      price: 3.99,
-      personIds: ['1'],
-      get splitPrice() {
-        return this.price / this.personIds.length;
-      },
-    },
-  ]);
+  const [items, setItems] = useState([]);
   const [count, setCount] = useState(1);
   const [tax, setTax] = useState('');
   const [tip, setTip] = useState('');
