@@ -18,10 +18,12 @@ const PersonContextProvider = (props) => {
 
   // person handlers
   const addPerson = (name) => {
-    name = name ? name : `Person ${count}`;
+    if (!name) {
+      name = `Person ${count}`;
+      setCount(count + 1);
+    }
 
     setPersons([...persons, new Person(name)]);
-    setCount(count + 1);
   };
   const removePerson = (id) =>
     setPersons(persons.filter((person) => person.id !== id));

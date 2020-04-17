@@ -66,20 +66,18 @@ const ItemDetails = ({ item, currItemChecked }) => {
   return (
     <li className={itemUnselected}>
       {checkboxButton}
-      <form>
-        <Input
-          type='text'
-          value={item.food}
-          onChange={(e) => updateFood(item.id, e.target.value)}
-        />
-        <Input
-          type='number'
-          step='0.01'
-          min='0'
-          value={item.price}
-          onChange={(e) => updatePrice(item.id, e.target.value)}
-        />
-      </form>
+      <Input
+        type='text'
+        value={item.food}
+        onChange={(e) => updateFood(item.id, e.target.value)}
+      />
+      <Input
+        type='number'
+        step='0.01'
+        min='0'
+        value={item.price}
+        onChange={(e) => updatePrice(item.id, e.target.value)}
+      />
       <Button className='action' type='button' onClick={removeItemIds}>
         <FontAwesomeIcon className='remove-icon' icon={faMinusCircle} />
       </Button>

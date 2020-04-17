@@ -14,14 +14,19 @@ const ItemForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (food === 'sandstorm') {
+      updateEasterEgg();
+      setFood('');
+      setPrice('');
+      return;
+    }
     addItem(food, price);
-    if (food === 'sandstorm') updateEasterEgg();
     setFood('');
     setPrice('');
   };
 
   return (
-    <form className='new-form' onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <Input
         type='text'
         placeholder='Enter Item'
@@ -35,7 +40,6 @@ const ItemForm = () => {
         placeholder='Enter Price'
         value={price}
         onChange={(e) => setPrice(e.target.value)}
-        required
       />
       <Button className='action' type='submit'>
         <FontAwesomeIcon className='add-icon' icon={faPlusCircle} />

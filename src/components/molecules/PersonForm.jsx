@@ -16,7 +16,7 @@ const PersonForm = () => {
   };
 
   return (
-    <form className='new-form' onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <Input
         type='text'
         placeholder='Enter Name'

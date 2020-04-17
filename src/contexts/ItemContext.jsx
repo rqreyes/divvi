@@ -27,10 +27,16 @@ const ItemContextProvider = (props) => {
 
   // item handlers
   const addItem = (food, price) => {
-    food = food ? food : `Item ${count}`;
+    if (!food) {
+      food = `Item ${count}`;
+      setCount(count + 1);
+    }
+
+    if (!price) {
+      price = 0;
+    }
 
     setItems([...items, new Item(food, price)]);
-    setCount(count + 1);
   };
   const removeItem = (id) => setItems(items.filter((item) => item.id !== id));
   const updateFood = (id, food) => {

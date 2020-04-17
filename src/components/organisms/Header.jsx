@@ -38,21 +38,23 @@ const Header = ({ updateTheme }) => {
         <Button className='action' onClick={closeModal}>
           <FontAwesomeIcon icon={faTimesCircle} />
         </Button>
-        <h2>How to Use</h2>
-        <h3>Receipt</h3>
-        <p>
-          Enter items, prices, tax, and tip - subtotal and total will
-          automatically get calculated
-        </p>
-        <h3>People</h3>
-        <p>Add people and select the items that belong to each person</p>
-        <h3>Amount Left</h3>
-        <p>
-          If there's a difference, check the items that haven't been selected
-          yet (denoted with a red underline)
-        </p>
-        <h3>That's It!</h3>
-        <p>Thanks for using this app :)</p>
+        <div className='modal-content'>
+          <h2>How to Use</h2>
+          <h3>Receipt</h3>
+          <p>
+            Enter items, prices, tax, and tip - subtotal and total will
+            automatically get calculated
+          </p>
+          <h3>People</h3>
+          <p>Add people and select the items that belong to each person</p>
+          <h3>Amount Left</h3>
+          <p>
+            If there's a difference, check the items that haven't been selected
+            yet (denoted with a red underline)
+          </p>
+          <h3>That's It!</h3>
+          <p>Thanks for using this app :)</p>
+        </div>
       </Modal>
     </section>
   );

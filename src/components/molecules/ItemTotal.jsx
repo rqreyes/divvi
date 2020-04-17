@@ -15,28 +15,26 @@ const ItemTotal = () => {
         <strong>${subtotal.toFixed(2)}</strong>
       </li>
       <li className='tax-tip'>
-        <div>
-          <span>Tax</span>
-          <span>Tip</span>
-        </div>
-        <form>
-          <Input
-            type='number'
-            step='0.01'
-            min='0'
-            placeholder='Enter Tax'
-            value={tax}
-            onChange={(e) => updateTax(e.target.value)}
-          />
-          <Input
-            type='number'
-            step='0.01'
-            min='0'
-            placeholder='Enter Tip'
-            value={tip}
-            onChange={(e) => updateTip(e.target.value)}
-          />
-        </form>
+        <span>Tax</span>
+        <Input
+          type='number'
+          step='0.01'
+          min='0'
+          placeholder='Enter Tax'
+          value={tax}
+          onChange={(e) => updateTax(e.target.value)}
+        />
+      </li>
+      <li className='tax-tip'>
+        <span>Tip</span>
+        <Input
+          type='number'
+          step='0.01'
+          min='0'
+          placeholder='Enter Tip'
+          value={tip}
+          onChange={(e) => updateTip(e.target.value)}
+        />
       </li>
       <div className='button-group'>
         <Button
