@@ -33,7 +33,9 @@ const Div = styled.div`
 `;
 
 const PersonDetails = ({ person }) => {
-  const { items, subtotal, tax, tip } = useContext(ItemContext);
+  const { items, subtotal, tax, tip, removeItemsPersonId } = useContext(
+    ItemContext
+  );
   const {
     removePerson,
     updatePerson,
@@ -43,6 +45,13 @@ const PersonDetails = ({ person }) => {
   } = useContext(PersonContext);
   const [active, setActive] = useState(false);
   const personReceipt = useRef();
+
+  // remove the person from the persons array
+  // remove the person id from all item personIds array
+  const removePersonIds = () => {
+    removePerson(person.id);
+    removeItemsPersonId(person.id);
+  };
 
   // find the item object based on the item's id
   const findItemDetails = (itemId) => items.find((item) => item.id === itemId);
@@ -148,7 +157,7 @@ const PersonDetails = ({ person }) => {
         <Button
           className='action'
           type='button'
-          onClick={() => removePerson(person.id)}
+          onClick={() => removePersonIds()}
         >
           <FontAwesomeIcon className='remove-icon' icon={faMinusCircle} />
         </Button>

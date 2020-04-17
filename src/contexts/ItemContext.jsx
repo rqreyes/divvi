@@ -96,6 +96,14 @@ const ItemContextProvider = (props) => {
 
     setItems(itemsCopy);
   };
+  const removeItemsPersonId = (id) => {
+    const itemsCopy = [...items];
+    itemsCopy.forEach((item) => {
+      item.personIds = item.personIds.filter((personId) => personId !== id);
+    });
+
+    setItems(itemsCopy);
+  };
 
   useEffect(() => {
     // update subtotal
@@ -128,6 +136,7 @@ const ItemContextProvider = (props) => {
         updateTotal,
         addCurrItemPersonId,
         removeCurrItemPersonId,
+        removeItemsPersonId,
       }}
     >
       {props.children}
