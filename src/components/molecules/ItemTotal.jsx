@@ -16,25 +16,31 @@ const ItemTotal = () => {
       </li>
       <li className='tax-tip'>
         <span>Tax</span>
-        <Input
-          type='number'
-          step='0.01'
-          min='0'
-          placeholder='Enter Tax'
-          value={tax}
-          onChange={(e) => updateTax(e.target.value)}
-        />
+        <span>
+          $
+          <Input
+            type='number'
+            step='0.01'
+            min='0'
+            placeholder='Enter Tax'
+            value={tax}
+            onChange={(e) => updateTax(e.target.value)}
+          />
+        </span>
       </li>
       <li className='tax-tip'>
         <span>Tip</span>
-        <Input
-          type='number'
-          step='0.01'
-          min='0'
-          placeholder='Enter Tip'
-          value={tip}
-          onChange={(e) => updateTip(e.target.value)}
-        />
+        <span>
+          $
+          <Input
+            type='number'
+            step='0.01'
+            min='0'
+            placeholder='Enter Tip'
+            value={tip}
+            onChange={(e) => updateTip(e.target.value)}
+          />
+        </span>
       </li>
       <div className='button-group'>
         <Button
