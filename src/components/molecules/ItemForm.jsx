@@ -7,19 +7,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 
 const ItemForm = () => {
-  const { updateEasterEgg } = useContext(EasterEggContext);
   const { addItem } = useContext(ItemContext);
   const [food, setFood] = useState('');
   const [price, setPrice] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (food === 'sandstorm') {
-      updateEasterEgg();
-      setFood('');
-      setPrice('');
-      return;
-    }
     addItem(food, price);
     setFood('');
     setPrice('');
