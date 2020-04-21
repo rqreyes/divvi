@@ -47,7 +47,7 @@ const Header = ({ updateTheme }) => {
           </p>
           <h3>People</h3>
           <p>
-            Add people, select the items that belong to each person, and view
+            Add names, select the items that belong to each person, and view
             each person's receipt via the dropdown icon
           </p>
           <h3>Amount Left</h3>
