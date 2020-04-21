@@ -8,6 +8,14 @@ const ItemTotal = () => {
     ItemContext
   );
 
+  // if the subtotal and tip exists
+  // then calculate the percent
+  // else if the tip exists
+  // then display 100
+  // else display 0
+  const tipPercentDisplay =
+    subtotal && tip ? Math.round((tip / subtotal) * 100) : tip ? 100 : 0;
+
   return (
     <ul className='item-total'>
       <li className='total'>
@@ -29,7 +37,7 @@ const ItemTotal = () => {
         </span>
       </li>
       <li className='tax-tip'>
-        <span>Tip</span>
+        <span>Tip {`(${tipPercentDisplay}%)`}</span>
         <span>
           $
           <Input

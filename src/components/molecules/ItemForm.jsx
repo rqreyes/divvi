@@ -1,5 +1,4 @@
 import React, { useContext, useState } from 'react';
-import { EasterEggContext } from '../../contexts/EasterEggContext';
 import { ItemContext } from '../../contexts/ItemContext';
 import Input from '../atoms/Input';
 import Button from '../atoms/Button';

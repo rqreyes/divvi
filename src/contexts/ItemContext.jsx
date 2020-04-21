@@ -89,12 +89,14 @@ const ItemContextProvider = (props) => {
       return (sum += item.price || 0);
     }, 0);
     updateSubtotal(subtotalPrice);
+  }, [items]);
 
+  useEffect(() => {
     // update total
-    const total =
-      subtotalPrice + (tax ? parseFloat(tax) : 0) + (tip ? parseFloat(tip) : 0);
-    updateTotal(total);
-  }, [items, tax, tip]);
+    const totalPrice =
+      subtotal + (tax ? parseFloat(tax) : 0) + (tip ? parseFloat(tip) : 0);
+    updateTotal(totalPrice);
+  }, [subtotal, tax, tip]);
 
   return (
     <ItemContext.Provider
