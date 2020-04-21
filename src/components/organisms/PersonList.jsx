@@ -10,7 +10,7 @@ const PersonList = () => {
   const { persons } = useContext(PersonContext);
 
   const personList = persons.map((person) => (
-    <PersonDetails key={person.id} person={person} />
+    <PersonDetails key={`person-details-${person.id}`} person={person} />
   ));
 
   return (

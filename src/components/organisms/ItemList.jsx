@@ -52,13 +52,19 @@ const ItemList = () => {
 
       return (
         <ItemDetails
-          key={item.id}
+          key={`item-details-${item.id}`}
           item={item}
           currItemChecked={currItemChecked}
         />
       );
     } else {
-      return <ItemDetails key={item.id} item={item} currItemChecked={false} />;
+      return (
+        <ItemDetails
+          key={`item-details-${item.id}`}
+          item={item}
+          currItemChecked={false}
+        />
+      );
     }
   });
 

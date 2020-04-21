@@ -77,7 +77,7 @@ const PersonDetails = ({ person }) => {
 
     return (
       <PersonItemDetails
-        key={itemId}
+        key={`person-item-details-${itemId}`}
         itemDetails={itemDetails}
         splitPrice={personItemPrices[index]}
       />
