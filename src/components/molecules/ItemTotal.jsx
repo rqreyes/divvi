@@ -14,7 +14,11 @@ const ItemTotal = () => {
   // then display 100
   // else display 0
   const tipPercentDisplay =
-    subtotal && tip ? Math.round((tip / subtotal) * 100) : tip ? 100 : 0;
+    subtotal && parseFloat(tip)
+      ? Math.round((tip / subtotal) * 100)
+      : parseFloat(tip)
+      ? 100
+      : 0;
 
   return (
     <ul className='item-total'>
