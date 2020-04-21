@@ -46,7 +46,10 @@ const Header = ({ updateTheme }) => {
             automatically get calculated
           </p>
           <h3>People</h3>
-          <p>Add people and select the items that belong to each person</p>
+          <p>
+            Add people, select the items that belong to each person, and view
+            each person's receipt via the dropdown icon
+          </p>
           <h3>Amount Left</h3>
           <p>
             If there's a difference, check the items that haven't been selected
