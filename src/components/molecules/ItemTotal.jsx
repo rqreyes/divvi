@@ -4,21 +4,20 @@ import Input from '../atoms/Input';
 import Button from '../atoms/Button';
 
 const ItemTotal = () => {
-  const { tax, updateTax, tip, updateTip, subtotal, total } = useContext(
-    ItemContext
-  );
+  const {
+    tax,
+    updateTax,
+    tip,
+    updateTip,
+    tipCheck,
+    tipPercent,
+    subtotal,
+    total,
+  } = useContext(ItemContext);
 
-  // if the subtotal and tip exists
-  // then calculate the percent
-  // else if the tip exists
-  // then display 100
-  // else display 0
-  const tipPercentDisplay =
-    subtotal && parseFloat(tip)
-      ? Math.round((tip / subtotal) * 100)
-      : parseFloat(tip)
-      ? 100
-      : 0;
+  // if the tip percentage changed when adding an item
+  // add the tip-check animation
+  const tipCheckDisplay = tipCheck ? 'tip-check' : '';
 
   return (
     <ul className='item-total'>
@@ -40,8 +39,8 @@ const ItemTotal = () => {
           />
         </span>
       </li>
-      <li className='tax-tip'>
-        <span>Tip {`(${tipPercentDisplay}%)`}</span>
+      <li className={`tax-tip ${tipCheckDisplay}`}>
+        <span>Tip {`(${tipPercent}%)`}</span>
         <span>
           $
           <Input
