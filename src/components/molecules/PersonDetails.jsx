@@ -139,7 +139,7 @@ const PersonDetails = ({ person }) => {
     personReceipt.current.style.maxHeight = active
       ? `${personReceipt.current.scrollHeight}px`
       : '0px';
-  }, [active, personReceipt]);
+  }, [items, active, personReceipt]);
 
   return (
     <li className='person-details'>

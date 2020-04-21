@@ -53,7 +53,8 @@ const Header = ({ updateTheme }) => {
           <h3>Amount Left</h3>
           <p>
             If there's a difference, check the items that haven't been selected
-            yet (denoted with a red underline)
+            yet through the dropdown - items left in the receipt are denoted
+            with a red underline
           </p>
           <h3>That's It!</h3>
           <p>Thanks for using this app :)</p>

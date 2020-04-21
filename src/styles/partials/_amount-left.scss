@@ -1,19 +1,44 @@
 .amount-left {
-  padding-left: 50px;
-  padding-right: 50px;
+  > {
+    p,
+    .difference-container,
+    .items-left {
+      padding-left: 50px;
+      padding-right: 50px;
+    }
+  }
 
   p {
     display: flex;
     justify-content: space-between;
+    width: 100%;
+  }
+
+  .accordion-icon {
+    display: flex;
+    align-items: center;
+  }
+
+  .difference-container {
+    display: flex;
+    padding-left: 0;
+  }
+
+  .difference {
+    color: $primary-color-1;
+    padding-left: 10px;
 
     &.difference-display {
-      strong {
-        color: $red;
-      }
+      color: $red;
     }
   }
 
-  strong {
-    color: $primary-color-1;
+  li {
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  .items-left {
+    margin-bottom: 10px;
   }
 }

@@ -1,12 +1,40 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useRef, useEffect } from 'react';
 import { ItemContext } from '../../contexts/ItemContext';
 import { PersonContext } from '../../contexts/PersonContext';
+import ItemLeft from '../molecules/ItemLeft';
+import Button from '../atoms/Button';
+import styled, { css } from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCommentsDollar } from '@fortawesome/free-solid-svg-icons';
+import {
+  faCommentsDollar,
+  faChevronCircleRight,
+} from '@fortawesome/free-solid-svg-icons';
+
+// accordion styles
+const Div = styled.div`
+  ${({ accordionContent }) =>
+    accordionContent &&
+    css`
+      overflow: hidden;
+      transition: max-height 0.8s;
+    `};
+  ${({ accordionIcon }) =>
+    accordionIcon &&
+    css`
+      transition: transform 0.8s;
+    `}
+  ${({ active }) =>
+    active &&
+    css`
+      transform: rotate(90deg);
+    `}
+`;
 
 const Amount = () => {
-  const { total } = useContext(ItemContext);
+  const { items, total } = useContext(ItemContext);
   const { persons } = useContext(PersonContext);
+  const [active, setActive] = useState(false);
+  const itemListLeftRef = useRef();
 
   // calculate the contributions
   const personsTotal = persons.reduce((total, person) => {
@@ -20,6 +48,23 @@ const Amount = () => {
       ? 0
       : amountLeftFixed;
   const differenceDisplay = amountLeft ? 'difference-display' : '';
+
+  // toggle the person's receipt
+  const toggleActive = () => {
+    setActive(!active);
+  };
+
+  // display the items left
+  const itemListLeft = items
+    .filter((item) => item.personIds.length === 0)
+    .map((item) => <ItemLeft key={`item-left-${item.id}`} item={item} />);
+
+  // update the height of accordion content
+  useEffect(() => {
+    itemListLeftRef.current.style.maxHeight = active
+      ? `${itemListLeftRef.current.scrollHeight}px`
+      : '0px';
+  }, [items, active, itemListLeftRef]);
 
   return (
     <section className='amount-left'>
@@ -35,10 +80,26 @@ const Amount = () => {
         <span>Contributions</span>
         <span>${personsTotal.toFixed(2)}</span>
       </p>
-      <p className={differenceDisplay}>
-        <strong>Difference</strong>
-        <strong>${amountLeftFixed}</strong>
-      </p>
+      <div className='difference-container'>
+        <Div className='accordion-icon' accordionIcon active={active}>
+          <Button className='action' type='button' onClick={toggleActive}>
+            <FontAwesomeIcon icon={faChevronCircleRight} />
+          </Button>
+        </Div>
+        <p className={`difference ${differenceDisplay}`}>
+          <strong>Difference</strong>
+          <strong>${amountLeftFixed}</strong>
+        </p>
+      </div>
+      <div className='items-left'>
+        <Div accordionContent ref={itemListLeftRef}>
+          <ul>{itemListLeft}</ul>
+          <p>
+            <strong>Items Left</strong>
+            <strong>{itemListLeft.length}</strong>
+          </p>
+        </Div>
+      </div>
     </section>
   );
 };
