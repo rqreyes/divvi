@@ -42,7 +42,7 @@ const ItemContextProvider = (props) => {
     // set the tip check to true temporarily and reset the tip
     if (tip) {
       updateTipCheck();
-      updateTip(0);
+      updateTip('');
     }
     setItems([...items, new Item(food, price)]);
   };
