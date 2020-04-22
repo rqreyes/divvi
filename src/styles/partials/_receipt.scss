@@ -60,7 +60,7 @@
   }
 
   .item-list li {
-    &.item-unselected {
+    &.item-left {
       &::before,
       &::after {
         background: $red;

@@ -44,8 +44,8 @@ const ItemDetails = ({ item, currItemChecked }) => {
   };
 
   // if the item has not been selected by a person
-  // then add the item-unselected class
-  const itemUnselected = item.personIds.length ? '' : 'item-unselected';
+  // then add the item-left class
+  const itemLeft = item.personIds.length ? '' : 'item-left';
 
   // if there is a current person selected
   // then display the checkboxes
@@ -64,7 +64,7 @@ const ItemDetails = ({ item, currItemChecked }) => {
   );
 
   return (
-    <li className={itemUnselected}>
+    <li className={itemLeft}>
       {checkboxButton}
       <Input
         type='text'
