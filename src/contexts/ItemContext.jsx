@@ -82,7 +82,7 @@ const ItemContextProvider = (props) => {
     updateSubtotal(subtotalPrice);
 
     // update tip amount
-    if (tipPercent) {
+    if (subtotalPrice && tipPercent) {
       const updatedTip = (subtotalPrice * tipPercent).toFixed(2);
 
       updateTip(updatedTip);

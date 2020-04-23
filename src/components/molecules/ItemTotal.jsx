@@ -47,7 +47,7 @@ const ItemTotal = () => {
             placeholder='Enter Tip'
             value={tip}
             onChange={(e) => updateTip(e.target.value)}
-            onBlur={() => updateTipPercent(parseFloat(tip) / subtotal)}
+            onBlur={() => updateTipPercent(parseFloat(tip) / (subtotal || tip))}
           />
         </span>
       </li>
