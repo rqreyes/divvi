@@ -150,6 +150,7 @@ const PersonDetails = ({ person }) => {
           </Button>
         </Div>
         <Input
+          autoFocus
           type='text'
           placeholder='Enter Name'
           value={person.name}

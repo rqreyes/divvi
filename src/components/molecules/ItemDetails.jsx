@@ -67,6 +67,7 @@ const ItemDetails = ({ item, currItemChecked }) => {
     <li className={itemLeft}>
       {checkboxButton}
       <Input
+        autoFocus
         type='text'
         placeholder='Enter Item'
         value={item.food}
