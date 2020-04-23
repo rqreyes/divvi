@@ -62,7 +62,7 @@ const Header = ({ updateTheme }) => {
             please share with your friends and family and/or donate to @rqreyes
             on Venmo.
           </p>
-          <p>Thank you so much :)</p>
+          <p>Thank you so much :&#41;</p>
         </div>
       </Modal>
     </section>
