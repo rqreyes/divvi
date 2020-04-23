@@ -43,21 +43,26 @@ const Header = ({ updateTheme }) => {
           <h3>Receipt</h3>
           <p>
             Enter items, prices, tax, and tip - subtotal and total will
-            automatically get calculated
+            automatically get calculated.
           </p>
           <h3>People</h3>
           <p>
-            Add names and select the items that belong to each person - view
-            each person's receipt via the dropdown icon
+            Add names and select the items that belong to each person -
+            individual receipts can be viewed via the dropdown icon.
           </p>
           <h3>Amount Left</h3>
           <p>
             If there's a difference, check the items that haven't been selected
-            yet through the dropdown - items left in the receipt are denoted
-            with a red underline
+            through the dropdown - in the receipt, items left are denoted with a
+            red underline.
           </p>
           <h3>That's It!</h3>
-          <p>Thanks for using this app :)</p>
+          <p>
+            This app is comepletely free. If you'd like to support my journey,
+            please share with your friends and family and/or donate to @rqreyes
+            on Venmo.
+          </p>
+          <p>Thank you so much :)</p>
         </div>
       </Modal>
     </section>
