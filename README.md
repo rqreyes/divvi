@@ -1,6 +1,6 @@
 # Divvi
 
-Divvi is a bill-splitting application that helps users divide and calculate the tax, tip, and total cost for each person.
+Divvi is a bill-splitting application that helps users divvy items and calculate the tax, tip, and total cost for each person.
 
 ## How to Use
 
