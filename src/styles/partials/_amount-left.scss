@@ -27,6 +27,7 @@
   .difference {
     color: $primary-color-1;
     padding-left: 10px;
+    margin: 7px 0;
 
     &.difference-display {
       color: $red;
@@ -35,10 +36,6 @@
 
   li {
     justify-content: space-between;
-    margin-bottom: 10px;
-  }
-
-  .items-left {
     margin-bottom: 10px;
   }
 }
