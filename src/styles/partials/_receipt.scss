@@ -46,12 +46,6 @@
     }
   }
 
-  .tip-check {
-    border-radius: 4px;
-    animation-name: tip-check;
-    animation-duration: 1s;
-  }
-
   .item-list li,
   form {
     position: relative;
@@ -85,16 +79,5 @@
 
   .item-total {
     padding: 0 40px;
-  }
-}
-
-// animations
-@keyframes tip-check {
-  0% {
-    background: $primary-color-5a;
-  }
-
-  100% {
-    background: transparent;
   }
 }

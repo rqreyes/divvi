@@ -9,15 +9,11 @@ const ItemTotal = () => {
     updateTax,
     tip,
     updateTip,
-    tipCheck,
     tipPercent,
+    updateTipPercent,
     subtotal,
     total,
   } = useContext(ItemContext);
-
-  // if the tip percentage changed when adding an item
-  // add the tip-check animation
-  const tipCheckDisplay = tipCheck ? 'tip-check' : '';
 
   return (
     <ul className='item-total'>
@@ -36,11 +32,12 @@ const ItemTotal = () => {
             placeholder='Enter Tax'
             value={tax}
             onChange={(e) => updateTax(e.target.value)}
+            onBlur={() => updateTax(parseFloat(tax).toFixed(2))}
           />
         </span>
       </li>
-      <li className={`tax-tip ${tipCheckDisplay}`}>
-        <span>Tip {`(${tipPercent}%)`}</span>
+      <li className='tax-tip'>
+        <span>Tip {`(${Math.round(tipPercent * 100)}%)`}</span>
         <span>
           $
           <Input
@@ -50,6 +47,7 @@ const ItemTotal = () => {
             placeholder='Enter Tip'
             value={tip}
             onChange={(e) => updateTip(e.target.value)}
+            onBlur={() => updateTipPercent(parseFloat(tip) / subtotal)}
           />
         </span>
       </li>
@@ -57,21 +55,30 @@ const ItemTotal = () => {
         <Button
           className='primary'
           type='button'
-          onClick={() => updateTip((subtotal * 0.15).toFixed(2))}
+          onClick={() => {
+            updateTip((subtotal * 0.15).toFixed(2));
+            updateTipPercent(0.15);
+          }}
         >
           15%
         </Button>
         <Button
           className='primary'
           type='button'
-          onClick={() => updateTip((subtotal * 0.18).toFixed(2))}
+          onClick={() => {
+            updateTip((subtotal * 0.18).toFixed(2));
+            updateTipPercent(0.18);
+          }}
         >
           18%
         </Button>
         <Button
           className='primary'
           type='button'
-          onClick={() => updateTip((subtotal * 0.2).toFixed(2))}
+          onClick={() => {
+            updateTip((subtotal * 0.2).toFixed(2));
+            updateTipPercent(0.2);
+          }}
         >
           20%
         </Button>

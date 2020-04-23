@@ -77,6 +77,7 @@ const ItemDetails = ({ item, currItemChecked }) => {
         min='0'
         value={item.price}
         onChange={(e) => updatePrice(item.id, e.target.value)}
+        onBlur={() => updatePrice(item.id, parseFloat(item.price).toFixed(2))}
       />
       <Button className='action' type='button' onClick={removeItemIds}>
         <FontAwesomeIcon className='remove-icon' icon={faMinusCircle} />

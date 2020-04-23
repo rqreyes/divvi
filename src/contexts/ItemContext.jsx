@@ -9,7 +9,6 @@ const ItemContextProvider = (props) => {
   const [count, setCount] = useState(1);
   const [tax, setTax] = useState('');
   const [tip, setTip] = useState('');
-  const [tipCheck, setTipCheck] = useState(false);
   const [tipPercent, setTipPercent] = useState(0);
   const [subtotal, setSubtotal] = useState(0);
   const [total, setTotal] = useState(0);
@@ -18,7 +17,7 @@ const ItemContextProvider = (props) => {
   function Item(food, price) {
     this.id = uuidv1();
     this.food = food;
-    this.price = parseFloat(price);
+    this.price = price;
     this.personIds = [];
     Object.defineProperties(this, {
       splitPrice: {
@@ -38,13 +37,7 @@ const ItemContextProvider = (props) => {
       price = 0;
     }
 
-    // if there's a tip when adding an item
-    // set the tip check to true temporarily and reset the tip
-    if (tip) {
-      updateTipCheck();
-      updateTip('');
-    }
-    setItems([...items, new Item(food, price)]);
+    setItems([...items, new Item(food, parseFloat(price).toFixed(2))]);
   };
   const removeItem = (id) => setItems(items.filter((item) => item.id !== id));
   const updateFood = (id, food) => {
@@ -55,7 +48,7 @@ const ItemContextProvider = (props) => {
   };
   const updatePrice = (id, price) => {
     const itemsCopy = [...items];
-    itemsCopy.find((item) => item.id === id).price = parseFloat(price) || '';
+    itemsCopy.find((item) => item.id === id).price = price || '';
 
     setItems(itemsCopy);
   };
@@ -63,12 +56,6 @@ const ItemContextProvider = (props) => {
   // total handlers
   const updateTax = (num) => setTax(num);
   const updateTip = (num) => setTip(num);
-  const updateTipCheck = () => {
-    setTipCheck(true);
-    setTimeout(() => {
-      setTipCheck(false);
-    }, 1000);
-  };
   const updateTipPercent = (num) => setTipPercent(num);
   const updateSubtotal = (num) => setSubtotal(num);
   const updateTotal = (num) => setTotal(num);
@@ -101,23 +88,18 @@ const ItemContextProvider = (props) => {
   useEffect(() => {
     // update subtotal
     const subtotalPrice = items.reduce((sum, item) => {
-      return (sum += item.price || 0);
+      return (sum += parseFloat(item.price) || 0);
     }, 0);
 
     updateSubtotal(subtotalPrice);
-  }, [items]);
 
-  useEffect(() => {
-    // update tip percent
-    const tipPercent =
-      subtotal && parseFloat(tip)
-        ? Math.round((tip / subtotal) * 100)
-        : parseFloat(tip)
-        ? 100
-        : 0;
+    // update tip amount
+    if (tipPercent) {
+      const updatedTip = (subtotalPrice * tipPercent).toFixed(2);
 
-    updateTipPercent(tipPercent);
-  }, [subtotal, tip]);
+      updateTip(updatedTip);
+    }
+  }, [items, tipPercent]);
 
   useEffect(() => {
     // update total
@@ -139,8 +121,8 @@ const ItemContextProvider = (props) => {
         updateTax,
         tip,
         updateTip,
-        tipCheck,
         tipPercent,
+        updateTipPercent,
         subtotal,
         updateSubtotal,
         total,

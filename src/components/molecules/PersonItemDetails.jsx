@@ -5,11 +5,11 @@ const PersonItemDetails = ({ itemDetails, splitPrice }) => {
 
   return (
     <li className='person-item-details'>
-      <span>{itemDetails.food}</span>
-      <span>
-        ${itemDetailsPrice.toFixed(2)} / {itemDetails.personIds.length} = $
-        {splitPrice.toFixed(2)}
-      </span>
+      <div>{itemDetails.food}</div>
+      <div>
+        ${parseFloat(itemDetailsPrice).toFixed(2)} /{' '}
+        {itemDetails.personIds.length} = ${splitPrice.toFixed(2)}
+      </div>
     </li>
   );
 };

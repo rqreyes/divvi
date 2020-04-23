@@ -28,11 +28,12 @@
     padding: 0 50px;
 
     li {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-flow: wrap;
+      display: block;
       margin: 10px 0;
+
+      div:nth-child(2) {
+        text-align: right;
+      }
     }
   }
 

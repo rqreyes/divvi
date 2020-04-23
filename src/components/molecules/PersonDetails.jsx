@@ -44,7 +44,7 @@ const PersonDetails = ({ person }) => {
     updatePersonTotal,
   } = useContext(PersonContext);
   const [active, setActive] = useState(false);
-  const personReceipt = useRef();
+  const personReceiptRef = useRef();
 
   // remove the person from the persons array
   // remove the person id from all item personIds array
@@ -136,10 +136,10 @@ const PersonDetails = ({ person }) => {
 
   // update the height of accordion content
   useEffect(() => {
-    personReceipt.current.style.maxHeight = active
-      ? `${personReceipt.current.scrollHeight}px`
+    personReceiptRef.current.style.maxHeight = active
+      ? `${personReceiptRef.current.scrollHeight}px`
       : '0px';
-  }, [items, active, personReceipt]);
+  }, [items, active, personReceiptRef]);
 
   return (
     <li className='person-details'>
@@ -163,7 +163,7 @@ const PersonDetails = ({ person }) => {
         </Button>
       </div>
       <div className='person-total'>
-        <Div accordionContent ref={personReceipt}>
+        <Div accordionContent ref={personReceiptRef}>
           <ul>{personItemList}</ul>
           <p>
             <strong>Subtotal</strong>
