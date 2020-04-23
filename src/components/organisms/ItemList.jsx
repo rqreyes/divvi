@@ -3,14 +3,13 @@ import { ItemContext } from '../../contexts/ItemContext';
 import { PersonContext } from '../../contexts/PersonContext';
 import ItemDetails from '../molecules/ItemDetails';
 import ItemTotal from '../molecules/ItemTotal';
-import ItemForm from '../molecules/ItemForm';
 import Button from '../atoms/Button';
 import { Element, scroller } from 'react-scroll';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUtensils } from '@fortawesome/free-solid-svg-icons';
+import { faUtensils, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 
 const ItemList = () => {
-  const { items } = useContext(ItemContext);
+  const { items, addItem } = useContext(ItemContext);
   const { persons, currPersonId, updateCurrPersonId } = useContext(
     PersonContext
   );
@@ -76,7 +75,9 @@ const ItemList = () => {
       </div>
       {selectItemsDisplay}
       <ul className='item-list'>{itemList}</ul>
-      <ItemForm />
+      <Button className='action add-icon' type='button' onClick={addItem}>
+        <FontAwesomeIcon className='add-icon' icon={faPlusCircle} />
+      </Button>
       <ItemTotal />
     </section>
   );

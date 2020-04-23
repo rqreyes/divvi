@@ -6,7 +6,6 @@ export const ItemContext = createContext();
 
 const ItemContextProvider = (props) => {
   const [items, setItems] = useState([]);
-  const [count, setCount] = useState(1);
   const [tax, setTax] = useState('');
   const [tip, setTip] = useState('');
   const [tipPercent, setTipPercent] = useState(0);
@@ -14,10 +13,10 @@ const ItemContextProvider = (props) => {
   const [total, setTotal] = useState(0);
 
   // item constructor
-  function Item(food, price) {
+  function Item() {
     this.id = uuidv1();
-    this.food = food;
-    this.price = price;
+    this.food = '';
+    this.price = '';
     this.personIds = [];
     Object.defineProperties(this, {
       splitPrice: {
@@ -27,18 +26,7 @@ const ItemContextProvider = (props) => {
   }
 
   // item handlers
-  const addItem = (food, price) => {
-    if (!food) {
-      food = `Item ${count}`;
-      setCount(count + 1);
-    }
-
-    if (!price) {
-      price = 0;
-    }
-
-    setItems([...items, new Item(food, parseFloat(price).toFixed(2))]);
-  };
+  const addItem = () => setItems([...items, new Item()]);
   const removeItem = (id) => setItems(items.filter((item) => item.id !== id));
   const updateFood = (id, food) => {
     const itemsCopy = [...items];

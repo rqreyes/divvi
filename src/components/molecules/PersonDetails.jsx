@@ -151,6 +151,7 @@ const PersonDetails = ({ person }) => {
         </Div>
         <Input
           type='text'
+          placeholder='Enter Name'
           value={person.name}
           onChange={(e) => updatePerson(person.id, e.target.value)}
         />

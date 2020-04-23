@@ -5,26 +5,18 @@ export const PersonContext = createContext();
 
 const PersonContextProvider = (props) => {
   const [persons, setPersons] = useState([]);
-  const [count, setCount] = useState(1);
   const [currPersonId, setCurrPersonId] = useState(null);
 
   // person constructor
-  function Person(name) {
+  function Person() {
     this.id = uuidv1();
-    this.name = name;
+    this.name = '';
     this.itemIds = [];
     this.total = 0;
   }
 
   // person handlers
-  const addPerson = (name) => {
-    if (!name) {
-      name = `Person ${count}`;
-      setCount(count + 1);
-    }
-
-    setPersons([...persons, new Person(name)]);
-  };
+  const addPerson = () => setPersons([...persons, new Person()]);
   const removePerson = (id) =>
     setPersons(persons.filter((person) => person.id !== id));
   const updatePerson = (id, name) => {

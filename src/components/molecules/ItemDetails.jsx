@@ -68,11 +68,13 @@ const ItemDetails = ({ item, currItemChecked }) => {
       {checkboxButton}
       <Input
         type='text'
+        placeholder='Enter Item'
         value={item.food}
         onChange={(e) => updateFood(item.id, e.target.value)}
       />
       <Input
         type='number'
+        placeholder='Enter Price'
         step='0.01'
         min='0'
         value={item.price}

@@ -57,9 +57,16 @@ button {
     padding: 0;
   }
 
+  &.add-icon {
+    display: block;
+    width: 60px;
+    height: 60px;
+    margin: auto;
+  }
+
   svg {
-    width: 20px !important;
-    height: 20px !important;
+    width: 50% !important;
+    height: 50% !important;
   }
 
   &.primary {
