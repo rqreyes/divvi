@@ -32,7 +32,7 @@ const ItemTotal = () => {
             placeholder='Enter Tax'
             value={tax}
             onChange={(e) => updateTax(e.target.value)}
-            onBlur={() => updateTax(parseFloat(tax).toFixed(2))}
+            onBlur={() => updateTax(tax ? parseFloat(tax).toFixed(2) : '')}
           />
         </span>
       </li>
