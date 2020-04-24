@@ -34,7 +34,7 @@ const Amount = () => {
   const { items, total } = useContext(ItemContext);
   const { persons } = useContext(PersonContext);
   const [active, setActive] = useState(false);
-  const itemListLeftRef = useRef();
+  const itemListLeftRef = useRef(null);
 
   // calculate the contributions
   const personsTotal = persons.reduce((total, person) => {

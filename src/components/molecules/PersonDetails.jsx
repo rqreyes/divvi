@@ -44,7 +44,7 @@ const PersonDetails = ({ person }) => {
     updatePersonTotal,
   } = useContext(PersonContext);
   const [active, setActive] = useState(false);
-  const personReceiptRef = useRef();
+  const personReceiptRef = useRef(null);
 
   // remove the person from the persons array
   // remove the person id from all item personIds array
@@ -150,7 +150,6 @@ const PersonDetails = ({ person }) => {
           </Button>
         </Div>
         <Input
-          autoFocus
           type='text'
           placeholder='Enter Name'
           value={person.name}
