@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, ChangeEvent } from 'react';
 import { ItemContext } from '../../contexts/ItemContext';
 import { PersonContext } from '../../contexts/PersonContext';
 import Input from '../atoms/Input';
@@ -10,20 +10,26 @@ import {
   faMinusCircle,
 } from '@fortawesome/free-solid-svg-icons';
 
-const ItemDetails = ({ item, currItemChecked }) => {
+// type properties
+interface ItemDetailsProps {
+  item: ItemType;
+  currItemChecked: boolean;
+}
+
+const ItemDetails: React.FC<ItemDetailsProps> = ({ item, currItemChecked }) => {
   const {
     removeItem,
     updateFood,
     updatePrice,
     addCurrItemPersonId,
     removeCurrItemPersonId,
-  } = useContext(ItemContext);
+  } = useContext(ItemContext)!;
   const {
     currPersonId,
     addCurrPersonItemId,
     removeCurrPersonItemId,
     removePersonsItemId,
-  } = useContext(PersonContext);
+  } = useContext(PersonContext)!;
 
   // add / remove the item id to person's itemIds array
   // add / remove the person id to item's personIds array
@@ -70,7 +76,9 @@ const ItemDetails = ({ item, currItemChecked }) => {
         type='text'
         placeholder='Enter Item'
         value={item.food}
-        onChange={(e) => updateFood(item.id, e.target.value)}
+        onChange={(e: ChangeEvent<HTMLInputElement>) =>
+          updateFood(item.id, e.target.value)
+        }
         autoFocus
       />
       <Input
@@ -79,7 +87,9 @@ const ItemDetails = ({ item, currItemChecked }) => {
         step='0.01'
         min='0'
         value={item.price}
-        onChange={(e) => updatePrice(item.id, e.target.value)}
+        onChange={(e: ChangeEvent<HTMLInputElement>) =>
+          updatePrice(item.id, e.target.value)
+        }
         onBlur={() => updatePrice(item.id, parseFloat(item.price).toFixed(2))}
       />
       <Button className='action' type='button' onClick={removeItemIds}>

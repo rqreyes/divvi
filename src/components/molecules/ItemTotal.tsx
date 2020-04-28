@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, ChangeEvent } from 'react';
 import { ItemContext } from '../../contexts/ItemContext';
 import Input from '../atoms/Input';
 import Button from '../atoms/Button';
@@ -13,7 +13,7 @@ const ItemTotal = () => {
     updateTipPercent,
     subtotal,
     total,
-  } = useContext(ItemContext);
+  } = useContext(ItemContext)!;
 
   return (
     <ul className='item-total'>
@@ -31,7 +31,9 @@ const ItemTotal = () => {
             min='0'
             placeholder='Enter Tax'
             value={tax}
-            onChange={(e) => updateTax(e.target.value)}
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              updateTax(e.target.value)
+            }
             onBlur={() => updateTax(tax ? parseFloat(tax).toFixed(2) : '')}
           />
         </span>
@@ -46,10 +48,14 @@ const ItemTotal = () => {
             min='0'
             placeholder='Enter Tip'
             value={tip}
-            onChange={(e) => updateTip(e.target.value)}
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              updateTip(e.target.value)
+            }
             onBlur={() => {
               updateTip(tip ? parseFloat(tip).toFixed(2) : '');
-              updateTipPercent(parseFloat(tip) / (subtotal || tip) || '');
+              updateTipPercent(
+                parseFloat(tip) / (subtotal || parseFloat(tip)) || 0
+              );
             }}
           />
         </span>

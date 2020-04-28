@@ -1,7 +1,7 @@
 // modules
 declare module 'react-scroll';
 
-// context definitions
+// context type definitions
 type EasterEggContextType = {
   easterEgg: boolean;
   updateEasterEgg: () => void;
