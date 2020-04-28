@@ -71,6 +71,7 @@ const ItemDetails = ({ item, currItemChecked }) => {
         placeholder='Enter Item'
         value={item.food}
         onChange={(e) => updateFood(item.id, e.target.value)}
+        autoFocus
       />
       <Input
         type='number'

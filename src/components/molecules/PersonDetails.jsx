@@ -89,8 +89,8 @@ const PersonDetails = ({ person }) => {
     (sum, price) => (sum += price),
     0
   );
-  const personTax = tax ? (personSubtotal / subtotal) * tax : 0;
-  const personTip = tip ? (personSubtotal / subtotal) * tip : 0;
+  const personTax = tax ? (personSubtotal / subtotal || 0) * tax : 0;
+  const personTip = tip ? (personSubtotal / subtotal || 0) * tip : 0;
   const personTotal = personSubtotal + personTax + personTip;
 
   // if the current person matches with the current person's id
@@ -154,6 +154,7 @@ const PersonDetails = ({ person }) => {
           placeholder='Enter Name'
           value={person.name}
           onChange={(e) => updatePerson(person.id, e.target.value)}
+          autoFocus
         />
         <Button
           className='action'
