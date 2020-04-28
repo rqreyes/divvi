@@ -1,9 +1,9 @@
 import React, { Fragment, useContext } from 'react';
 import { EasterEggContext } from '../../contexts/EasterEggContext';
-import audio from './../../audio/darude-sandstorm.mp3';
+const audio = require('./../../audio/darude-sandstorm.mp3');
 
 const EasterEgg = () => {
-  const { easterEgg, updateEasterEgg } = useContext(EasterEggContext);
+  const { easterEgg, updateEasterEgg } = useContext(EasterEggContext)!;
   let easterEggDisplay = null;
   const easterEggAudio = new Audio(audio);
 

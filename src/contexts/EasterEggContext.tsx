@@ -1,6 +1,8 @@
 import React, { createContext, useState } from 'react';
 
-export const EasterEggContext = createContext({});
+export const EasterEggContext = createContext<EasterEggContextType | undefined>(
+  undefined
+);
 
 const EasterEggProvider = ({ children }: JSX.ElementChildrenAttribute) => {
   const [easterEgg, setEasterEgg] = useState(false);

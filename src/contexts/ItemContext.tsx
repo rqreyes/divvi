@@ -1,11 +1,12 @@
 import React, { createContext, useState } from 'react';
-import { v1 as uuidv1 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 import { useEffect } from 'react';
 
-export const ItemContext = createContext();
+export const ItemContext = createContext({});
+const itemArray: ItemType[] = [];
 
-const ItemContextProvider = (props) => {
-  const [items, setItems] = useState([]);
+const ItemContextProvider = ({ children }: JSX.ElementChildrenAttribute) => {
+  const [items, setItems] = useState(itemArray);
   const [tax, setTax] = useState('');
   const [tip, setTip] = useState('');
   const [tipPercent, setTipPercent] = useState(0);
@@ -13,58 +14,64 @@ const ItemContextProvider = (props) => {
   const [total, setTotal] = useState(0);
 
   // item constructor
-  function Item() {
-    this.id = uuidv1();
-    this.food = '';
-    this.price = '';
-    this.personIds = [];
-    Object.defineProperties(this, {
-      splitPrice: {
-        get: () => this.price / this.personIds.length,
-      },
-    });
+  class Item {
+    id: string;
+    food: string;
+    price: string;
+    personIds: string[];
+
+    constructor() {
+      this.id = uuidv4();
+      this.food = '';
+      this.price = '';
+      this.personIds = [];
+    }
+    get splitPrice() {
+      return parseFloat(this.price) / this.personIds.length;
+    }
   }
 
   // item handlers
   const addItem = () => setItems([...items, new Item()]);
-  const removeItem = (id) => setItems(items.filter((item) => item.id !== id));
-  const updateFood = (id, food) => {
+  const removeItem = (id: string) =>
+    setItems(items.filter((item) => item.id !== id));
+  const updateFood = (id: string, food: string) => {
     const itemsCopy = [...items];
-    itemsCopy.find((item) => item.id === id).food = food;
+    itemsCopy.find((item) => item.id === id)!.food = food;
 
     setItems(itemsCopy);
   };
-  const updatePrice = (id, price) => {
+  const updatePrice = (id: string, price: string) => {
     const itemsCopy = [...items];
-    itemsCopy.find((item) => item.id === id).price = price || '';
+    itemsCopy.find((item) => item.id === id)!.price = price || '';
 
     setItems(itemsCopy);
   };
 
   // total handlers
-  const updateTax = (num) => setTax(num);
-  const updateTip = (num) => setTip(num);
-  const updateTipPercent = (num) => setTipPercent(num);
-  const updateSubtotal = (num) => setSubtotal(num);
-  const updateTotal = (num) => setTotal(num);
+  const updateTax = (num: string) => setTax(num);
+  const updateTip = (num: string) => setTip(num);
+  const updateTipPercent = (num: number) => setTipPercent(num);
+  const updateSubtotal = (num: number) => setSubtotal(num);
+  const updateTotal = (num: number) => setTotal(num);
 
   // personIds array handlers
-  const addCurrItemPersonId = (itemId, currPersonId) => {
+  const addCurrItemPersonId = (itemId: string, currPersonId: string) => {
     const itemsCopy = [...items];
-    itemsCopy.find((item) => item.id === itemId).personIds.push(currPersonId);
+    itemsCopy.find((item) => item.id === itemId)!.personIds.push(currPersonId);
 
     setItems(itemsCopy);
   };
-  const removeCurrItemPersonId = (itemId, currPersonId) => {
+  const removeCurrItemPersonId = (itemId: string, currPersonId: string) => {
     const itemsCopy = [...items];
-    const currItemDetails = itemsCopy.find((item) => item.id === itemId);
+    const currItemDetails = itemsCopy.find((item) => item.id === itemId)!;
     currItemDetails.personIds = currItemDetails.personIds.filter(
       (personId) => personId !== currPersonId
     );
 
     setItems(itemsCopy);
   };
-  const removeItemsPersonId = (id) => {
+  const removeItemsPersonId = (id: string) => {
     const itemsCopy = [...items];
     itemsCopy.forEach((item) => {
       item.personIds = item.personIds.filter((personId) => personId !== id);
@@ -120,7 +127,7 @@ const ItemContextProvider = (props) => {
         removeItemsPersonId,
       }}
     >
-      {props.children}
+      {children}
     </ItemContext.Provider>
   );
 };
