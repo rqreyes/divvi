@@ -1,14 +1,14 @@
 import React, { createContext, useState } from 'react';
 
-export const EasterEggContext = createContext();
+export const EasterEggContext = createContext({});
 
-const EasterEggProvider = (props) => {
+const EasterEggProvider = ({ children }: JSX.ElementChildrenAttribute) => {
   const [easterEgg, setEasterEgg] = useState(false);
   const updateEasterEgg = () => setEasterEgg(!easterEgg);
 
   return (
     <EasterEggContext.Provider value={{ easterEgg, updateEasterEgg }}>
-      {props.children}
+      {children}
     </EasterEggContext.Provider>
   );
 };
