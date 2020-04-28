@@ -11,7 +11,12 @@ import {
 // bind modal to element for accessibility
 Modal.setAppElement('#root');
 
-const Header = ({ updateTheme }) => {
+// type properties
+interface HeaderProps {
+  updateTheme: UpdateThemeType;
+}
+
+const Header: React.FC<HeaderProps> = ({ updateTheme }) => {
   const [isOpen, setIsOpen] = useState(false);
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);

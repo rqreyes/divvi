@@ -9,17 +9,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUtensils, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 
 const ItemList = () => {
-  const { items, addItem } = useContext(ItemContext);
+  const { items, addItem } = useContext(ItemContext)!;
   const { persons, currPersonId, updateCurrPersonId } = useContext(
     PersonContext
-  );
+  )!;
 
   // if a person is selected, then display their name and retrieve their details
-  let currPersonDetails = null;
-  let selectItemsDisplay = null;
+  let currPersonDetails: PersonType;
+  let selectItemsDisplay: JSX.Element;
 
   if (currPersonId) {
-    currPersonDetails = persons.find((person) => person.id === currPersonId);
+    currPersonDetails = persons.find((person) => person.id === currPersonId)!;
     selectItemsDisplay = (
       <div className={`select-items`}>
         <p>
@@ -33,7 +33,7 @@ const ItemList = () => {
               smooth: true,
               offset: -50,
             });
-            updateCurrPersonId(null);
+            updateCurrPersonId('');
           }}
         >
           Done

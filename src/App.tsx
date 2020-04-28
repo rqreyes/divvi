@@ -13,7 +13,7 @@ import './styles/styles.scss';
 function App() {
   // toggle the background
   const [theme, setTheme] = useState(true);
-  const updateTheme = () => setTheme(!theme);
+  const updateTheme: UpdateThemeType = () => setTheme(!theme);
   const themeDisplay = theme ? '1' : '2';
 
   return (

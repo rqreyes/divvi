@@ -2,7 +2,9 @@ import React, { createContext, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useEffect } from 'react';
 
-export const ItemContext = createContext({});
+export const ItemContext = createContext<ItemContextType | undefined>(
+  undefined
+);
 const itemArray: ItemType[] = [];
 
 const ItemContextProvider = ({ children }: JSX.ElementChildrenAttribute) => {
