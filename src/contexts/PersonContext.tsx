@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, ReactNode } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 export const PersonContext = createContext<PersonContextType | undefined>(
@@ -6,7 +6,12 @@ export const PersonContext = createContext<PersonContextType | undefined>(
 );
 const personArray: PersonType[] = [];
 
-const PersonContextProvider = ({ children }: JSX.ElementChildrenAttribute) => {
+// type properties
+interface ItemContextProps {
+  children: ReactNode;
+}
+
+const PersonContextProvider: React.FC<ItemContextProps> = ({ children }) => {
   const [persons, setPersons] = useState(personArray);
   const [currPersonId, setCurrPersonId] = useState('');
 

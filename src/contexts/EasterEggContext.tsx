@@ -1,10 +1,15 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, ReactNode } from 'react';
 
 export const EasterEggContext = createContext<EasterEggContextType | undefined>(
   undefined
 );
 
-const EasterEggProvider = ({ children }: JSX.ElementChildrenAttribute) => {
+// type properties
+interface EasterEggProviderProps {
+  children: ReactNode;
+}
+
+const EasterEggProvider: React.FC<EasterEggProviderProps> = ({ children }) => {
   const [easterEgg, setEasterEgg] = useState(false);
   const updateEasterEgg = () => setEasterEgg(!easterEgg);
 

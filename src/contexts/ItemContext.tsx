@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, ReactNode } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useEffect } from 'react';
 
@@ -7,7 +7,12 @@ export const ItemContext = createContext<ItemContextType | undefined>(
 );
 const itemArray: ItemType[] = [];
 
-const ItemContextProvider = ({ children }: JSX.ElementChildrenAttribute) => {
+// type properties
+interface ItemContextProps {
+  children: ReactNode;
+}
+
+const ItemContextProvider: React.FC<ItemContextProps> = ({ children }) => {
   const [items, setItems] = useState(itemArray);
   const [tax, setTax] = useState('');
   const [tip, setTip] = useState('');
