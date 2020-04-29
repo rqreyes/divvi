@@ -117,3 +117,16 @@ section {
   @include jagged-top;
   @include jagged-bottom;
 }
+
+.accordion-icon {
+  transition: transform 0.8s;
+
+  &.active {
+    transform: rotate(90deg);
+  }
+}
+
+.accordion-content {
+  overflow: hidden;
+  transition: max-height 0.8s;
+}

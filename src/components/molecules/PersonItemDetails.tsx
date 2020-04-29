@@ -1,7 +1,16 @@
 import React from 'react';
 
-const PersonItemDetails = ({ itemDetails, splitPrice }) => {
-  const itemDetailsPrice = itemDetails.price ? itemDetails.price : 0;
+// type properties
+interface PersonItemDetailsProps {
+  itemDetails: ItemType;
+  splitPrice: number;
+}
+
+const PersonItemDetails: React.FC<PersonItemDetailsProps> = ({
+  itemDetails,
+  splitPrice,
+}) => {
+  const itemDetailsPrice = itemDetails.price ? itemDetails.price : '0';
 
   return (
     <li className='person-item-details'>

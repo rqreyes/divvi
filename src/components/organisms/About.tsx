@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserAstronaut } from '@fortawesome/free-solid-svg-icons';
 
 const About = () => {
-  const { updateEasterEgg } = useContext(EasterEggContext);
+  const { updateEasterEgg } = useContext(EasterEggContext)!;
 
   return (
     <section className='about'>

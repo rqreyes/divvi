@@ -60,11 +60,15 @@ const ItemDetails: React.FC<ItemDetailsProps> = ({ item, currItemChecked }) => {
   // if the current item is checked
   // then display the checked icon
   const checkboxButton = currItemChecked ? (
-    <Button className={`action ${display}`} onClick={removeCurrIds}>
+    <Button
+      className={`action ${display}`}
+      type='button'
+      onClick={removeCurrIds}
+    >
       <FontAwesomeIcon icon={faCheckCircle} />
     </Button>
   ) : (
-    <Button className={`action ${display}`} onClick={addCurrIds}>
+    <Button className={`action ${display}`} type='button' onClick={addCurrIds}>
       <FontAwesomeIcon icon={faCircle} />
     </Button>
   );

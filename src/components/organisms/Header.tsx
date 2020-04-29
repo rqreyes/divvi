@@ -25,10 +25,10 @@ const Header: React.FC<HeaderProps> = ({ updateTheme }) => {
     <section className='header'>
       <h1>Divvi</h1>
       <div className='button-group'>
-        <Button className='action' onClick={updateTheme}>
+        <Button className='action' type='button' onClick={updateTheme}>
           <FontAwesomeIcon icon={faPalette} />
         </Button>
-        <Button className='action' onClick={openModal}>
+        <Button className='action' type='button' onClick={openModal}>
           <FontAwesomeIcon icon={faInfoCircle} />
         </Button>
       </div>
@@ -40,7 +40,7 @@ const Header: React.FC<HeaderProps> = ({ updateTheme }) => {
         closeTimeoutMS={600}
         contentLabel='how to use divvi'
       >
-        <Button className='action' onClick={closeModal}>
+        <Button className='action' type='button' onClick={closeModal}>
           <FontAwesomeIcon icon={faTimesCircle} />
         </Button>
         <div className='modal-content'>

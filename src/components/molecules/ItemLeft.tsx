@@ -1,6 +1,11 @@
 import React from 'react';
 
-const ItemLeft = ({ item }) => {
+// type properties
+interface ItemLeftProps {
+  item: ItemType;
+}
+
+const ItemLeft: React.FC<ItemLeftProps> = ({ item }) => {
   return (
     <li>
       <span>{item.food}</span>

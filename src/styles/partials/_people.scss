@@ -18,14 +18,6 @@
     @include underline-left;
   }
 
-  .accordion-icon {
-    transition: transform 0.8s;
-
-    &.active {
-      transform: rotate(90deg);
-    }
-  }
-
   .person-total {
     display: flex;
     flex-direction: column;
@@ -39,11 +31,6 @@
         text-align: right;
       }
     }
-  }
-
-  .accordion-content {
-    overflow: hidden;
-    transition: max-height 0.8s;
   }
 
   .primary {
