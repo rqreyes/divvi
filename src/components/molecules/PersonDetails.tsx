@@ -1,50 +1,40 @@
-import React, { useContext, useState, useRef, useEffect } from 'react';
+import React, {
+  useContext,
+  useState,
+  useRef,
+  useEffect,
+  ChangeEvent,
+} from 'react';
 import { ItemContext } from '../../contexts/ItemContext';
 import { PersonContext } from '../../contexts/PersonContext';
 import PersonItemDetails from './PersonItemDetails';
 import Button from '../atoms/Button';
 import Input from '../atoms/Input';
 import { scroller } from 'react-scroll';
-import styled, { css } from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faChevronCircleRight,
   faMinusCircle,
 } from '@fortawesome/free-solid-svg-icons';
 
-// accordion styles
-const Div = styled.div`
-  ${({ accordionContent }) =>
-    accordionContent &&
-    css`
-      overflow: hidden;
-      transition: max-height 0.8s;
-    `};
-  ${({ accordionIcon }) =>
-    accordionIcon &&
-    css`
-      transition: transform 0.8s;
-    `}
-  ${({ active }) =>
-    active &&
-    css`
-      transform: rotate(90deg);
-    `}
-`;
+// type properties
+interface PersonDetailsProps {
+  person: PersonType;
+}
 
-const PersonDetails = ({ person }) => {
+const PersonDetails: React.FC<PersonDetailsProps> = ({ person }) => {
   const { items, subtotal, tax, tip, removeItemsPersonId } = useContext(
     ItemContext
-  );
+  )!;
   const {
     removePerson,
     updatePerson,
     currPersonId,
     updateCurrPersonId,
     updatePersonTotal,
-  } = useContext(PersonContext);
+  } = useContext(PersonContext)!;
   const [active, setActive] = useState(false);
-  const personReceiptRef = useRef(null);
+  const personReceiptRef = useRef<HTMLDivElement | null>(null);
 
   // remove the person from the persons array
   // remove the person id from all item personIds array
@@ -54,7 +44,8 @@ const PersonDetails = ({ person }) => {
   };
 
   // find the item object based on the item's id
-  const findItemDetails = (itemId) => items.find((item) => item.id === itemId);
+  const findItemDetails = (itemId: string) =>
+    items.find((item) => item.id === itemId)!;
 
   // create an array of each item's price
   const personItemPrices = person.itemIds.map((itemId) => {
@@ -89,8 +80,12 @@ const PersonDetails = ({ person }) => {
     (sum, price) => (sum += price),
     0
   );
-  const personTax = tax ? (personSubtotal / subtotal || 0) * tax : 0;
-  const personTip = tip ? (personSubtotal / subtotal || 0) * tip : 0;
+  const personTax = tax
+    ? (personSubtotal / subtotal || 0) * parseFloat(tax)
+    : 0;
+  const personTip = tip
+    ? (personSubtotal / subtotal || 0) * parseFloat(tip)
+    : 0;
   const personTotal = personSubtotal + personTax + personTip;
 
   // if the current person matches with the current person's id
@@ -101,7 +96,7 @@ const PersonDetails = ({ person }) => {
       <Button
         className='primary'
         type='button'
-        onClick={() => updateCurrPersonId(null)}
+        onClick={() => updateCurrPersonId('')}
       >
         Done
       </Button>
@@ -126,6 +121,8 @@ const PersonDetails = ({ person }) => {
     setActive(!active);
   };
 
+  const activeDisplay = active ? 'active' : '';
+
   // if the calculated person's total is different than the current person's total
   // then update the person's total
   useEffect(() => {
@@ -136,24 +133,30 @@ const PersonDetails = ({ person }) => {
 
   // update the height of accordion content
   useEffect(() => {
-    personReceiptRef.current.style.maxHeight = active
-      ? `${personReceiptRef.current.scrollHeight}px`
-      : '0px';
+    if (personReceiptRef && personReceiptRef.current) {
+      personReceiptRef.current.style.maxHeight = active
+        ? `${personReceiptRef.current.scrollHeight}px`
+        : '0px';
+    }
   }, [items, active, personReceiptRef]);
 
   return (
     <li className='person-details'>
       <div className='person-name'>
-        <Div className='accordion-icon' accordionIcon active={active}>
-          <Button className='action' type='button' onClick={toggleActive}>
-            <FontAwesomeIcon icon={faChevronCircleRight} />
-          </Button>
-        </Div>
+        <Button
+          className={`accordion-icon action ${activeDisplay}`}
+          type='button'
+          onClick={toggleActive}
+        >
+          <FontAwesomeIcon icon={faChevronCircleRight} />
+        </Button>
         <Input
           type='text'
           placeholder='Enter Name'
           value={person.name}
-          onChange={(e) => updatePerson(person.id, e.target.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            updatePerson(person.id, e.target.value)
+          }
           autoFocus
         />
         <Button
@@ -165,7 +168,7 @@ const PersonDetails = ({ person }) => {
         </Button>
       </div>
       <div className='person-total'>
-        <Div accordionContent ref={personReceiptRef}>
+        <div className='accordion-content' ref={personReceiptRef}>
           <ul>{personItemList}</ul>
           <p>
             <strong>Subtotal</strong>
@@ -179,7 +182,7 @@ const PersonDetails = ({ person }) => {
             <span>Tip</span>
             <span>${personTip.toFixed(2)}</span>
           </p>
-        </Div>
+        </div>
         <p className='total'>
           <strong>Total</strong>
           <strong>${personTotal.toFixed(2)}</strong>

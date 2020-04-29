@@ -1,6 +1,3 @@
-// modules
-declare module 'react-scroll';
-
 // context type definitions
 type EasterEggContextType = {
   easterEgg: boolean;
@@ -46,6 +43,7 @@ type ItemType = {
   food: string;
   price: string;
   personIds: string[];
+  splitPrice: number;
 };
 
 type PersonType = {

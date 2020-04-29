@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserFriends, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 
 const PersonList = () => {
-  const { persons, addPerson } = useContext(PersonContext);
+  const { persons, addPerson } = useContext(PersonContext)!;
 
   const personList = persons.map((person) => (
     <PersonDetails key={`person-details-${person.id}`} person={person} />

@@ -19,7 +19,11 @@
   }
 
   .accordion-icon {
-    display: flex;
+    transition: transform 0.8s;
+
+    &.active {
+      transform: rotate(90deg);
+    }
   }
 
   .person-total {
@@ -35,6 +39,11 @@
         text-align: right;
       }
     }
+  }
+
+  .accordion-content {
+    overflow: hidden;
+    transition: max-height 0.8s;
   }
 
   .primary {
