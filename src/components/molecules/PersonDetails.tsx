@@ -27,6 +27,7 @@ const PersonDetails: React.FC<PersonDetailsProps> = ({ person }) => {
     ItemContext
   )!;
   const {
+    persons,
     removePerson,
     updatePerson,
     currPersonId,
@@ -157,7 +158,7 @@ const PersonDetails: React.FC<PersonDetailsProps> = ({ person }) => {
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
             updatePerson(person.id, e.target.value)
           }
-          autoFocus
+          autoFocus={person !== persons[0]}
         />
         <Button
           className='action'

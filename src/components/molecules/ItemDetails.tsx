@@ -18,6 +18,7 @@ interface ItemDetailsProps {
 
 const ItemDetails: React.FC<ItemDetailsProps> = ({ item, currItemChecked }) => {
   const {
+    items,
     removeItem,
     updateFood,
     updatePrice,
@@ -83,7 +84,7 @@ const ItemDetails: React.FC<ItemDetailsProps> = ({ item, currItemChecked }) => {
         onChange={(e: ChangeEvent<HTMLInputElement>) =>
           updateFood(item.id, e.target.value)
         }
-        autoFocus
+        autoFocus={item !== items[0]}
       />
       <Input
         type='number'

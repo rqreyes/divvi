@@ -5,7 +5,6 @@ import { useEffect } from 'react';
 export const ItemContext = createContext<ItemContextType | undefined>(
   undefined
 );
-const itemArray: ItemType[] = [];
 
 // type properties
 interface ItemContextProps {
@@ -13,13 +12,6 @@ interface ItemContextProps {
 }
 
 const ItemContextProvider: React.FC<ItemContextProps> = ({ children }) => {
-  const [items, setItems] = useState(itemArray);
-  const [tax, setTax] = useState('');
-  const [tip, setTip] = useState('');
-  const [tipPercent, setTipPercent] = useState(0);
-  const [subtotal, setSubtotal] = useState(0);
-  const [total, setTotal] = useState(0);
-
   // item constructor
   class Item {
     id: string;
@@ -37,6 +29,14 @@ const ItemContextProvider: React.FC<ItemContextProps> = ({ children }) => {
       return parseFloat(this.price) / this.personIds.length;
     }
   }
+
+  // state
+  const [items, setItems] = useState<ItemType[]>([new Item()]);
+  const [tax, setTax] = useState('');
+  const [tip, setTip] = useState('');
+  const [tipPercent, setTipPercent] = useState(0);
+  const [subtotal, setSubtotal] = useState(0);
+  const [total, setTotal] = useState(0);
 
   // item handlers
   const addItem = () => setItems([...items, new Item()]);

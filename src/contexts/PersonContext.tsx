@@ -4,7 +4,6 @@ import { v4 as uuidv4 } from 'uuid';
 export const PersonContext = createContext<PersonContextType | undefined>(
   undefined
 );
-const personArray: PersonType[] = [];
 
 // type properties
 interface ItemContextProps {
@@ -12,9 +11,6 @@ interface ItemContextProps {
 }
 
 const PersonContextProvider: React.FC<ItemContextProps> = ({ children }) => {
-  const [persons, setPersons] = useState(personArray);
-  const [currPersonId, setCurrPersonId] = useState('');
-
   // person constructor
   class Person {
     id: string;
@@ -29,6 +25,10 @@ const PersonContextProvider: React.FC<ItemContextProps> = ({ children }) => {
       this.total = 0;
     }
   }
+
+  // state
+  const [persons, setPersons] = useState<PersonType[]>([new Person()]);
+  const [currPersonId, setCurrPersonId] = useState('');
 
   // person handlers
   const addPerson = () => setPersons([...persons, new Person()]);
