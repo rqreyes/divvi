@@ -156,7 +156,7 @@ const PersonDetails: React.FC<PersonDetailsProps> = ({ person }) => {
           placeholder='Enter Name'
           value={person.name}
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            updatePerson(person.id, e.target.value)
+            updatePerson(person.id, e.currentTarget.value)
           }
           autoFocus={person !== persons[0]}
         />

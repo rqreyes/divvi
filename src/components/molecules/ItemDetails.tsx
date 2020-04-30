@@ -82,7 +82,7 @@ const ItemDetails: React.FC<ItemDetailsProps> = ({ item, currItemChecked }) => {
         placeholder='Enter Item'
         value={item.food}
         onChange={(e: ChangeEvent<HTMLInputElement>) =>
-          updateFood(item.id, e.target.value)
+          updateFood(item.id, e.currentTarget.value)
         }
         autoFocus={item !== items[0]}
       />
@@ -93,7 +93,7 @@ const ItemDetails: React.FC<ItemDetailsProps> = ({ item, currItemChecked }) => {
         min='0'
         value={item.price}
         onChange={(e: ChangeEvent<HTMLInputElement>) =>
-          updatePrice(item.id, e.target.value)
+          updatePrice(item.id, e.currentTarget.value)
         }
         onBlur={() => updatePrice(item.id, parseFloat(item.price).toFixed(2))}
       />

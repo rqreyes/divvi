@@ -32,7 +32,7 @@ const ItemTotal = () => {
             placeholder='Enter Tax'
             value={tax}
             onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              updateTax(e.target.value)
+              updateTax(e.currentTarget.value)
             }
             onBlur={() => updateTax(tax ? parseFloat(tax).toFixed(2) : '')}
           />
@@ -49,7 +49,7 @@ const ItemTotal = () => {
             placeholder='Enter Tip'
             value={tip}
             onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              updateTip(e.target.value)
+              updateTip(e.currentTarget.value)
             }
             onBlur={() => {
               updateTip(tip ? parseFloat(tip).toFixed(2) : '');
