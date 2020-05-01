@@ -42,6 +42,7 @@ const PersonDetails: React.FC<PersonDetailsProps> = ({ person }) => {
   const removePersonIds = () => {
     removePerson(person.id);
     removeItemsPersonId(person.id);
+    setCurrPersonId('');
   };
 
   // find the item object based on the item's id
