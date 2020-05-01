@@ -21,12 +21,11 @@ const Amount = () => {
   }, 0);
 
   // calculate the amount left
-  const amountLeftFixed = (total - personsTotal).toFixed(2);
-  const amountLeft =
-    amountLeftFixed === '-0.00' || amountLeftFixed === '0.00'
-      ? 0
-      : amountLeftFixed;
-  const differenceDisplay = amountLeft ? 'difference-display' : '';
+  const amountLeft = total - personsTotal;
+  const amountLeftFixed =
+    amountLeft.toFixed(2) === '-0.00' ? '0.00' : amountLeft.toFixed(2);
+  const differenceDisplay =
+    amountLeftFixed !== '0.00' ? 'difference-display' : '';
 
   // toggle the items left
   const toggleActive = () => {
