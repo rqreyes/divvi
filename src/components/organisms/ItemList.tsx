@@ -10,9 +10,7 @@ import { faUtensils, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 
 const ItemList = () => {
   const { items, addItem } = useContext(ItemContext)!;
-  const { persons, currPersonId, updateCurrPersonId } = useContext(
-    PersonContext
-  )!;
+  const { persons, currPersonId, setCurrPersonId } = useContext(PersonContext)!;
 
   // if a person is selected, then display their name and retrieve their details
   let currPersonDetails: PersonType;
@@ -33,7 +31,7 @@ const ItemList = () => {
               smooth: true,
               offset: -50,
             });
-            updateCurrPersonId('');
+            setCurrPersonId('');
           }}
         >
           Done

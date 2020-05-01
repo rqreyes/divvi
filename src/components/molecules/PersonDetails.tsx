@@ -31,7 +31,7 @@ const PersonDetails: React.FC<PersonDetailsProps> = ({ person }) => {
     removePerson,
     updatePerson,
     currPersonId,
-    updateCurrPersonId,
+    setCurrPersonId,
     updatePersonTotal,
   } = useContext(PersonContext)!;
   const [active, setActive] = useState(false);
@@ -97,7 +97,7 @@ const PersonDetails: React.FC<PersonDetailsProps> = ({ person }) => {
       <Button
         className='primary'
         type='button'
-        onClick={() => updateCurrPersonId('')}
+        onClick={() => setCurrPersonId('')}
       >
         Done
       </Button>
@@ -110,7 +110,7 @@ const PersonDetails: React.FC<PersonDetailsProps> = ({ person }) => {
             smooth: true,
             offset: -50,
           });
-          updateCurrPersonId(person.id);
+          setCurrPersonId(person.id);
         }}
       >
         Select Items

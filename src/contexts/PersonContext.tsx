@@ -42,7 +42,6 @@ const PersonContextProvider: React.FC<ItemContextProps> = ({ children }) => {
   };
 
   // itemIds array handlers
-  const updateCurrPersonId = (id: string) => setCurrPersonId(id);
   const addCurrPersonItemId = (id: string) => {
     const personsCopy = [...persons];
     personsCopy.find((person) => person.id === currPersonId)!.itemIds.push(id);
@@ -85,7 +84,7 @@ const PersonContextProvider: React.FC<ItemContextProps> = ({ children }) => {
         removePerson,
         updatePerson,
         currPersonId,
-        updateCurrPersonId,
+        setCurrPersonId,
         addCurrPersonItemId,
         removeCurrPersonItemId,
         removePersonsItemId,

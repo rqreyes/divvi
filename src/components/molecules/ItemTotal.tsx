@@ -5,13 +5,13 @@ import Button from '../atoms/Button';
 
 const ItemTotal = () => {
   const {
-    tax,
-    updateTax,
-    tip,
-    updateTip,
-    tipPercent,
-    updateTipPercent,
     subtotal,
+    tax,
+    setTax,
+    tip,
+    setTip,
+    tipPercent,
+    setTipPercent,
     total,
   } = useContext(ItemContext)!;
 
@@ -32,9 +32,9 @@ const ItemTotal = () => {
             placeholder='Enter Tax'
             value={tax}
             onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              updateTax(e.currentTarget.value)
+              setTax(e.currentTarget.value)
             }
-            onBlur={() => updateTax(tax ? parseFloat(tax).toFixed(2) : '')}
+            onBlur={() => setTax(tax ? parseFloat(tax).toFixed(2) : '')}
           />
         </span>
       </li>
@@ -49,11 +49,11 @@ const ItemTotal = () => {
             placeholder='Enter Tip'
             value={tip}
             onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              updateTip(e.currentTarget.value)
+              setTip(e.currentTarget.value)
             }
             onBlur={() => {
-              updateTip(tip ? parseFloat(tip).toFixed(2) : '');
-              updateTipPercent(
+              setTip(tip ? parseFloat(tip).toFixed(2) : '');
+              setTipPercent(
                 parseFloat(tip) / (subtotal || parseFloat(tip)) || 0
               );
             }}
@@ -65,8 +65,8 @@ const ItemTotal = () => {
           className='primary'
           type='button'
           onClick={() => {
-            updateTip((subtotal * 0.15).toFixed(2));
-            updateTipPercent(0.15);
+            setTip((subtotal * 0.15).toFixed(2));
+            setTipPercent(0.15);
           }}
         >
           15%
@@ -75,8 +75,8 @@ const ItemTotal = () => {
           className='primary'
           type='button'
           onClick={() => {
-            updateTip((subtotal * 0.18).toFixed(2));
-            updateTipPercent(0.18);
+            setTip((subtotal * 0.18).toFixed(2));
+            setTipPercent(0.18);
           }}
         >
           18%
@@ -85,8 +85,8 @@ const ItemTotal = () => {
           className='primary'
           type='button'
           onClick={() => {
-            updateTip((subtotal * 0.2).toFixed(2));
-            updateTipPercent(0.2);
+            setTip((subtotal * 0.2).toFixed(2));
+            setTipPercent(0.2);
           }}
         >
           20%
