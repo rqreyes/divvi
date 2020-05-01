@@ -51,16 +51,33 @@ const PersonDetails: React.FC<PersonDetailsProps> = ({ person }) => {
   // create an array of each item's price
   const personItemPrices = person.itemIds.map((itemId) => {
     const itemDetails = findItemDetails(itemId);
-    const checkFloat = (itemDetails.splitPrice * 100) % 1;
-    const priceInt = Math.floor(itemDetails.splitPrice * 100);
+    const itemSplitPriceInt = itemDetails.splitPrice * 100;
 
-    // if the price a whole number, if the person is not first, and if there's more than one person
-    // then add 0.01 to the first person's subtotal
-    return checkFloat &&
-      person.id !== itemDetails.personIds[0] &&
-      itemDetails.personIds.length > 1
-      ? priceInt / 100 + 0.01
-      : priceInt / 100;
+    // if the split price is a float, then decide who pays an extra penny
+    if (itemSplitPriceInt % 1) {
+      const roundItemSplitPriceInt = Math.round(itemSplitPriceInt);
+      const floorItemSplitPrice = Math.floor(itemSplitPriceInt) / 100;
+
+      // if the split price rounds up
+      // then everyone except the first person pays an extra penny
+      if (roundItemSplitPriceInt > itemSplitPriceInt) {
+        if (person.id === itemDetails.personIds[0]) {
+          return floorItemSplitPrice;
+        } else {
+          return floorItemSplitPrice + 0.01;
+        }
+      } else {
+        // else the split price rounds down
+        // then only the first person pays an extra penny
+        if (person.id === itemDetails.personIds[0]) {
+          return floorItemSplitPrice + 0.01;
+        } else {
+          return floorItemSplitPrice;
+        }
+      }
+    } else {
+      return itemSplitPriceInt / 100;
+    }
   });
 
   // create an array of item details and pass in item's modified price
