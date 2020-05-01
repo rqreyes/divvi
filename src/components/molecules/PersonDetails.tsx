@@ -83,7 +83,7 @@ const PersonDetails: React.FC<PersonDetailsProps> = ({ person }) => {
 
   // calculate the total
   const personSubtotal = personItemPrices.reduce(
-    (sum, price) => (sum += price),
+    (sum, price) => (sum += price || 0),
     0
   );
   const personTax = tax
