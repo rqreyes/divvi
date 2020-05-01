@@ -52,20 +52,20 @@ const PersonDetails: React.FC<PersonDetailsProps> = ({ person }) => {
   // create an array of each item's price
   const personItemPrices = person.itemIds.map((itemId) => {
     const itemDetails = findItemDetails(itemId);
-    const itemPriceInt = parseFloat(itemDetails.price) * 100;
-    const itemSplitPriceInt = itemDetails.splitPrice * 100;
-    const itemSplitPriceIntFloor = Math.floor(itemSplitPriceInt) / 100;
+    const itemPriceInt = Math.round(parseFloat(itemDetails.price) * 100);
     const itemSplitPersonsCount = itemDetails.personIds.length;
+    const itemSplitPriceInt = itemPriceInt / itemSplitPersonsCount;
     const itemSplitPriceIntLeft = itemPriceInt % itemSplitPersonsCount;
+    const itemSplitPrice = Math.floor(itemSplitPriceInt) / 100;
 
     // if there's a remainder after dividing the price by the people count
     // then add a penny to each person in the itemDetails array up to the remainder amount
     if (itemSplitPriceIntLeft) {
       if (itemDetails.personIds.indexOf(person.id) < itemSplitPriceIntLeft) {
-        return itemSplitPriceIntFloor + 0.01;
+        return itemSplitPrice + 0.01;
       }
     }
-    return itemSplitPriceIntFloor;
+    return itemSplitPrice;
   });
 
   // create an array of item details and pass in item's modified price
