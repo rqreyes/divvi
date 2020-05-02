@@ -10,15 +10,20 @@ const PersonItemDetails: React.FC<PersonItemDetailsProps> = ({
   itemDetails,
   splitPrice,
 }) => {
-  const itemDetailsPrice = itemDetails.price ? itemDetails.price : '0';
-  const splitPriceDisplay = splitPrice ? splitPrice : 0;
+  const itemDetailsFoodDiplay = itemDetails.food
+    ? itemDetails.food
+    : 'Unknown Item';
+  const itemDetailsPriceDisplay = itemDetails.price
+    ? parseFloat(itemDetails.price).toFixed(2)
+    : '0.00';
+  const splitPriceDisplay = splitPrice ? splitPrice.toFixed(2) : '0.00';
 
   return (
     <li className='person-item-details'>
-      <div>{itemDetails.food}</div>
+      <div>{itemDetailsFoodDiplay}</div>
       <div>
-        ${parseFloat(itemDetailsPrice).toFixed(2)} /{' '}
-        {itemDetails.personIds.length} = ${splitPriceDisplay.toFixed(2)}
+        ${itemDetailsPriceDisplay} / {itemDetails.personIds.length} = $
+        {splitPriceDisplay}
       </div>
     </li>
   );

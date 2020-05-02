@@ -6,10 +6,15 @@ interface ItemLeftProps {
 }
 
 const ItemLeft: React.FC<ItemLeftProps> = ({ item }) => {
+  const itemDetailsFoodDiplay = item.food ? item.food : 'Unknown Item';
+  const itemDetailsPriceDisplay = item.price
+    ? parseFloat(item.price).toFixed(2)
+    : '0.00';
+
   return (
     <li>
-      <span>{item.food}</span>
-      <span>{`$${item.price}`}</span>
+      <span>{itemDetailsFoodDiplay}</span>
+      <span>{`$${itemDetailsPriceDisplay}`}</span>
     </li>
   );
 };
