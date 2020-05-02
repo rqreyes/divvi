@@ -6,8 +6,6 @@
   }
 
   .button-group {
-    display: flex;
-    align-items: center;
     position: absolute;
     top: 0;
     right: 10px;
@@ -62,5 +60,44 @@
     position: absolute;
     top: 0;
     right: 0;
+  }
+
+  .step {
+    display: flex;
+
+    > * {
+      &:first-child {
+        flex: 0 0 auto;
+        width: 20px;
+        height: 30px;
+        margin-right: 10px;
+      }
+    }
+
+    &.tip {
+      align-items: center;
+    }
+  }
+
+  .button-group {
+    button {
+      display: flex;
+      align-items: center;
+      margin: 0 4px;
+    }
+
+    span {
+      margin-right: 8px;
+    }
+
+    svg {
+      width: 20px !important;
+      height: 20px !important;
+      color: $white;
+
+      &[data-icon='android'] {
+        padding-top: 2px;
+      }
+    }
   }
 }
