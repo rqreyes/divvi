@@ -21,7 +21,7 @@ const ItemList = () => {
     selectItemsDisplay = (
       <div className={`select-items`}>
         <p>
-          Selecting for <strong>{currPersonDetails.name}</strong>
+          Selecting for <strong>{currPersonDetails.name || 'Unknown'}</strong>
         </p>
         <Button
           className='primary'
