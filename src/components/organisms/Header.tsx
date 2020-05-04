@@ -1,8 +1,9 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import Tour from 'reactour';
 import { PersonContext } from '../../contexts/PersonContext';
 import Button from '../atoms/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHandPointUp } from '@fortawesome/free-regular-svg-icons';
 import { faPalette, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { faApple, faAndroid } from '@fortawesome/free-brands-svg-icons';
 
@@ -13,6 +14,8 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ updateTheme }) => {
   const { setCurrPersonId } = useContext(PersonContext)!;
+  const [firstTime, setFirstTime] = useState(true);
+  const firstTimeDisplay = firstTime ? '' : 'none';
 
   // toggle the tour
   const [isTourOpen, setIsTourOpen] = useState(false);
@@ -178,10 +181,30 @@ const Header: React.FC<HeaderProps> = ({ updateTheme }) => {
     },
   ];
 
+  // hide the first time button after 10 seconds
+  useEffect(() => {
+    setTimeout(() => {
+      setFirstTime(false);
+    }, 10000);
+  }, []);
+
   return (
     <section className='header' data-tut='reactour__title'>
       <h1>Divvi</h1>
       <div className='button-group'>
+        <Button className='action' type='button' onClick={updateTheme}>
+          <FontAwesomeIcon icon={faPalette} />
+        </Button>
+        <Button
+          className='action'
+          type='button'
+          onClick={() => {
+            openTour();
+            setFirstTime(false);
+          }}
+        >
+          <FontAwesomeIcon icon={faInfoCircle} />
+        </Button>
         <Tour
           onRequestClose={closeTour}
           steps={tourConfig}
@@ -189,11 +212,18 @@ const Header: React.FC<HeaderProps> = ({ updateTheme }) => {
           accentColor={'#007369'}
           highlightedMaskClassName='mask'
         />
-        <Button className='action' type='button' onClick={updateTheme}>
-          <FontAwesomeIcon icon={faPalette} />
-        </Button>
-        <Button className='action' type='button' onClick={openTour}>
-          <FontAwesomeIcon icon={faInfoCircle} />
+      </div>
+      <div className={`first-time ${firstTimeDisplay}`}>
+        <FontAwesomeIcon icon={faHandPointUp} />
+        <Button
+          className='primary'
+          type='button'
+          onClick={() => {
+            openTour();
+            setFirstTime(false);
+          }}
+        >
+          First Time?
         </Button>
       </div>
     </section>

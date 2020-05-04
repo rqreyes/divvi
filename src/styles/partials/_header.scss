@@ -11,6 +11,33 @@
     right: 10px;
     bottom: 0;
   }
+
+  .first-time {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    position: absolute;
+    top: 54px;
+    right: 20px;
+    z-index: 1;
+    animation: bounce 1s infinite alternate;
+
+    svg {
+      width: 20px;
+      height: 20px;
+      color: $primary-color-1;
+      margin-bottom: 4px;
+    }
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
 }
 
 // tour
