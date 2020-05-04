@@ -14,7 +14,7 @@ const PersonList = () => {
   ));
 
   return (
-    <section className='people'>
+    <section className='people' data-tut='reactour__people'>
       <Element name='peopleAnchor' />
       <div className='heading-icon'>
         <FontAwesomeIcon icon={faUserFriends} />

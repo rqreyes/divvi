@@ -5,16 +5,18 @@ import React, {
   useEffect,
   ChangeEvent,
 } from 'react';
+import { scroller } from 'react-scroll';
 import { ItemContext } from '../../contexts/ItemContext';
 import { PersonContext } from '../../contexts/PersonContext';
 import PersonItemDetails from './PersonItemDetails';
 import Button from '../atoms/Button';
 import Input from '../atoms/Input';
-import { scroller } from 'react-scroll';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faChevronCircleRight,
   faMinusCircle,
+  faListAlt,
+  faCheckSquare,
 } from '@fortawesome/free-solid-svg-icons';
 
 // type properties
@@ -100,15 +102,15 @@ const PersonDetails: React.FC<PersonDetailsProps> = ({ person }) => {
   const selectItems =
     currPersonId === person.id ? (
       <Button
-        className='primary'
+        className='action'
         type='button'
         onClick={() => setCurrPersonId('')}
       >
-        Done
+        <FontAwesomeIcon icon={faCheckSquare} />
       </Button>
     ) : (
       <Button
-        className={`primary`}
+        className='action'
         type='button'
         onClick={() => {
           scroller.scrollTo('receiptAnchor', {
@@ -117,8 +119,9 @@ const PersonDetails: React.FC<PersonDetailsProps> = ({ person }) => {
           });
           setCurrPersonId(person.id);
         }}
+        data-tut='reactour__personSelectItems'
       >
-        Select Items
+        <FontAwesomeIcon icon={faListAlt} />
       </Button>
     );
 
@@ -153,6 +156,7 @@ const PersonDetails: React.FC<PersonDetailsProps> = ({ person }) => {
           className={`accordion-icon action ${activeDisplay}`}
           type='button'
           onClick={toggleActive}
+          data-tut='reactour__personDropdown'
         >
           <FontAwesomeIcon icon={faChevronCircleRight} />
         </Button>
@@ -173,7 +177,7 @@ const PersonDetails: React.FC<PersonDetailsProps> = ({ person }) => {
           <FontAwesomeIcon className='remove-icon' icon={faMinusCircle} />
         </Button>
       </div>
-      <div className='person-total'>
+      <div className='person-subtotal'>
         <div className='accordion-content' ref={personReceiptRef}>
           <ul>{personItemList}</ul>
           <p>
@@ -189,11 +193,13 @@ const PersonDetails: React.FC<PersonDetailsProps> = ({ person }) => {
             <span>${personTip.toFixed(2)}</span>
           </p>
         </div>
-        <p className='total'>
+      </div>
+      <div className='person-total'>
+        {selectItems}
+        <p>
           <strong>Total</strong>
           <strong>${personTotal.toFixed(2)}</strong>
         </p>
-        {selectItems}
       </div>
     </li>
   );

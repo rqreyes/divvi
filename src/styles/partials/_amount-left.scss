@@ -1,11 +1,9 @@
 .amount-left {
-  > {
-    p,
-    .difference-container,
-    .items-left {
-      padding-left: 50px;
-      padding-right: 50px;
-    }
+  .difference-stats,
+  .difference-container,
+  .items-left {
+    padding-left: 50px;
+    padding-right: 50px;
   }
 
   p {

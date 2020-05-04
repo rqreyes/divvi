@@ -8,17 +8,20 @@
 
   .person-details {
     flex-direction: column;
-    margin-bottom: 20px;
+  }
+
+  .person-name,
+  .person-total {
+    display: flex;
+    height: 40px;
   }
 
   .person-name {
-    display: flex;
-    height: 40px;
     position: relative;
     @include underline-left;
   }
 
-  .person-total {
+  .person-subtotal {
     display: flex;
     flex-direction: column;
     padding: 0 50px;
@@ -33,7 +36,17 @@
     }
   }
 
-  .primary {
-    margin: auto;
+  .person-total {
+    padding-right: 50px;
+
+    p {
+      flex: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 4px;
+      padding-left: 10px;
+      margin: 0;
+    }
   }
 }

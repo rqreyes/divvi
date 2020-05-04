@@ -13,70 +13,53 @@
   }
 }
 
-.ReactModalPortal {
-  .ReactModal__Overlay {
-    opacity: 0;
-    transition: opacity 600ms;
+// tour
+#___reactour {
+  .reactour__helper {
+    padding: 20px 30px;
   }
 
-  .ReactModal__Overlay--after-open {
-    opacity: 1;
-  }
-
-  .ReactModal__Overlay--before-close {
-    opacity: 0;
-  }
-
-  .overlay {
-    background: rgba(0, 0, 0, 0.6);
-    position: fixed;
-    top: 0px;
-    bottom: 0px;
-    right: 0px;
-    left: 0px;
-  }
-
-  .modal {
-    max-width: 300px;
-    background: $white;
-    border-radius: 4px;
-    box-shadow: 0 0 2px 2px $white;
-    padding: 20px 0;
-    margin: auto;
-    position: absolute;
-    top: 40px;
-    left: 40px;
-    right: 40px;
-    bottom: 40px;
-  }
-
-  .modal-content {
-    height: 100%;
-    overflow: scroll;
-    padding: 0 20px;
-  }
-
-  button.action {
-    position: absolute;
-    top: 0;
-    right: 0;
-  }
-
-  .step {
+  span[data-tour-elem='badge'] {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    font-weight: 700;
+    border-radius: 50%;
+    box-shadow: none;
+    padding: 0;
+    top: -15px;
+    left: 10px;
+  }
 
-    > * {
-      &:first-child {
-        flex: 0 0 auto;
-        width: 20px;
-        height: 30px;
-        margin-right: 10px;
-      }
-    }
+  .reactour__close,
+  button[data-tour-elem='left-arrow'],
+  button[data-tour-elem='right-arrow'] {
+    width: 20px;
+    height: 20px;
+    flex: 0 0 auto;
+    background: $primary-color-3;
+    border-radius: 50%;
 
-    &.tip {
-      align-items: center;
+    svg {
+      color: $white;
     }
+  }
+
+  .reactour__close {
+    top: 10px;
+    right: 10px;
+  }
+
+  div[data-tour-elem='controls'] {
+    margin-top: 10px;
+  }
+
+  button[data-tour-elem='dot'] {
+    width: 16px;
+    height: 16px;
   }
 
   .button-group {

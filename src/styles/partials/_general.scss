@@ -80,6 +80,7 @@ button {
   svg {
     width: 50% !important;
     height: 50% !important;
+    color: $primary-color-3;
   }
 
   &.primary {
@@ -87,10 +88,6 @@ button {
     background: $primary-color-3;
     padding: 10px 20px;
   }
-}
-
-svg {
-  color: $primary-color-3;
 }
 
 .heading-icon {

@@ -71,11 +71,13 @@ const ItemList = () => {
       <div className='heading-icon'>
         <FontAwesomeIcon icon={faUtensils} />
       </div>
-      {selectItemsDisplay}
-      <ul className='item-list'>{itemList}</ul>
-      <Button className='action add-icon' type='button' onClick={addItem}>
-        <FontAwesomeIcon className='add-icon' icon={faPlusCircle} />
-      </Button>
+      <div data-tut='reactour__item'>
+        {selectItemsDisplay}
+        <ul className='item-list'>{itemList}</ul>
+        <Button className='action add-icon' type='button' onClick={addItem}>
+          <FontAwesomeIcon className='add-icon' icon={faPlusCircle} />
+        </Button>
+      </div>
       <ItemTotal />
     </section>
   );

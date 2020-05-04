@@ -49,24 +49,27 @@ const Amount = () => {
   }, [items, active, itemListLeftRef]);
 
   return (
-    <section className='amount-left'>
+    <section className='amount-left' data-tut='reactour__amountLeft'>
       <div className='heading-icon'>
         <FontAwesomeIcon icon={faCommentsDollar} />
       </div>
       <h2>Amount Left</h2>
-      <p>
-        <span>Total</span>
-        <span>${total.toFixed(2)}</span>
-      </p>
-      <p>
-        <span>Contributions</span>
-        <span>${personsTotal.toFixed(2)}</span>
-      </p>
+      <div className='difference-stats'>
+        <p>
+          <span>Total</span>
+          <span>${total.toFixed(2)}</span>
+        </p>
+        <p>
+          <span>Contributions</span>
+          <span>${personsTotal.toFixed(2)}</span>
+        </p>
+      </div>
       <div className='difference-container'>
         <Button
           className={`accordion-icon action ${activeDisplay}`}
           type='button'
           onClick={toggleActive}
+          data-tut='reactour__amountDropdown'
         >
           <FontAwesomeIcon icon={faChevronCircleRight} />
         </Button>

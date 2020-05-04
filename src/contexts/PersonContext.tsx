@@ -18,8 +18,8 @@ const PersonContextProvider: React.FC<ItemContextProps> = ({ children }) => {
     itemIds: string[];
     total: number;
 
-    constructor() {
-      this.id = uuidv4();
+    constructor(id?: string) {
+      this.id = id || uuidv4();
       this.name = '';
       this.itemIds = [];
       this.total = 0;
@@ -27,7 +27,7 @@ const PersonContextProvider: React.FC<ItemContextProps> = ({ children }) => {
   }
 
   // state
-  const [persons, setPersons] = useState<PersonType[]>([new Person()]);
+  const [persons, setPersons] = useState<PersonType[]>([new Person('1')]);
   const [currPersonId, setCurrPersonId] = useState('');
 
   // person handlers

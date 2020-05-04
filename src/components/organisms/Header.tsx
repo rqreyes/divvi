@@ -1,17 +1,10 @@
-import React, { useState } from 'react';
-import Modal from 'react-modal';
+import React, { useContext, useState } from 'react';
+import Tour from 'reactour';
+import { PersonContext } from '../../contexts/PersonContext';
 import Button from '../atoms/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLightbulb, faSmileBeam } from '@fortawesome/free-regular-svg-icons';
-import {
-  faPalette,
-  faInfoCircle,
-  faTimesCircle,
-} from '@fortawesome/free-solid-svg-icons';
+import { faPalette, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { faApple, faAndroid } from '@fortawesome/free-brands-svg-icons';
-
-// bind modal to element for accessibility
-Modal.setAppElement('#root');
 
 // type properties
 interface HeaderProps {
@@ -19,88 +12,144 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ updateTheme }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const openModal = () => setIsOpen(true);
-  const closeModal = () => setIsOpen(false);
+  const { setCurrPersonId } = useContext(PersonContext)!;
 
-  return (
-    <section className='header'>
-      <h1>Divvi</h1>
-      <div className='button-group'>
-        <Button className='action' type='button' onClick={updateTheme}>
-          <FontAwesomeIcon icon={faPalette} />
-        </Button>
-        <Button className='action' type='button' onClick={openModal}>
-          <FontAwesomeIcon icon={faInfoCircle} />
-        </Button>
-      </div>
-      <Modal
-        isOpen={isOpen}
-        className='modal'
-        overlayClassName='overlay'
-        onRequestClose={closeModal}
-        closeTimeoutMS={600}
-        contentLabel='how to use divvi'
-      >
-        <Button className='action' type='button' onClick={closeModal}>
-          <FontAwesomeIcon icon={faTimesCircle} />
-        </Button>
-        <div className='modal-content'>
-          <h2>How to Use</h2>
-          <h3>Receipt</h3>
-          <p className='step'>
-            <span>1.</span>
-            <span>Enter items, prices, tax, and tip.</span>
+  // toggle the tour
+  const [isTourOpen, setIsTourOpen] = useState(false);
+
+  const openTour = () => {
+    setIsTourOpen(true);
+  };
+  const closeTour = () => {
+    setIsTourOpen(false);
+  };
+
+  // tour config
+  const tourConfig = [
+    {
+      selector: '[data-tut="reactour__title"]',
+      content: () => (
+        <div>
+          <p>
+            Divvi is a bill-splitting application that helps users divvy items
+            and calculate the tax, tip, and total cost for each person.
           </p>
-          <p className='step tip'>
-            <FontAwesomeIcon icon={faLightbulb} />
-            <span>Subtotal and total will automatically get calculated.</span>
+          <p>Let's get started.</p>
+        </div>
+      ),
+    },
+    {
+      selector: '[data-tut="reactour__item"]',
+      content: () => (
+        <p>
+          With reference to your receipt, add all of the items and their prices.
+        </p>
+      ),
+    },
+    {
+      selector: '[data-tut="reactour__total"]',
+      content: () => (
+        <div>
+          <p>
+            Enter the tax and tip - add the tip manually or use one of the
+            precentage buttons.
           </p>
-          <h3>People</h3>
-          <p className='step'>
-            <span>2.</span>
-            <span>
-              Add names and select the items that belong to each person.
-            </span>
+          <p>The total will automatically be calculated.</p>
+        </div>
+      ),
+    },
+    {
+      selector: '[data-tut="reactour__people"]',
+      content: () => <p>Add every person's name who is chipping in.</p>,
+    },
+    {
+      selector: '[data-tut="reactour__personSelectItems"]',
+      content: () => (
+        <p>Activate selecting items for particular individuals.</p>
+      ),
+    },
+    {
+      selector: '[data-tut="reactour__item"]',
+      content: () => (
+        <div>
+          <p>
+            Select the items from the receipt for the chosen person by toggling
+            the checkmark on the left side of each item.
           </p>
-          <p className='step tip'>
-            <FontAwesomeIcon icon={faLightbulb} />
-            <span>
-              Individual receipts can be viewed via the dropdown icon.
-            </span>
+          <p>
+            When you're done, click on the "Done" button at the top of the
+            receipt or the checkmark button where the list icon used to be.
           </p>
-          <h3>Amount Left</h3>
-          <p className='step'>
-            <span>3.</span>
-            <span>
-              Keep selecting items for each person until the difference reaches
-              zero.
-            </span>
+        </div>
+      ),
+      action: () => {
+        setCurrPersonId('1');
+      },
+    },
+    {
+      selector: '[data-tut="reactour__personDropdown"]',
+      content: () => (
+        <p>
+          View each indiviual's receipt - the items they've selected and their
+          total breakdown.
+        </p>
+      ),
+      action: () => {
+        setCurrPersonId('');
+      },
+    },
+    {
+      selector: '[data-tut="reactour__amountLeft"]',
+      content: () => (
+        <p>
+          Keep selecting items for each person until the difference reaches
+          zero.
+        </p>
+      ),
+    },
+    {
+      selector: '[data-tut="reactour__amountDropdown"]',
+      content: () => (
+        <div>
+          <p>
+            View the items remaining, which are also denoted with a red
+            underline in the receipt section.
           </p>
-          <p className='step tip'>
-            <FontAwesomeIcon icon={faLightbulb} />
-            <span>Items left can be viewed via the dropdown icon.</span>
+        </div>
+      ),
+    },
+    {
+      selector: '[data-tut="reactour__about"]',
+      content: () => (
+        <div>
+          <p>
+            That's it! This app is comepletely free. If you'd like to support my
+            journey, please share with your friends and family and/or donate to
+            @rqreyes on Venmo.
           </p>
-          <p className='step tip'>
-            <FontAwesomeIcon icon={faLightbulb} />
-            <span>
-              In the receipt, items left are also denoted with a red underline.
-            </span>
+          <p>Thank you so much :&#41;</p>
+        </div>
+      ),
+    },
+    {
+      selector: '[data-tut="reactour__easterEgg"]',
+      content: () => (
+        <div>
+          <p>Click on the astronaut for an out of this world experience.</p>
+          <p>Return back to Earth by tapping on the screen again.</p>
+        </div>
+      ),
+    },
+    {
+      selector: '[data-tut="reactour__title"]',
+      content: () => (
+        <div>
+          <p>
+            Save this website as a shortcut to your home screen for easy access.
           </p>
-          <h3>Download</h3>
-          <p className='step'>
-            <span>4.</span>
-            <span>
-              Save this website as a shortcut to your home screen for easy
-              access.
-            </span>
-          </p>
-          <p className='step tip'>
-            <FontAwesomeIcon icon={faLightbulb} />
-            <span>
-              Below are links to instructional videos for different mobile
-              operating systems.
-            </span>
+          <p>
+            Below are links to instructional videos for different mobile
+            operating systems.
           </p>
           <div className='button-group'>
             <Button
@@ -124,21 +173,29 @@ const Header: React.FC<HeaderProps> = ({ updateTheme }) => {
               <FontAwesomeIcon icon={faAndroid} />
             </Button>
           </div>
-          <h3>That's It!</h3>
-          <p className='step'>
-            <span>5.</span>
-            <span>
-              This app is comepletely free. If you'd like to support my journey,
-              please share with your friends and family and/or donate to
-              @rqreyes on Venmo.
-            </span>
-          </p>
-          <p className='step tip'>
-            <FontAwesomeIcon icon={faSmileBeam} />
-            <span>Thank you so much</span>
-          </p>
         </div>
-      </Modal>
+      ),
+    },
+  ];
+
+  return (
+    <section className='header' data-tut='reactour__title'>
+      <h1>Divvi</h1>
+      <div className='button-group'>
+        <Tour
+          onRequestClose={closeTour}
+          steps={tourConfig}
+          isOpen={isTourOpen}
+          accentColor={'#007369'}
+          highlightedMaskClassName='mask'
+        />
+        <Button className='action' type='button' onClick={updateTheme}>
+          <FontAwesomeIcon icon={faPalette} />
+        </Button>
+        <Button className='action' type='button' onClick={openTour}>
+          <FontAwesomeIcon icon={faInfoCircle} />
+        </Button>
+      </div>
     </section>
   );
 };
