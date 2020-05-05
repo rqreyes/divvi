@@ -30,7 +30,7 @@ const Header: React.FC<HeaderProps> = ({ updateTheme }) => {
   // tour config
   const tourConfig = [
     {
-      selector: '[data-tut="reactour__title"]',
+      selector: '[data-tut="reactour__header"]',
       content: () => (
         <div>
           <p>
@@ -72,16 +72,27 @@ const Header: React.FC<HeaderProps> = ({ updateTheme }) => {
       ),
     },
     {
-      selector: '[data-tut="reactour__item"]',
+      selector: '[data-tut="reactour__personSelectItem"]',
       content: () => (
         <div>
           <p>
-            Select the items from the receipt for the chosen person by toggling
-            the checkmark on the left side of each item.
+            Select the items for the chosen person by toggling the checkmark on
+            the left side of each item.
           </p>
+        </div>
+      ),
+      action: () => {
+        window.scrollTo(0, 0);
+        setCurrPersonId('1');
+      },
+    },
+    {
+      selector: '[data-tut="reactour__personSelectItemsDone"]',
+      content: () => (
+        <div>
           <p>
-            When you're done, click on the "Done" button at the top of the
-            receipt or the checkmark button where the list icon used to be.
+            Click on the "Done" button at the top of the receipt or the
+            checkmark button where the list icon used to be.
           </p>
         </div>
       ),
@@ -144,7 +155,6 @@ const Header: React.FC<HeaderProps> = ({ updateTheme }) => {
       ),
     },
     {
-      selector: '[data-tut="reactour__title"]',
       content: () => (
         <div>
           <p>
@@ -178,6 +188,9 @@ const Header: React.FC<HeaderProps> = ({ updateTheme }) => {
           </div>
         </div>
       ),
+      action: () => {
+        window.scrollTo(0, 0);
+      },
     },
   ];
 
@@ -189,8 +202,8 @@ const Header: React.FC<HeaderProps> = ({ updateTheme }) => {
   }, []);
 
   return (
-    <section className='header' data-tut='reactour__title'>
-      <h1>Divvi</h1>
+    <section className='header'>
+      <h1 data-tut='reactour__header'>Divvi</h1>
       <div className='button-group'>
         <Button className='action' type='button' onClick={updateTheme}>
           <FontAwesomeIcon icon={faPalette} />

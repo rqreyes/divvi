@@ -7,7 +7,7 @@ const About = () => {
   const { updateEasterEgg } = useContext(EasterEggContext)!;
 
   return (
-    <section className='about' data-tut='reactour__about'>
+    <section className='about'>
       <div
         className='heading-icon'
         onClick={updateEasterEgg}
@@ -15,7 +15,12 @@ const About = () => {
       >
         <FontAwesomeIcon icon={faUserAstronaut} />
       </div>
-      <a href='http://rqreyes.com/' target='_blank' rel='noopener noreferrer'>
+      <a
+        href='http://rqreyes.com/'
+        target='_blank'
+        rel='noopener noreferrer'
+        data-tut='reactour__about'
+      >
         Made by Randy Reyes
       </a>
     </section>

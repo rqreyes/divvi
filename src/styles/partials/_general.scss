@@ -117,7 +117,8 @@ button {
   display: none !important;
 }
 
-section {
+section,
+.amount-left-fixed {
   max-width: $width;
   background-color: $white;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);

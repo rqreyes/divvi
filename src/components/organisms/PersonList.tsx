@@ -14,16 +14,18 @@ const PersonList = () => {
   ));
 
   return (
-    <section className='people' data-tut='reactour__people'>
+    <section className='people'>
       <Element name='peopleAnchor' />
       <div className='heading-icon'>
         <FontAwesomeIcon icon={faUserFriends} />
       </div>
-      <h2>People</h2>
-      <ul>{personList}</ul>
-      <Button className='action add-icon' type='button' onClick={addPerson}>
-        <FontAwesomeIcon className='add-icon' icon={faPlusCircle} />
-      </Button>
+      <div data-tut='reactour__people'>
+        <h2>People</h2>
+        <ul>{personList}</ul>
+        <Button className='action add-icon' type='button' onClick={addPerson}>
+          <FontAwesomeIcon className='add-icon' icon={faPlusCircle} />
+        </Button>
+      </div>
     </section>
   );
 };

@@ -64,27 +64,29 @@ const Amount = () => {
           <span>${personsTotal.toFixed(2)}</span>
         </p>
       </div>
-      <div className='difference-container'>
-        <Button
-          className={`accordion-icon action ${activeDisplay}`}
-          type='button'
-          onClick={toggleActive}
-          data-tut='reactour__amountDropdown'
-        >
-          <FontAwesomeIcon icon={faChevronCircleRight} />
-        </Button>
-        <p className={`difference ${differenceDisplay}`}>
-          <strong>Difference</strong>
-          <strong>${amountLeftFixed}</strong>
-        </p>
-      </div>
-      <div className='items-left'>
-        <div className='accordion-content' ref={itemListLeftRef}>
-          <ul>{itemListLeft}</ul>
-          <p>
-            <strong>Items Left</strong>
-            <strong>{itemListLeft.length}</strong>
+      <div className='amount-left-fixed'>
+        <div className='difference-container'>
+          <Button
+            className={`accordion-icon action ${activeDisplay}`}
+            type='button'
+            onClick={toggleActive}
+            data-tut='reactour__amountDropdown'
+          >
+            <FontAwesomeIcon icon={faChevronCircleRight} />
+          </Button>
+          <p className={`difference ${differenceDisplay}`}>
+            <strong>Difference</strong>
+            <strong>${amountLeftFixed}</strong>
           </p>
+        </div>
+        <div className='items-left'>
+          <div className='accordion-content' ref={itemListLeftRef}>
+            <ul>{itemListLeft}</ul>
+            <p>
+              <strong>Items Left</strong>
+              <strong>{itemListLeft.length}</strong>
+            </p>
+          </div>
         </div>
       </div>
     </section>
