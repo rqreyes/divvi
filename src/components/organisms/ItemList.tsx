@@ -19,10 +19,7 @@ const ItemList = () => {
   if (currPersonId) {
     currPersonDetails = persons.find((person) => person.id === currPersonId)!;
     selectItemsDisplay = (
-      <div
-        className={`select-items`}
-        data-tut='reactour__personSelectItemsDone'
-      >
+      <div className={`select-items`}>
         <p>
           Selecting for <strong>{currPersonDetails.name || 'Unknown'}</strong>
         </p>
@@ -76,9 +73,7 @@ const ItemList = () => {
       </div>
       <div data-tut='reactour__item'>
         {selectItemsDisplay}
-        <ul className='item-list' data-tut='reactour__personSelectItem'>
-          {itemList}
-        </ul>
+        <ul className='item-list'>{itemList}</ul>
         <Button className='action add-icon' type='button' onClick={addItem}>
           <FontAwesomeIcon className='add-icon' icon={faPlusCircle} />
         </Button>

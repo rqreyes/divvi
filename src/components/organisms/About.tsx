@@ -8,11 +8,7 @@ const About = () => {
 
   return (
     <section className='about'>
-      <div
-        className='heading-icon'
-        onClick={updateEasterEgg}
-        data-tut='reactour__easterEgg'
-      >
+      <div className='heading-icon' onClick={updateEasterEgg}>
         <FontAwesomeIcon icon={faUserAstronaut} />
       </div>
       <a href='http://rqreyes.com/' target='_blank' rel='noopener noreferrer'>

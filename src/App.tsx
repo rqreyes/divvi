@@ -6,7 +6,7 @@ import EasterEgg from './components/organisms/EasterEgg';
 import Header from './components/organisms/Header';
 import ItemList from './components/organisms/ItemList';
 import PersonList from './components/organisms/PersonList';
-import AmountLeft from './components/organisms/AmountLeft';
+import Summary from './components/organisms/Summary';
 import About from './components/organisms/About';
 import './styles/styles.scss';
 
@@ -25,7 +25,7 @@ function App() {
             <Header updateTheme={updateTheme} />
             <ItemList />
             <PersonList />
-            <AmountLeft />
+            <Summary />
             <About />
           </PersonContextProvider>
         </ItemContextProvider>

@@ -1,4 +1,4 @@
-.amount-left {
+.summary {
   .difference-stats,
   .difference-container,
   .items-left {
@@ -12,12 +12,26 @@
     width: 100%;
   }
 
+  li {
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  .difference {
+    margin-bottom: 0;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+  }
+
   .difference-container {
     display: flex;
     padding-left: 0;
   }
 
-  .difference {
+  .difference-content {
     color: $primary-color-1;
     padding-left: 10px;
     margin: 7px 0;
@@ -25,19 +39,5 @@
     &.difference-display {
       color: $red;
     }
-  }
-
-  li {
-    justify-content: space-between;
-    margin-bottom: 10px;
-  }
-
-  .amount-left-fixed {
-    margin-bottom: 0;
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 1;
   }
 }

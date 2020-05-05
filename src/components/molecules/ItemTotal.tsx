@@ -16,7 +16,7 @@ const ItemTotal = () => {
   } = useContext(ItemContext)!;
 
   return (
-    <ul className='item-total' data-tut='reactour__total'>
+    <ul className='item-total'>
       <li className='total'>
         <strong>Subtotal</strong>
         <strong>${subtotal.toFixed(2)}</strong>

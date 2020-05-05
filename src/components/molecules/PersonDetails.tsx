@@ -119,7 +119,6 @@ const PersonDetails: React.FC<PersonDetailsProps> = ({ person }) => {
           });
           setCurrPersonId(person.id);
         }}
-        data-tut='reactour__personSelectItems'
       >
         <FontAwesomeIcon icon={faListAlt} />
       </Button>
@@ -156,7 +155,6 @@ const PersonDetails: React.FC<PersonDetailsProps> = ({ person }) => {
           className={`accordion-icon action ${activeDisplay}`}
           type='button'
           onClick={toggleActive}
-          data-tut='reactour__personDropdown'
         >
           <FontAwesomeIcon icon={faChevronCircleRight} />
         </Button>

@@ -30,54 +30,36 @@ const Header: React.FC<HeaderProps> = ({ updateTheme }) => {
   // tour config
   const tourConfig = [
     {
-      selector: '[data-tut="reactour__header"]',
-      content: () => (
-        <div>
-          <p>
-            Divvi is a bill-splitting application that helps users divvy items
-            and calculate the tax, tip, and total cost for each person.
-          </p>
-          <p>Let's get started.</p>
-        </div>
-      ),
-    },
-    {
       selector: '[data-tut="reactour__item"]',
       content: () => (
-        <p>
-          With reference to your receipt, add all of the items and their prices.
-        </p>
-      ),
-    },
-    {
-      selector: '[data-tut="reactour__total"]',
-      content: () => (
         <div>
           <p>
-            Enter the tax and tip - add the tip manually or use one of the
-            precentage buttons.
+            With reference to your receipt, add the items, prices, tax, and tip.
           </p>
-          <p>The total will automatically be calculated.</p>
+          <p>The subtotal and total will automatically get calculated.</p>
         </div>
       ),
     },
     {
       selector: '[data-tut="reactour__people"]',
-      content: () => <p>Add every person's name who is chipping in.</p>,
-    },
-    {
-      selector: '[data-tut="reactour__personSelectItems"]',
       content: () => (
-        <p>Activate selecting items for particular individuals.</p>
+        <p>
+          Add names and select the items that belong to each person by clicking
+          on the list icon.
+        </p>
       ),
     },
     {
-      selector: '[data-tut="reactour__personSelectItem"]',
+      selector: '[data-tut="reactour__item"]',
       content: () => (
         <div>
           <p>
             Select the items for the chosen person by toggling the checkmark on
             the left side of each item.
+          </p>
+          <p>
+            Click on the "Done" button at the top of the receipt or the
+            checkmark button where the list icon used to be.
           </p>
         </div>
       ),
@@ -87,59 +69,20 @@ const Header: React.FC<HeaderProps> = ({ updateTheme }) => {
       },
     },
     {
-      selector: '[data-tut="reactour__personSelectItemsDone"]',
+      selector: '[data-tut="reactour__difference"]',
       content: () => (
         <div>
           <p>
-            Click on the "Done" button at the top of the receipt or the
-            checkmark button where the list icon used to be.
+            Keep selecting items for each person until the difference reaches
+            zero.
           </p>
+          <p>In the receipt, items left are denoted with a red underline.</p>
         </div>
       ),
       action: () => {
-        setCurrPersonId('1');
-      },
-    },
-    {
-      selector: '[data-tut="reactour__personDropdown"]',
-      content: () => (
-        <p>
-          View each indiviual's receipt - the items they've selected and their
-          total breakdown.
-        </p>
-      ),
-      action: () => {
+        window.scrollTo(0, document.body.scrollHeight);
         setCurrPersonId('');
       },
-    },
-    {
-      selector: '[data-tut="reactour__amountLeft"]',
-      content: () => (
-        <p>
-          Keep selecting items for each person until the difference reaches
-          zero.
-        </p>
-      ),
-    },
-    {
-      selector: '[data-tut="reactour__amountDropdown"]',
-      content: () => (
-        <div>
-          <p>
-            View the items remaining, which are also denoted with a red
-            underline in the receipt section.
-          </p>
-        </div>
-      ),
-    },
-    {
-      selector: '[data-tut="reactour__easterEgg"]',
-      content: () => (
-        <div>
-          <p>Click on the astronaut for an out of this world experience.</p>
-          <p>Return back to Earth by tapping on the screen again.</p>
-        </div>
-      ),
     },
     {
       content: () => (
@@ -209,7 +152,7 @@ const Header: React.FC<HeaderProps> = ({ updateTheme }) => {
 
   return (
     <section className='header'>
-      <h1 data-tut='reactour__header'>Divvi</h1>
+      <h1>Divvi</h1>
       <div className='button-group'>
         <Button className='action' type='button' onClick={updateTheme}>
           <FontAwesomeIcon icon={faPalette} />
