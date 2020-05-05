@@ -32,11 +32,11 @@ const ItemContextProvider: React.FC<ItemContextProps> = ({ children }) => {
 
   // state
   const [items, setItems] = useState<ItemType[]>([new Item()]);
-  const [subtotal, setSubtotal] = useState(0);
+  const [itemsSubtotal, setItemsSubtotal] = useState(0);
   const [tax, setTax] = useState('');
   const [tip, setTip] = useState('');
   const [tipPercent, setTipPercent] = useState(0);
-  const [total, setTotal] = useState(0);
+  const [itemsTotal, setItemsTotal] = useState(0);
 
   // item handlers
   const addItem = () => setItems([...items, new Item()]);
@@ -81,16 +81,16 @@ const ItemContextProvider: React.FC<ItemContextProps> = ({ children }) => {
   };
 
   useEffect(() => {
-    // update subtotal
-    const subtotalPrice = items.reduce((sum, item) => {
+    // update items subtotal
+    const itemsSubtotalPrice = items.reduce((sum, item) => {
       return (sum += parseFloat(item.price) || 0);
     }, 0);
 
-    setSubtotal(subtotalPrice);
+    setItemsSubtotal(itemsSubtotalPrice);
 
     // update tip amount
-    if (subtotalPrice && tipPercent) {
-      const updatedTip = (subtotalPrice * tipPercent).toFixed(2);
+    if (itemsSubtotalPrice && tipPercent) {
+      const updatedTip = (itemsSubtotalPrice * tipPercent).toFixed(2);
 
       setTip(updatedTip);
     }
@@ -99,10 +99,10 @@ const ItemContextProvider: React.FC<ItemContextProps> = ({ children }) => {
   useEffect(() => {
     // update total
     const totalPrice =
-      subtotal + (tax ? parseFloat(tax) : 0) + (tip ? parseFloat(tip) : 0);
+      itemsSubtotal + (tax ? parseFloat(tax) : 0) + (tip ? parseFloat(tip) : 0);
 
-    setTotal(totalPrice);
-  }, [subtotal, tax, tip]);
+    setItemsTotal(totalPrice);
+  }, [itemsSubtotal, tax, tip]);
 
   return (
     <ItemContext.Provider
@@ -112,14 +112,14 @@ const ItemContextProvider: React.FC<ItemContextProps> = ({ children }) => {
         removeItem,
         updateFood,
         updatePrice,
-        subtotal,
+        itemsSubtotal,
         tax,
         setTax,
         tip,
         setTip,
         tipPercent,
         setTipPercent,
-        total,
+        itemsTotal,
         addCurrItemPersonId,
         removeCurrItemPersonId,
         removeItemsPersonId,

@@ -25,7 +25,7 @@ interface PersonDetailsProps {
 }
 
 const PersonDetails: React.FC<PersonDetailsProps> = ({ person }) => {
-  const { items, subtotal, tax, tip, removeItemsPersonId } = useContext(
+  const { items, itemsSubtotal, tax, tip, removeItemsPersonId } = useContext(
     ItemContext
   )!;
   const {
@@ -89,10 +89,10 @@ const PersonDetails: React.FC<PersonDetailsProps> = ({ person }) => {
     0
   );
   const personTax = tax
-    ? (personSubtotal / subtotal || 0) * parseFloat(tax)
+    ? (personSubtotal / itemsSubtotal || 0) * parseFloat(tax)
     : 0;
   const personTip = tip
-    ? (personSubtotal / subtotal || 0) * parseFloat(tip)
+    ? (personSubtotal / itemsSubtotal || 0) * parseFloat(tip)
     : 0;
   const personTotal = personSubtotal + personTax + personTip;
 

@@ -1,4 +1,4 @@
-import React, { createContext, useState, ReactNode } from 'react';
+import React, { createContext, useState, useEffect, ReactNode } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 export const PersonContext = createContext<PersonContextType | undefined>(
@@ -29,6 +29,7 @@ const PersonContextProvider: React.FC<ItemContextProps> = ({ children }) => {
   // state
   const [persons, setPersons] = useState<PersonType[]>([new Person('1')]);
   const [currPersonId, setCurrPersonId] = useState('');
+  const [personsTotal, setPersonsTotal] = useState(0);
 
   // person handlers
   const addPerson = () => setPersons([...persons, new Person()]);
@@ -76,6 +77,15 @@ const PersonContextProvider: React.FC<ItemContextProps> = ({ children }) => {
     setPersons(personsCopy);
   };
 
+  useEffect(() => {
+    // update persons total
+    const personsTotalPrice = persons.reduce((total, person) => {
+      return (total += person.total);
+    }, 0);
+
+    setPersonsTotal(personsTotalPrice);
+  }, [persons]);
+
   return (
     <PersonContext.Provider
       value={{
@@ -89,6 +99,7 @@ const PersonContextProvider: React.FC<ItemContextProps> = ({ children }) => {
         removeCurrPersonItemId,
         removePersonsItemId,
         updatePersonTotal,
+        personsTotal,
       }}
     >
       {children}

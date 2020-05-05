@@ -10,14 +10,14 @@ type ItemContextType = {
   removeItem: (id: string) => void;
   updateFood: (id: string, food: string) => void;
   updatePrice: (id: string, price: string) => void;
-  subtotal: number;
+  itemsSubtotal: number;
   tax: string;
   setTax: (num: string) => void;
   tip: string;
   setTip: (num: string) => void;
   tipPercent: number;
   setTipPercent: (num: number) => void;
-  total: number;
+  itemsTotal: number;
   addCurrItemPersonId: (itemId: string, currPersonId: string) => void;
   removeCurrItemPersonId: (itemId: string, currPersonId: string) => void;
   removeItemsPersonId: (id: string) => void;
@@ -34,6 +34,7 @@ type PersonContextType = {
   removeCurrPersonItemId: (id: string) => void;
   removePersonsItemId: (id: string) => void;
   updatePersonTotal: (id: string, total: number) => void;
+  personsTotal: number;
 };
 
 type ItemType = {

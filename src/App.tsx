@@ -8,6 +8,7 @@ import ItemList from './components/organisms/ItemList';
 import PersonList from './components/organisms/PersonList';
 import Summary from './components/organisms/Summary';
 import About from './components/organisms/About';
+import Difference from './components/organisms/Difference';
 import './styles/styles.scss';
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
             <PersonList />
             <Summary />
             <About />
+            <Difference />
           </PersonContextProvider>
         </ItemContextProvider>
       </EasterEggContextProvider>

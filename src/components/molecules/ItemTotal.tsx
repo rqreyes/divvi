@@ -5,21 +5,21 @@ import Button from '../atoms/Button';
 
 const ItemTotal = () => {
   const {
-    subtotal,
+    itemsSubtotal,
     tax,
     setTax,
     tip,
     setTip,
     tipPercent,
     setTipPercent,
-    total,
+    itemsTotal,
   } = useContext(ItemContext)!;
 
   return (
     <ul className='item-total'>
       <li className='total'>
         <strong>Subtotal</strong>
-        <strong>${subtotal.toFixed(2)}</strong>
+        <strong>${itemsSubtotal.toFixed(2)}</strong>
       </li>
       <li className='tax-tip'>
         <span>Tax</span>
@@ -54,7 +54,7 @@ const ItemTotal = () => {
             onBlur={() => {
               setTip(tip ? parseFloat(tip).toFixed(2) : '');
               setTipPercent(
-                parseFloat(tip) / (subtotal || parseFloat(tip)) || 0
+                parseFloat(tip) / (itemsSubtotal || parseFloat(tip)) || 0
               );
             }}
           />
@@ -65,7 +65,7 @@ const ItemTotal = () => {
           className='primary'
           type='button'
           onClick={() => {
-            setTip((subtotal * 0.15).toFixed(2));
+            setTip((itemsSubtotal * 0.15).toFixed(2));
             setTipPercent(0.15);
           }}
         >
@@ -75,7 +75,7 @@ const ItemTotal = () => {
           className='primary'
           type='button'
           onClick={() => {
-            setTip((subtotal * 0.18).toFixed(2));
+            setTip((itemsSubtotal * 0.18).toFixed(2));
             setTipPercent(0.18);
           }}
         >
@@ -85,7 +85,7 @@ const ItemTotal = () => {
           className='primary'
           type='button'
           onClick={() => {
-            setTip((subtotal * 0.2).toFixed(2));
+            setTip((itemsSubtotal * 0.2).toFixed(2));
             setTipPercent(0.2);
           }}
         >
@@ -94,7 +94,7 @@ const ItemTotal = () => {
       </div>
       <li className='total'>
         <strong>Total</strong>
-        <strong>${total.toFixed(2)}</strong>
+        <strong>${itemsTotal.toFixed(2)}</strong>
       </li>
     </ul>
   );

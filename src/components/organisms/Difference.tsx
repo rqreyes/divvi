@@ -1,22 +1,19 @@
 import React, { useContext, useState, useRef, useEffect } from 'react';
 import { ItemContext } from '../../contexts/ItemContext';
+import { PersonContext } from '../../contexts/PersonContext';
 import ItemLeft from '../molecules/ItemLeft';
 import Button from '../atoms/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronCircleRight } from '@fortawesome/free-solid-svg-icons';
 
-// type properties
-interface DifferenceProps {
-  personsTotal: number;
-}
-
-const Difference: React.FC<DifferenceProps> = ({ personsTotal }) => {
-  const { items, total } = useContext(ItemContext)!;
+const Difference = () => {
+  const { items, itemsTotal } = useContext(ItemContext)!;
+  const { personsTotal } = useContext(PersonContext)!;
   const [active, setActive] = useState(false);
   const itemListLeftRef = useRef<HTMLDivElement | null>(null);
 
-  // calculate the amount left
-  const difference = total - personsTotal;
+  // calculate the difference
+  const difference = itemsTotal - personsTotal;
   const differenceFixed =
     difference.toFixed(2) === '-0.00' ? '0.00' : difference.toFixed(2);
   const differenceDisplay =
