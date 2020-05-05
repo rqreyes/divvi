@@ -54,13 +54,10 @@ const Header: React.FC<HeaderProps> = ({ updateTheme }) => {
       content: () => (
         <div>
           <p>
-            Select the items for the chosen person by toggling the checkmark on
-            the left side of each item.
+            Select the items by toggling the checkmark on the left side of each
+            item.
           </p>
-          <p>
-            Click on the "Done" button at the top of the receipt or the
-            checkmark button where the list icon used to be.
-          </p>
+          <p>Then click on the "Done" button at the top.</p>
         </div>
       ),
       action: () => {
@@ -80,7 +77,6 @@ const Header: React.FC<HeaderProps> = ({ updateTheme }) => {
         </div>
       ),
       action: () => {
-        window.scrollTo(0, document.body.scrollHeight);
         setCurrPersonId('');
       },
     },
@@ -118,9 +114,6 @@ const Header: React.FC<HeaderProps> = ({ updateTheme }) => {
           </div>
         </div>
       ),
-      action: () => {
-        window.scrollTo(0, 0);
-      },
     },
     {
       content: () => (
