@@ -41,8 +41,8 @@ const Difference = () => {
   }, [items, active, itemListLeftRef]);
 
   return (
-    <div className='difference' data-tut='reactour__difference'>
-      <div className='difference-container'>
+    <div className='difference'>
+      <div className='difference-container' data-tut='reactour__difference'>
         <Button
           className={`accordion-icon action ${activeDisplay}`}
           type='button'
