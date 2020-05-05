@@ -131,6 +131,9 @@ const Header: React.FC<HeaderProps> = ({ updateTheme }) => {
           </p>
         </div>
       ),
+      action: () => {
+        window.scrollTo(0, document.body.scrollHeight);
+      },
     },
     {
       selector: '[data-tut="reactour__about"]',
