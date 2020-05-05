@@ -7,7 +7,7 @@ interface SummaryPersonProps {
 const SummaryPerson: React.FC<SummaryPersonProps> = ({ person }) => {
   return (
     <li>
-      <span>{person.name || 'Unknown'}</span>
+      <span>{person.name || 'Unknown Name'}</span>
       <span>${person.total.toFixed(2)}</span>
     </li>
   );

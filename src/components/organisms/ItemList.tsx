@@ -22,7 +22,8 @@ const ItemList = () => {
     selectItemsDisplay = (
       <div className={`select-items`}>
         <p>
-          Selecting for <strong>{currPersonDetails.name || 'Unknown'}</strong>
+          Selecting for{' '}
+          <strong>{currPersonDetails.name || 'Unknown Name'}</strong>
         </p>
       </div>
     );
