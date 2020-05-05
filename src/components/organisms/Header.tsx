@@ -133,19 +133,6 @@ const Header: React.FC<HeaderProps> = ({ updateTheme }) => {
       ),
     },
     {
-      selector: '[data-tut="reactour__about"]',
-      content: () => (
-        <div>
-          <p>
-            That's it! This app is comepletely free. If you'd like to support my
-            journey, please share with your friends and family and/or donate to
-            @rqreyes on Venmo.
-          </p>
-          <p>Thank you so much :&#41;</p>
-        </div>
-      ),
-    },
-    {
       selector: '[data-tut="reactour__easterEgg"]',
       content: () => (
         <div>
@@ -191,6 +178,25 @@ const Header: React.FC<HeaderProps> = ({ updateTheme }) => {
       action: () => {
         window.scrollTo(0, 0);
       },
+    },
+    {
+      content: () => (
+        <div>
+          <p>
+            That's it! This app is comepletely free. If you'd like to support my
+            journey, please share with your friends and family and/or donate to
+            @rqreyes on Venmo.
+          </p>
+          <p>Thank you so much :&#41;</p>
+          <Button
+            className='primary tour-done'
+            type='button'
+            onClick={closeTour}
+          >
+            <span>Done</span>
+          </Button>
+        </div>
+      ),
     },
   ];
 

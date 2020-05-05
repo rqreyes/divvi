@@ -15,12 +15,7 @@ const About = () => {
       >
         <FontAwesomeIcon icon={faUserAstronaut} />
       </div>
-      <a
-        href='http://rqreyes.com/'
-        target='_blank'
-        rel='noopener noreferrer'
-        data-tut='reactour__about'
-      >
+      <a href='http://rqreyes.com/' target='_blank' rel='noopener noreferrer'>
         Made by Randy Reyes
       </a>
     </section>
