@@ -12,9 +12,9 @@ The subtotal and total will automatically get calculated..
 
 ### People
 
-Add names and select the items that belong to each person by clicking on the list icon. Select the items for the chosen person by toggling the checkmark on the left side of each item.
+Add names and select the items for each person by clicking on the list icon. Choose the items with a checkmark on the left side of each item.
 
-Click on the "Done" button at the top of the receipt or the checkmark button where the list icon used to be.
+Then click on the "Done" button at the bottom.
 
 ### Difference
 

@@ -8,7 +8,7 @@
     margin-bottom: 10px;
 
     p {
-      margin: 0 10px 0 0;
+      margin: 0;
     }
 
     button {
@@ -64,6 +64,11 @@
   .add-item {
     display: block;
     margin: auto;
+  }
+
+  .done {
+    display: block;
+    margin: 10px auto;
   }
 
   .button-group {

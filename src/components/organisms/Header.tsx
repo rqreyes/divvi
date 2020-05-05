@@ -4,7 +4,12 @@ import { PersonContext } from '../../contexts/PersonContext';
 import Button from '../atoms/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHandPointUp } from '@fortawesome/free-regular-svg-icons';
-import { faPalette, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import {
+  faPalette,
+  faInfoCircle,
+  faCheckCircle,
+  faListAlt,
+} from '@fortawesome/free-solid-svg-icons';
 import { faApple, faAndroid } from '@fortawesome/free-brands-svg-icons';
 
 // type properties
@@ -44,8 +49,10 @@ const Header: React.FC<HeaderProps> = ({ updateTheme }) => {
       selector: '[data-tut="reactour__people"]',
       content: () => (
         <p>
-          Add names and select the items that belong to each person by clicking
-          on the list icon.
+          Add names and select the items for each person by clicking on the list
+          icon &#40;
+          <FontAwesomeIcon icon={faListAlt} />
+          &#41;.
         </p>
       ),
     },
@@ -54,10 +61,11 @@ const Header: React.FC<HeaderProps> = ({ updateTheme }) => {
       content: () => (
         <div>
           <p>
-            Select the items by toggling the checkmark on the left side of each
-            item.
+            Choose the items with a checkmark &#40;
+            <FontAwesomeIcon icon={faCheckCircle} />
+            &#41; on the left side of each item.
           </p>
-          <p>Then click on the "Done" button at the top.</p>
+          <p>Then click on the "Done" button at the bottom.</p>
         </div>
       ),
       action: () => {

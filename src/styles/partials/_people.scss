@@ -6,8 +6,15 @@
     justify-content: space-between;
   }
 
-  .person-details {
-    flex-direction: column;
+  .person-list {
+    li {
+      flex-direction: column;
+      margin-bottom: 10px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
   }
 
   .person-name,

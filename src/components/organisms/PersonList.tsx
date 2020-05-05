@@ -21,7 +21,7 @@ const PersonList = () => {
       </div>
       <div data-tut='reactour__people'>
         <h2>People</h2>
-        <ul>{personList}</ul>
+        <ul className='person-list'>{personList}</ul>
         <Button className='action add-icon' type='button' onClick={addPerson}>
           <FontAwesomeIcon className='add-icon' icon={faPlusCircle} />
         </Button>

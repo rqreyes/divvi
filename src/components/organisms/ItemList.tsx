@@ -15,6 +15,7 @@ const ItemList = () => {
   // if a person is selected, then display their name and retrieve their details
   let currPersonDetails: PersonType;
   let selectItemsDisplay: JSX.Element;
+  let selectItemsButton: JSX.Element;
 
   if (currPersonId) {
     currPersonDetails = persons.find((person) => person.id === currPersonId)!;
@@ -23,23 +24,30 @@ const ItemList = () => {
         <p>
           Selecting for <strong>{currPersonDetails.name || 'Unknown'}</strong>
         </p>
-        <Button
-          className='primary'
-          type='button'
-          onClick={() => {
-            scroller.scrollTo('peopleAnchor', {
-              smooth: true,
-              offset: -50,
-            });
-            setCurrPersonId('');
-          }}
-        >
-          Done
-        </Button>
       </div>
+    );
+    selectItemsButton = (
+      <Button
+        className='primary done'
+        type='button'
+        onClick={() => {
+          scroller.scrollTo('peopleAnchor', {
+            smooth: true,
+            offset: -50,
+          });
+          setCurrPersonId('');
+        }}
+      >
+        Done
+      </Button>
     );
   } else {
     selectItemsDisplay = <h2>Receipt</h2>;
+    selectItemsButton = (
+      <Button className='action add-icon' type='button' onClick={addItem}>
+        <FontAwesomeIcon className='add-icon' icon={faPlusCircle} />
+      </Button>
+    );
   }
 
   const itemList = items.map((item) => {
@@ -74,9 +82,7 @@ const ItemList = () => {
       <div data-tut='reactour__item'>
         {selectItemsDisplay}
         <ul className='item-list'>{itemList}</ul>
-        <Button className='action add-icon' type='button' onClick={addItem}>
-          <FontAwesomeIcon className='add-icon' icon={faPlusCircle} />
-        </Button>
+        {selectItemsButton}
       </div>
       <ItemTotal />
     </section>

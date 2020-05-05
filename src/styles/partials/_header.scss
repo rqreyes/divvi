@@ -80,6 +80,12 @@
     right: 10px;
   }
 
+  p {
+    svg {
+      color: $primary-color-3;
+    }
+  }
+
   div[data-tour-elem='controls'] {
     justify-content: space-between;
     margin-top: 10px;
