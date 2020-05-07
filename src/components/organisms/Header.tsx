@@ -9,8 +9,8 @@ import {
   faInfoCircle,
   faCheckCircle,
   faListAlt,
+  faDownload,
 } from '@fortawesome/free-solid-svg-icons';
-import { faApple, faAndroid } from '@fortawesome/free-brands-svg-icons';
 
 // type properties
 interface HeaderProps {
@@ -61,9 +61,10 @@ const Header: React.FC<HeaderProps> = ({ updateTheme }) => {
       content: () => (
         <div>
           <p>
-            Choose the items with a checkmark &#40;
+            On the left side of each item, choose the items with a checkmark
+            &#40;
             <FontAwesomeIcon icon={faCheckCircle} />
-            &#41; on the left side of each item.
+            &#41;.
           </p>
           <p>Then click on the "Done" button at the bottom.</p>
         </div>
@@ -89,37 +90,16 @@ const Header: React.FC<HeaderProps> = ({ updateTheme }) => {
       },
     },
     {
+      selector: '[data-tut="reactour__download"]',
       content: () => (
         <div>
           <p>
-            Save this website as a shortcut to your home screen for easy access.
+            Save this website on to your home screen for easy and offline access
+            &#40;
+            <FontAwesomeIcon icon={faDownload} />
+            &#41;.
           </p>
-          <p>
-            Below are links to instructional videos for different mobile
-            operating systems.
-          </p>
-          <div className='button-group'>
-            <Button
-              className='primary'
-              type='button'
-              onClick={() => {
-                window.open('https://youtu.be/ZqlLCn7_fWk?t=12', '_blank');
-              }}
-            >
-              <span>iOS</span>
-              <FontAwesomeIcon icon={faApple} />
-            </Button>
-            <Button
-              className='primary'
-              type='button'
-              onClick={() => {
-                window.open('https://youtu.be/bvVxUH5Ifjk?t=22', '_blank');
-              }}
-            >
-              <span>Android</span>
-              <FontAwesomeIcon icon={faAndroid} />
-            </Button>
-          </div>
+          <p>If you're on incognito mode, this icon will not display.</p>
         </div>
       ),
     },
@@ -153,6 +133,14 @@ const Header: React.FC<HeaderProps> = ({ updateTheme }) => {
 
   return (
     <section className='header'>
+      <Button
+        id='installer'
+        className='action'
+        type='button'
+        data-tut='reactour__download'
+      >
+        <FontAwesomeIcon icon={faDownload} />
+      </Button>
       <h1>Divvi</h1>
       <div className='button-group'>
         <Button className='action' type='button' onClick={updateTheme}>

@@ -28,10 +28,7 @@ type Config = {
 export function register(config?: Config) {
   if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
     // The URL constructor is available in all browsers that support SW.
-    const publicUrl = new URL(
-      process.env.PUBLIC_URL,
-      window.location.href
-    );
+    const publicUrl = new URL(process.env.PUBLIC_URL, window.location.href);
     if (publicUrl.origin !== window.location.origin) {
       // Our service worker won't work if PUBLIC_URL is on a different origin
       // from what our page is served on. This might happen if a CDN is used to
@@ -58,6 +55,46 @@ export function register(config?: Config) {
         // Is not localhost. Just register service worker
         registerValidSW(swUrl, config);
       }
+
+      // add to home screen installer
+      let promptEvent: any;
+      const installEl = document.getElementById('installer');
+
+      const beforeinstallprompt = (e: any) => {
+        promptEvent = e;
+        promptEvent.preventDefault();
+        installEl!.classList.add('show');
+      };
+
+      const install = () => {
+        if (promptEvent) {
+          promptEvent.prompt();
+          promptEvent.userChoice
+            .then(() => {
+              // the user actioned the prompt (good or bad)
+              // good is handled in
+              promptEvent = null;
+              installEl!.classList.remove('show');
+            })
+            .catch(() => {
+              // boo, update the UI
+              promptEvent = null;
+              installEl!.classList.remove('show');
+            });
+        }
+      };
+
+      const installed = () => {
+        promptEvent = null;
+        // this fires after onbeforinstallprompt OR after manual add to homescreen.
+        installEl!.classList.remove('show');
+      };
+
+      window.addEventListener('beforeinstallprompt', beforeinstallprompt);
+      window.addEventListener('appinstalled', installed);
+
+      installEl!.addEventListener('click', install);
+      installEl!.addEventListener('touchend', install);
     });
   }
 }
@@ -65,7 +102,7 @@ export function register(config?: Config) {
 function registerValidSW(swUrl: string, config?: Config) {
   navigator.serviceWorker
     .register(swUrl)
-    .then(registration => {
+    .then((registration) => {
       registration.onupdatefound = () => {
         const installingWorker = registration.installing;
         if (installingWorker == null) {
@@ -101,7 +138,7 @@ function registerValidSW(swUrl: string, config?: Config) {
         };
       };
     })
-    .catch(error => {
+    .catch((error) => {
       console.error('Error during service worker registration:', error);
     });
 }
@@ -109,9 +146,9 @@ function registerValidSW(swUrl: string, config?: Config) {
 function checkValidServiceWorker(swUrl: string, config?: Config) {
   // Check if the service worker can be found. If it can't reload the page.
   fetch(swUrl, {
-    headers: { 'Service-Worker': 'script' }
+    headers: { 'Service-Worker': 'script' },
   })
-    .then(response => {
+    .then((response) => {
       // Ensure service worker exists, and that we really are getting a JS file.
       const contentType = response.headers.get('content-type');
       if (
@@ -119,7 +156,7 @@ function checkValidServiceWorker(swUrl: string, config?: Config) {
         (contentType != null && contentType.indexOf('javascript') === -1)
       ) {
         // No service worker found. Probably a different app. Reload the page.
-        navigator.serviceWorker.ready.then(registration => {
+        navigator.serviceWorker.ready.then((registration) => {
           registration.unregister().then(() => {
             window.location.reload();
           });
@@ -139,10 +176,10 @@ function checkValidServiceWorker(swUrl: string, config?: Config) {
 export function unregister() {
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.ready
-      .then(registration => {
+      .then((registration) => {
         registration.unregister();
       })
-      .catch(error => {
+      .catch((error) => {
         console.error(error.message);
       });
   }
