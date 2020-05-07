@@ -10,7 +10,9 @@ const Amount = () => {
   const { persons, personsTotal } = useContext(PersonContext)!;
 
   const summaryPersonsList = persons.map((person) => {
-    return <SummaryPerson person={person} />;
+    return (
+      <SummaryPerson key={`summary-person-${person.id}`} person={person} />
+    );
   });
 
   return (
