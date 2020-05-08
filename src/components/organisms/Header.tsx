@@ -94,7 +94,7 @@ const Header: React.FC<HeaderProps> = ({ updateTheme }) => {
       content: () => (
         <div>
           <p>
-            Save this website on to your home screen for easy and offline
+            Download this website on to your home screen for easy and offline
             access.
           </p>
           <p>
