@@ -111,6 +111,28 @@
     height: 16px;
   }
 
+  .button-group {
+    button {
+      display: flex;
+      align-items: center;
+      margin: 0 4px;
+    }
+
+    span {
+      margin-right: 8px;
+    }
+
+    svg {
+      width: 20px !important;
+      height: 20px !important;
+      color: $white;
+
+      &[data-icon='android'] {
+        padding-top: 2px;
+      }
+    }
+  }
+
   .tour-done {
     display: block;
     margin: auto;

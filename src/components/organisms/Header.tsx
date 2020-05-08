@@ -5,12 +5,13 @@ import Button from '../atoms/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHandPointUp } from '@fortawesome/free-regular-svg-icons';
 import {
+  faDownload,
   faPalette,
   faInfoCircle,
   faCheckCircle,
   faListAlt,
-  faDownload,
 } from '@fortawesome/free-solid-svg-icons';
+import { faApple, faAndroid } from '@fortawesome/free-brands-svg-icons';
 
 // type properties
 interface HeaderProps {
@@ -90,16 +91,38 @@ const Header: React.FC<HeaderProps> = ({ updateTheme }) => {
       },
     },
     {
-      selector: '[data-tut="reactour__download"]',
       content: () => (
         <div>
           <p>
-            Save this website on to your home screen for easy and offline access
-            &#40;
-            <FontAwesomeIcon icon={faDownload} />
-            &#41;.
+            Save this website on to your home screen for easy and offline
+            access.
           </p>
-          <p>If you're on incognito mode, this icon will not display.</p>
+          <p>
+            Below are links to instructional videos for different mobile
+            operating systems.
+          </p>
+          <div className='button-group'>
+            <Button
+              className='primary'
+              type='button'
+              onClick={() => {
+                window.open('https://youtu.be/ZqlLCn7_fWk?t=12', '_blank');
+              }}
+            >
+              <span>iOS</span>
+              <FontAwesomeIcon icon={faApple} />
+            </Button>
+            <Button
+              className='primary'
+              type='button'
+              onClick={() => {
+                window.open('https://youtu.be/bvVxUH5Ifjk?t=22', '_blank');
+              }}
+            >
+              <span>Android</span>
+              <FontAwesomeIcon icon={faAndroid} />
+            </Button>
+          </div>
         </div>
       ),
     },
@@ -133,12 +156,7 @@ const Header: React.FC<HeaderProps> = ({ updateTheme }) => {
 
   return (
     <section className='header'>
-      <Button
-        id='installer'
-        className='action'
-        type='button'
-        data-tut='reactour__download'
-      >
+      <Button id='installer' className='action' type='button'>
         <FontAwesomeIcon icon={faDownload} />
       </Button>
       <h1>Divvi</h1>
