@@ -131,8 +131,15 @@ const Header: React.FC<HeaderProps> = ({ updateTheme }) => {
         <div>
           <p>
             That's it! This app is comepletely free. If you'd like to support my
-            journey, please share with your friends and family and/or donate to
-            @rqreyes on Venmo.
+            journey, please share with your friends and family and/or donate to{' '}
+            <a
+              href='https://venmo.com/rqreyes'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              @rqreyes
+            </a>{' '}
+            on Venmo.
           </p>
           <p>Thank you so much :&#41;</p>
           <Button
