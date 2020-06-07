@@ -43,41 +43,43 @@ const ItemContextProvider: React.FC<ItemContextProps> = ({ children }) => {
   const removeItem = (id: string) =>
     setItems(items.filter((item) => item.id !== id));
   const updateFood = (id: string, food: string) => {
-    const itemsCopy = [...items];
-    itemsCopy.find((item) => item.id === id)!.food = food;
-
-    setItems(itemsCopy);
+    setItems(items.map((item) => (item.id === id ? { ...item, food } : item)));
   };
   const updatePrice = (id: string, price: string) => {
-    const itemsCopy = [...items];
-    itemsCopy.find((item) => item.id === id)!.price = price || '';
-
-    setItems(itemsCopy);
+    setItems(items.map((item) => (item.id === id ? { ...item, price } : item)));
   };
 
   // personIds array handlers
   const addCurrItemPersonId = (itemId: string, currPersonId: string) => {
-    const itemsCopy = [...items];
-    itemsCopy.find((item) => item.id === itemId)!.personIds.push(currPersonId);
-
-    setItems(itemsCopy);
+    setItems(
+      items.map((item) =>
+        item.id === itemId
+          ? { ...item, personIds: [...item.personIds, currPersonId] }
+          : item
+      )
+    );
   };
   const removeCurrItemPersonId = (itemId: string, currPersonId: string) => {
-    const itemsCopy = [...items];
-    const currItemDetails = itemsCopy.find((item) => item.id === itemId)!;
-    currItemDetails.personIds = currItemDetails.personIds.filter(
-      (personId) => personId !== currPersonId
+    setItems(
+      items.map((item) =>
+        item.id === itemId
+          ? {
+              ...item,
+              personIds: item.personIds.filter(
+                (personId) => personId !== currPersonId
+              ),
+            }
+          : item
+      )
     );
-
-    setItems(itemsCopy);
   };
   const removeItemsPersonId = (id: string) => {
-    const itemsCopy = [...items];
-    itemsCopy.forEach((item) => {
-      item.personIds = item.personIds.filter((personId) => personId !== id);
-    });
-
-    setItems(itemsCopy);
+    setItems(
+      items.map((item) => ({
+        ...item,
+        personIds: item.personIds.filter((personId) => personId !== id),
+      }))
+    );
   };
 
   useEffect(() => {

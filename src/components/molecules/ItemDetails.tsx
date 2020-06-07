@@ -95,7 +95,12 @@ const ItemDetails: React.FC<ItemDetailsProps> = ({ item, currItemChecked }) => {
         onChange={(e: ChangeEvent<HTMLInputElement>) =>
           updatePrice(item.id, e.currentTarget.value)
         }
-        onBlur={() => updatePrice(item.id, parseFloat(item.price).toFixed(2))}
+        onBlur={() =>
+          updatePrice(
+            item.id,
+            item.price ? parseFloat(item.price).toFixed(2) : ''
+          )
+        }
       />
       <Button className='action' type='button' onClick={removeItemIds}>
         <FontAwesomeIcon className='remove-icon' icon={faMinusCircle} />

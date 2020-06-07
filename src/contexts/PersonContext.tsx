@@ -36,45 +36,49 @@ const PersonContextProvider: React.FC<ItemContextProps> = ({ children }) => {
   const removePerson = (id: string) =>
     setPersons(persons.filter((person) => person.id !== id));
   const updatePerson = (id: string, name: string) => {
-    const personsCopy = [...persons];
-    personsCopy.find((person) => person.id === id)!.name = name;
-
-    setPersons(personsCopy);
+    setPersons(
+      persons.map((person) => (person.id === id ? { ...person, name } : person))
+    );
   };
 
   // itemIds array handlers
   const addCurrPersonItemId = (id: string) => {
-    const personsCopy = [...persons];
-    personsCopy.find((person) => person.id === currPersonId)!.itemIds.push(id);
-
-    setPersons(personsCopy);
+    setPersons(
+      persons.map((person) =>
+        person.id === currPersonId
+          ? { ...person, itemIds: [...person.itemIds, id] }
+          : person
+      )
+    );
   };
   const removeCurrPersonItemId = (id: string) => {
-    const personsCopy = [...persons];
-    const currPersonDetails = personsCopy.find(
-      (person) => person.id === currPersonId
-    )!;
-    currPersonDetails.itemIds = currPersonDetails.itemIds.filter(
-      (itemId) => itemId !== id
+    setPersons(
+      persons.map((person) =>
+        person.id === currPersonId
+          ? {
+              ...person,
+              itemIds: person.itemIds.filter((itemId) => itemId !== id),
+            }
+          : person
+      )
     );
-
-    setPersons(personsCopy);
   };
   const removePersonsItemId = (id: string) => {
-    const personsCopy = [...persons];
-    personsCopy.forEach((person) => {
-      person.itemIds = person.itemIds.filter((itemId) => itemId !== id);
-    });
-
-    setPersons(personsCopy);
+    setPersons(
+      persons.map((person) => ({
+        ...person,
+        itemIds: person.itemIds.filter((itemId) => itemId !== id),
+      }))
+    );
   };
 
   // person total handler
   const updatePersonTotal = (id: string, total: number) => {
-    const personsCopy = [...persons];
-    personsCopy.find((person) => person.id === id)!.total = total;
-
-    setPersons(personsCopy);
+    setPersons(
+      persons.map((person) =>
+        person.id === id ? { ...person, total } : person
+      )
+    );
   };
 
   useEffect(() => {
