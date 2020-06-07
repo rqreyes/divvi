@@ -1,10 +1,11 @@
 import React from 'react';
 
-interface SummaryPersonProps {
-  person: PersonType;
+// interface properties
+interface iSummaryPersonProps {
+  person: iPerson;
 }
 
-const SummaryPerson: React.FC<SummaryPersonProps> = ({ person }) => {
+const SummaryPerson: React.FC<iSummaryPersonProps> = ({ person }) => {
   return (
     <li>
       <span>{person.name || 'Unknown Name'}</span>

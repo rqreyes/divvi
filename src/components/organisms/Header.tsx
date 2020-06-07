@@ -13,12 +13,12 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { faApple, faAndroid } from '@fortawesome/free-brands-svg-icons';
 
-// type properties
-interface HeaderProps {
-  updateTheme: UpdateThemeType;
+// interface properties
+interface iHeaderProps {
+  updateTheme: iUpdateTheme;
 }
 
-const Header: React.FC<HeaderProps> = ({ updateTheme }) => {
+const Header: React.FC<iHeaderProps> = ({ updateTheme }) => {
   const { setCurrPersonId } = useContext(PersonContext)!;
   const [firstTime, setFirstTime] = useState(true);
   const firstTimeDisplay = firstTime ? '' : 'none';

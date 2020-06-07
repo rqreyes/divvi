@@ -1,16 +1,16 @@
 import React, { createContext, useState, useEffect, ReactNode } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-export const PersonContext = createContext<PersonContextType | undefined>(
+export const PersonContext = createContext<iPersonContext | undefined>(
   undefined
 );
 
-// type properties
-interface ItemContextProps {
+// interface properties
+interface iPersonContextProps {
   children: ReactNode;
 }
 
-const PersonContextProvider: React.FC<ItemContextProps> = ({ children }) => {
+const PersonContextProvider: React.FC<iPersonContextProps> = ({ children }) => {
   // person constructor
   class Person {
     id: string;
@@ -27,7 +27,7 @@ const PersonContextProvider: React.FC<ItemContextProps> = ({ children }) => {
   }
 
   // state
-  const [persons, setPersons] = useState<PersonType[]>([new Person('1')]);
+  const [persons, setPersons] = useState<iPerson[]>([new Person('1')]);
   const [currPersonId, setCurrPersonId] = useState('');
   const [personsTotal, setPersonsTotal] = useState(0);
 

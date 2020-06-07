@@ -2,16 +2,14 @@ import React, { createContext, useState, ReactNode } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useEffect } from 'react';
 
-export const ItemContext = createContext<ItemContextType | undefined>(
-  undefined
-);
+export const ItemContext = createContext<iItemContext | undefined>(undefined);
 
-// type properties
-interface ItemContextProps {
+// interface properties
+interface iItemContextProps {
   children: ReactNode;
 }
 
-const ItemContextProvider: React.FC<ItemContextProps> = ({ children }) => {
+const ItemContextProvider: React.FC<iItemContextProps> = ({ children }) => {
   // item constructor
   class Item {
     id: string;
@@ -31,7 +29,7 @@ const ItemContextProvider: React.FC<ItemContextProps> = ({ children }) => {
   }
 
   // state
-  const [items, setItems] = useState<ItemType[]>([new Item()]);
+  const [items, setItems] = useState<iItem[]>([new Item()]);
   const [itemsSubtotal, setItemsSubtotal] = useState(0);
   const [tax, setTax] = useState('');
   const [tip, setTip] = useState('');

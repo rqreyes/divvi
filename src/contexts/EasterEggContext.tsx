@@ -1,15 +1,15 @@
 import React, { createContext, useState, ReactNode } from 'react';
 
-export const EasterEggContext = createContext<EasterEggContextType | undefined>(
+export const EasterEggContext = createContext<iEasterEggContext | undefined>(
   undefined
 );
 
-// type properties
-interface EasterEggProviderProps {
+// interface properties
+interface iEasterEggProviderProps {
   children: ReactNode;
 }
 
-const EasterEggProvider: React.FC<EasterEggProviderProps> = ({ children }) => {
+const EasterEggProvider: React.FC<iEasterEggProviderProps> = ({ children }) => {
   const [easterEgg, setEasterEgg] = useState(false);
   const updateEasterEgg = () => setEasterEgg(!easterEgg);
 

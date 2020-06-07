@@ -1,11 +1,11 @@
-// context type definitions
-type EasterEggContextType = {
+// context interfaces
+interface iEasterEggContext {
   easterEgg: boolean;
   updateEasterEgg: () => void;
-};
+}
 
-type ItemContextType = {
-  items: ItemType[];
+interface iItemContext {
+  items: iItem[];
   addItem: () => void;
   removeItem: (id: string) => void;
   updateFood: (id: string, food: string) => void;
@@ -21,10 +21,10 @@ type ItemContextType = {
   addCurrItemPersonId: (itemId: string, currPersonId: string) => void;
   removeCurrItemPersonId: (itemId: string, currPersonId: string) => void;
   removeItemsPersonId: (id: string) => void;
-};
+}
 
-type PersonContextType = {
-  persons: PersonType[];
+interface iPersonContext {
+  persons: iPerson[];
   addPerson: () => void;
   removePerson: (id: string) => void;
   updatePerson: (id: string, name: string) => void;
@@ -35,22 +35,24 @@ type PersonContextType = {
   removePersonsItemId: (id: string) => void;
   updatePersonTotal: (id: string, total: number) => void;
   personsTotal: number;
-};
+}
 
-type ItemType = {
+interface iItem {
   id: string;
   food: string;
   price: string;
   personIds: string[];
   splitPrice: number;
-};
+}
 
-type PersonType = {
+interface iPerson {
   id: string;
   name: string;
   itemIds: string[];
   total: number;
-};
+}
 
-// component type definitions
-type UpdateThemeType = () => void;
+// component interfaces
+interface iUpdateTheme {
+  (): void;
+}

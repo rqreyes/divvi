@@ -1,12 +1,12 @@
 import React from 'react';
 
-// type properties
-interface PersonItemDetailsProps {
-  itemDetails: ItemType;
+// interface properties
+interface iPersonItemDetailsProps {
+  itemDetails: iItem;
   splitPrice: number;
 }
 
-const PersonItemDetails: React.FC<PersonItemDetailsProps> = ({
+const PersonItemDetails: React.FC<iPersonItemDetailsProps> = ({
   itemDetails,
   splitPrice,
 }) => {

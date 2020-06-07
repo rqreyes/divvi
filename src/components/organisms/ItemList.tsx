@@ -13,12 +13,14 @@ const ItemList = () => {
   const { persons, currPersonId, setCurrPersonId } = useContext(PersonContext)!;
 
   // if a person is selected, then display their name and retrieve their details
-  let currPersonDetails: PersonType;
+  let currPersonDetails: iPerson;
   let selectItemsDisplay: JSX.Element;
   let selectItemsButton: JSX.Element;
 
   if (currPersonId) {
-    currPersonDetails = persons.find((person) => person.id === currPersonId)!;
+    currPersonDetails = persons.find(
+      (person: iPerson) => person.id === currPersonId
+    )!;
     selectItemsDisplay = (
       <div className={`select-items`}>
         <p>
@@ -51,7 +53,7 @@ const ItemList = () => {
     );
   }
 
-  const itemList = items.map((item) => {
+  const itemList = items.map((item: iItem) => {
     // if a person is selected, then display which items are checked
     if (currPersonId) {
       const currItemChecked = currPersonDetails.itemIds.includes(item.id);

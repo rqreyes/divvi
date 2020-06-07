@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 
-// type properties
-interface ButtonProps {
+// interface properties
+interface iButtonProps {
   children: ReactNode;
   type: 'button' | 'submit' | 'reset';
   id?: string;
@@ -9,7 +9,7 @@ interface ButtonProps {
   onClick?: () => void;
 }
 
-const Button: React.FC<ButtonProps> = ({ children, ...props }) => {
+const Button: React.FC<iButtonProps> = ({ children, ...props }) => {
   return <button {...props}>{children}</button>;
 };
 

@@ -1,11 +1,11 @@
 import React from 'react';
 
-// type properties
-interface ItemLeftProps {
-  item: ItemType;
+// interface properties
+interface iItemLeftProps {
+  item: iItem;
 }
 
-const ItemLeft: React.FC<ItemLeftProps> = ({ item }) => {
+const ItemLeft: React.FC<iItemLeftProps> = ({ item }) => {
   const itemDetailsFoodDiplay = item.food ? item.food : 'Unknown Item';
   const itemDetailsPriceDisplay = item.price
     ? parseFloat(item.price).toFixed(2)

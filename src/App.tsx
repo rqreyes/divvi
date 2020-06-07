@@ -14,7 +14,7 @@ import './styles/styles.scss';
 function App() {
   // toggle the background
   const [theme, setTheme] = useState(true);
-  const updateTheme: UpdateThemeType = () => setTheme(!theme);
+  const updateTheme: iUpdateTheme = () => setTheme(!theme);
   const themeDisplay = theme ? '1' : '2';
 
   return (

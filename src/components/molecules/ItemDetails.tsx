@@ -10,13 +10,16 @@ import {
   faMinusCircle,
 } from '@fortawesome/free-solid-svg-icons';
 
-// type properties
-interface ItemDetailsProps {
-  item: ItemType;
+// interface properties
+interface iItemDetailsProps {
+  item: iItem;
   currItemChecked: boolean;
 }
 
-const ItemDetails: React.FC<ItemDetailsProps> = ({ item, currItemChecked }) => {
+const ItemDetails: React.FC<iItemDetailsProps> = ({
+  item,
+  currItemChecked,
+}) => {
   const {
     items,
     removeItem,

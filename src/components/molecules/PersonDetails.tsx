@@ -19,12 +19,12 @@ import {
   faCheckSquare,
 } from '@fortawesome/free-solid-svg-icons';
 
-// type properties
-interface PersonDetailsProps {
-  person: PersonType;
+// interface properties
+interface iPersonDetailsProps {
+  person: iPerson;
 }
 
-const PersonDetails: React.FC<PersonDetailsProps> = ({ person }) => {
+const PersonDetails: React.FC<iPersonDetailsProps> = ({ person }) => {
   const { items, itemsSubtotal, tax, tip, removeItemsPersonId } = useContext(
     ItemContext
   )!;
