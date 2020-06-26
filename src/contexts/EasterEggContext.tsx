@@ -11,7 +11,7 @@ interface iEasterEggProviderProps {
 
 const EasterEggProvider: React.FC<iEasterEggProviderProps> = ({ children }) => {
   const [easterEgg, setEasterEgg] = useState(false);
-  const updateEasterEgg = () => setEasterEgg(!easterEgg);
+  const updateEasterEgg = () => setEasterEgg((prev) => !prev);
 
   return (
     <EasterEggContext.Provider value={{ easterEgg, updateEasterEgg }}>
